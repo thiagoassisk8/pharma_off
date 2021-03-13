@@ -1,6 +1,6 @@
 # pharma_off
 
-A new Flutter application.
+Aplicativo PharmaOFF
 
 ## Getting Started
 
