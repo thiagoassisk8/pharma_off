@@ -6,7 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'dart:convert';
 
 
-class MapPage extends StatefulWidget  {
+class MapPage extends StatefulWidget {
   static String routeName = "/MapPage";
   @override
   _MapPageState createState() => _MapPageState();
@@ -28,89 +28,9 @@ class _MapPageState extends State<MapPage> {
 
 
 
-  // define a imagem para o marcador de local
-  void setCustomMapPin() async {
-    pinLocationIcon = await BitmapDescriptor.fromAssetImage(
-        ImageConfiguration(devicePixelRatio: 2.5),
-        'imagens/destination_map_marker.png');
-  }
 
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
-  }
-
-  void AddInfoPontos(context, nomePonto) {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.green[700],
-      builder: (BuildContext bc) {
-        return Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height * .98,
-          child: Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Column(
-                children: <Widget>[
-
-          Column(
-              children: <Widget>[
-                Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Image.asset(
-                      "imagens/infobsb.jpg",
-                      fit: BoxFit.fitWidth,
-                    )),
-                Divider(
-                  height: 10,
-                  thickness: 1,
-                  color: Colors.white.withOpacity(1),
-                  indent: 0,
-                  endIndent: 0,
-                ),
-
-
-                    Text("${nomePonto}",
-
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'RobotoMono',
-                            color: Colors.white)),
-
-                Text("Pontos: 200",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'RobotoMono',
-                        color: Colors.white)),
-                Divider(
-                  height: 10,
-                  thickness: 1,
-                  color: Colors.white.withOpacity(1),
-                  indent: 0,
-                  endIndent: 0,
-                ),
-                Row(
-                    children: <Widget>[
-                      FlatButton(
-                          onPressed:(){debugPrint("Ponto Visitado!");} ,
-                          padding: EdgeInsets.fromLTRB(100, 0, 10, 0),
-                          child: Image.asset('imagens/botaoplus.png',
-                            height: 88,
-                            width: 88,)),
-                   FlatButton(
-                      onPressed: (){debugPrint("Rota Traçada!");},
-                     padding: EdgeInsets.fromLTRB(0, 0, 90, 0),
-                      child: Image.asset('imagens/gologo.png',
-                        height: 88,
-                        width: 88,
-                      ),
-                  ),
-                      ]),
-        ]),])));
-      },
-    );
   }
 
   _getCurrentLocation() async {
@@ -140,7 +60,6 @@ class _MapPageState extends State<MapPage> {
   void initState() {
     super.initState();
     _getCurrentLocation();
-    setCustomMapPin();
   }
 
   @override
@@ -151,7 +70,7 @@ class _MapPageState extends State<MapPage> {
         backgroundColor: Colors.transparent,
         centerTitle: true,
         elevation: 0,
-        title: Image.asset('imagens/LOGO BSB GO.png',
+        title: Image.asset('assets/images/pharmaoff_logo_azul.png',
           height: 110,
           width: 110,
         ),
