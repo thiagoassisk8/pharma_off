@@ -29,6 +29,7 @@ class formulario extends StatelessWidget {
 
         body:
         new SingleChildScrollView(
+          padding: const EdgeInsets.all(10.0),
           child: new Container(
             margin: new EdgeInsets.all(15.0),
             child: new Form(
@@ -45,9 +46,13 @@ class formulario extends StatelessWidget {
   Widget _formUI() {
 
     return new Column(
+
       children: <Widget>[
+
         Image.asset(
           'assets/images/pharmaoff_logo_azul.png',
+          height: 75,
+
           // fit: BoxFit.fill,
           // height: 1000.0,
         ),
