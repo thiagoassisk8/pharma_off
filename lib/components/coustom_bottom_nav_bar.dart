@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pharma_off/Telas/home/components/mappage.dart';
+
+import 'package:pharma_off/Telas/home/components/suporte.dart';
 
 import 'package:pharma_off/Telas/home/home_screen.dart';
 
@@ -20,7 +21,7 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 14),
+      padding: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -52,7 +53,7 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg"),
-                onPressed: ()=>Navigator.pushNamed(context, MapPage.routeName),
+                onPressed: () {},
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
@@ -60,12 +61,12 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/User Icon.svg",
+                  "assets/icons/suporte-tecnico.svg",
                   color: MenuState.profile == selectedMenu
                       ? kPrimaryColor
                       : inActiveIconColor,
                 ),
-                onPressed: () {}
+                onPressed: ()=>Navigator.pushNamed(context, formulario.routeName),
               ),
             ],
           )),
