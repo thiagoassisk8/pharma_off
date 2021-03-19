@@ -5,11 +5,12 @@ import 'package:pharma_off/constants.dart';
 import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
 
+
+
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
 }
-
 
 
 class _BodyState extends State<Body> {
@@ -17,7 +18,7 @@ class _BodyState extends State<Body> {
 
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-
+    
     {
       "text": "Seja Bem Vindo ao ",
       "image": "assets/images/pharmaoff_logo_azul.png"
@@ -32,6 +33,8 @@ class _BodyState extends State<Body> {
       "image": "assets/images/cupom.png"
     },
   ];
+
+
   @override
   Widget build(BuildContext context) {
 

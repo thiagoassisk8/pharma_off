@@ -17,7 +17,6 @@ Widget build(BuildContext context) {
   return MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'PharmaOFF',
-    theme: theme(),
     initialRoute: SplashScreen.routeName,
     routes: routes,
   );
