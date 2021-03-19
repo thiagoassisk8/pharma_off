@@ -10,9 +10,14 @@ class Body extends StatefulWidget {
   _BodyState createState() => _BodyState();
 }
 
+
+
 class _BodyState extends State<Body> {
+
+
   int currentPage = 0;
   List<Map<String, String>> splashData = [
+
     {
       "text": "Seja Bem Vindo ao ",
       "image": "assets/images/pharmaoff_logo_azul.png"
@@ -29,6 +34,8 @@ class _BodyState extends State<Body> {
   ];
   @override
   Widget build(BuildContext context) {
+
+
     return SafeArea(
       child: SizedBox(
         width: double.infinity,

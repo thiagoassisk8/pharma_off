@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-// void formulario() => runApp(new MyApp());
-
-// class MyApp extends StatefulWidget {
-
-// }
 
 class formulario extends StatelessWidget {
   static String routeName = "/fomulario";
@@ -67,7 +62,7 @@ class formulario extends StatelessWidget {
         new TextFormField(
             decoration: new InputDecoration(hintText: 'Celular'),
             keyboardType: TextInputType.phone,
-            maxLength: 10,
+            maxLength: 11,
             validator: _validarCelular,
             onSaved: (String val) {
               celular = val;
@@ -83,7 +78,7 @@ class formulario extends StatelessWidget {
         new TextFormField(
             decoration: new InputDecoration(hintText: 'Mensagem'),
             keyboardType: TextInputType.emailAddress,
-            maxLength: 490,
+            maxLength: 500,
             validator: _validarEmail,
             onSaved: (String val) {
               mensagem = val;
@@ -92,10 +87,18 @@ class formulario extends StatelessWidget {
         new SizedBox(height: 15.0),
         new RaisedButton(
           padding: EdgeInsets.only(left: 50, top: 20, right: 50, bottom: 15),
+          shape: new RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(12.5),
+          ),
           textColor:Colors.white,
           onPressed: _sendForm,
-          child: new Text('Enviar'),
+          child: new Text('Enviar',style: new TextStyle(fontSize: 23.0),),
           color: Colors.blue,
+
+
+
+
+
         )
       ],
     );

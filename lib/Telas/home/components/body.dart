@@ -3,11 +3,11 @@ import 'package:pharma_off/Telas/home/components/mapa.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
 
 import '../../../size_config.dart';
-import 'categories.dart';
-import 'discount_banner.dart';
-import 'home_header.dart';
-import 'popular_product.dart';
-import 'special_offers.dart';
+// import 'categories.dart';
+// import 'discount_banner.dart';
+// import 'home_header.dart';
+// import 'popular_product.dart';
+// import 'special_offers.dart';
 
 class Body extends StatelessWidget {
   @override
