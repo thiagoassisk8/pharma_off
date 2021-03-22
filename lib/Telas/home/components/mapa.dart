@@ -1,9 +1,36 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+
+Marker farmacia1 = Marker(
+  markerId: MarkerId('rosario'),
+  position: LatLng(-15.795981102602921, -47.89040207631975),
+  infoWindow: InfoWindow(title: 'Drogaria Rosário'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueBlue,
+  ),
+);
+
+Marker farmacia2 = Marker(
+  markerId: MarkerId('drogasil'),
+  position: LatLng(-15.794453191639626, -47.89164662125551),
+  infoWindow: InfoWindow(title: 'Drogasil'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueBlue,
+  ),
+);
+Marker farmacia3 = Marker(
+  markerId: MarkerId('pacheco'),
+  position: LatLng(-15.797738913630512, -47.887036081402684),
+  infoWindow: InfoWindow(title: 'Drogarias Pacheco'),
+  icon: BitmapDescriptor.defaultMarkerWithHue(
+    BitmapDescriptor.hueBlue,
+  ),
+);
 
 class Mapa extends StatefulWidget {
   @override
@@ -12,81 +39,48 @@ class Mapa extends StatefulWidget {
 }
 
 class MapaState extends State<Mapa> {
-  StreamSubscription _locationSubscription;
-  Location _locationTracker = Location();
-  Marker marker;
-  Circle circle;
-  GoogleMapController _controller;
+  Map<String, String> body = {"user_id": "Zjlq1nMf9XS2SrHc6b0gFHFuBTa2"};
+  GoogleMapController mapController;
+  final Geolocator _geolocator = Geolocator();
+  Set<Marker> markers = new Set<Marker>();
 
-  static final CameraPosition initialLocation = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
 
-  Future<Uint8List> getMarker() async {
-    ByteData byteData = await DefaultAssetBundle.of(context).load("assets/images/user.png");
-    return byteData.buffer.asUint8List();
-  }
+  BitmapDescriptor pinLocationIcon;
 
-  void updateMarkerAndCircle(LocationData newLocalData, Uint8List imageData) {
-    LatLng latlng = LatLng(newLocalData.latitude, newLocalData.longitude);
-    this.setState(() {
-      marker = Marker(
-          markerId: MarkerId("home"),
-          position: latlng,
-          rotation: newLocalData.heading,
-          draggable: false,
-          zIndex: 2,
-          flat: true,
-          anchor: Offset(0.5, 0.5),
-          icon: BitmapDescriptor.fromBytes(imageData));
-      circle = Circle(
-          circleId: CircleId("car"),
-          radius: newLocalData.accuracy,
-          zIndex: 1,
-          strokeColor: Colors.blue,
-          center: latlng,
-          fillColor: Colors.blue.withAlpha(70));
+  Position _currentPosition;
+  double lat = -15.7905508;
+
+  double long = -47.8949667;
+
+
+
+  _getCurrentLocation() async {
+    await _geolocator
+        .getCurrentPosition()
+        .then((Position position) async {
+      setState(() {
+        // Store the position in the variable
+        _currentPosition = position;
+
+        // For moving the camera to current location
+        mapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: LatLng(position.latitude, position.longitude),
+              zoom: 17.0,
+            ),
+          ),
+        );
+      });
+    }).catchError((e) {
+      print(e);
     });
   }
-
-  void getCurrentLocation() async {
-    try {
-
-      Uint8List imageData = await getMarker();
-      var location = await _locationTracker.getLocation();
-
-      updateMarkerAndCircle(location, imageData);
-
-      if (_locationSubscription != null) {
-        _locationSubscription.cancel();
-      }
-
-
-      _locationSubscription = _locationTracker.onLocationChanged.listen((newLocalData) {
-        if (_controller != null) {
-          _controller.animateCamera(CameraUpdate.newCameraPosition(new CameraPosition(
-              bearing: 192.8334901395799,
-              target: LatLng(newLocalData.latitude, newLocalData.longitude),
-              tilt: 0,
-              zoom: 18.00)));
-          updateMarkerAndCircle(newLocalData, imageData);
-        }
-      });
-
-    } on PlatformException catch (e) {
-      if (e.code == 'PERMISSION_DENIED') {
-        debugPrint("Permission Denied");
-      }
-    }
-  }
-
   @override
-  void dispose() {
-    if (_locationSubscription != null) {
-      _locationSubscription.cancel();
-    }
-    super.dispose();
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+    // setCustomMapPin();
   }
 
   @override
@@ -102,49 +96,60 @@ class MapaState extends State<Mapa> {
           width: 110,
         ),
       ),
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: initialLocation,
-        markers: Set.of((marker != null) ? [farmacia1,farmacia2,farmacia3] : []),
-        circles: Set.of((circle != null) ? [circle] : []),
-        onMapCreated: (GoogleMapController controller) {
-          _controller = controller;
-        },
-
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            initialCameraPosition: CameraPosition(
+              target: LatLng(lat, long),
+              zoom: 17.0,
+            ),
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+            mapType: MapType.normal,
+            zoomGesturesEnabled: true,
+            zoomControlsEnabled: false,
+            markers: markers,
+            // onMapCreated: _onMapCreated,
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 22.0, bottom: 65.0),
+                child: ClipOval(
+                  child: Material(
+                    color: Colors.blue, // button color
+                    child: InkWell(
+                      splashColor: Colors.white, // inkwell color
+                      child: SizedBox(
+                        width: 56,
+                        height: 56,
+                        child: Icon(Icons.my_location),
+                      ),
+                      onTap: () {
+                        mapController.animateCamera(
+                          CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                              target: LatLng(
+                                _currentPosition.latitude,
+                                _currentPosition.longitude,
+                              ),
+                              zoom: 17.0,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.location_searching),
-          onPressed: () {
-            getCurrentLocation();
-          }),
     );
   }
 
 
-  Marker farmacia1 = Marker(
-    markerId: MarkerId('rosario'),
-    position: LatLng(-15.795981102602921, -47.89040207631975),
-    infoWindow: InfoWindow(title: 'Drogaria Rosário'),
-    icon: BitmapDescriptor.defaultMarkerWithHue(
-      BitmapDescriptor.hueBlue,
-    ),
-  );
-
-  Marker farmacia2 = Marker(
-    markerId: MarkerId('drogasil'),
-    position: LatLng(-15.794453191639626, -47.89164662125551),
-    infoWindow: InfoWindow(title: 'Drogasil'),
-    icon: BitmapDescriptor.defaultMarkerWithHue(
-      BitmapDescriptor.hueBlue,
-    ),
-  );
-  Marker farmacia3 = Marker(
-    markerId: MarkerId('pacheco'),
-    position: LatLng(-15.797738913630512, -47.887036081402684),
-    infoWindow: InfoWindow(title: 'Drogarias Pacheco'),
-    icon: BitmapDescriptor.defaultMarkerWithHue(
-      BitmapDescriptor.hueBlue,
-    ),
-  );
 
 }
