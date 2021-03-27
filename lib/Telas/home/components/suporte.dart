@@ -18,6 +18,7 @@ class formulario extends StatelessWidget {
 
         appBar: new AppBar(
           title: new Text('Suporte'),
+          centerTitle: true,
 
 
         ),
