@@ -6,8 +6,6 @@ import 'package:pharma_off/Telas/home/components/suporte.dart';
 
 import 'package:pharma_off/Telas/home/home_screen.dart';
 
-
-import '../Telas/home/components/mapa.dart';
 import '../constants.dart';
 import '../enums.dart';
 

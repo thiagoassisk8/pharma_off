@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/Telas/home/components/mapa.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
+import 'package:pharma_off/Telas/search.dart';
+
 
 import '../../../size_config.dart';
-// import 'categories.dart';
-// import 'discount_banner.dart';
-// import 'home_header.dart';
-// import 'popular_product.dart';
-// import 'special_offers.dart';
+
 
 class Body extends StatelessWidget {
   @override
@@ -17,7 +14,7 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
-            Mapa(),
+            Search(),
 
           ],
         ),

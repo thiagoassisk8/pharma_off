@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/Telas/home/components/mapa.dart';
+
 import 'package:pharma_off/Telas/home/home_screen.dart';
 import 'package:pharma_off/Telas/splash/components/body.dart';
 

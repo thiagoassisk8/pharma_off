@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
-import 'package:pharma_off/Telas/home/components/mapa.dart';
+//import 'package:pharma_off/Telas/home/components/mapa.dart';
 
 import 'package:pharma_off/Telas/home/home_screen.dart';
 import 'package:pharma_off/Telas/splash/splash_screen.dart';
@@ -12,7 +12,7 @@ import 'package:pharma_off/Telas/splash/splash_screen.dart';
 final Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName: (context) => SplashScreen(),
   formulario.routeName: (context) => formulario(),
-  Mapa.routeName: (context) => Mapa(),
+  //Mapa.routeName: (context) => Mapa(),
   HomeScreen.routeName: (context) => HomeScreen(),
 
  // CartScreen.routeName: (context) => CartScreen(),
