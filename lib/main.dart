@@ -10,8 +10,7 @@ import 'package:pharma_off/models/place.dart';
 import 'package:pharma_off/services/geolocator_service.dart';
 import 'package:pharma_off/services/places_service.dart';
 import 'package:provider/provider.dart';
-
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:pharma_off/models/place.dart';
 
 
 void main() {
@@ -19,6 +18,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  final teste=15;
   final locatorService = GeoLocatorService();
   final placesService = PlacesService();
   // This widget is the root of your application.
