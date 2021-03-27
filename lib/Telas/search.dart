@@ -27,7 +27,7 @@ class Search extends StatelessWidget {
                 ? Column(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height / 2,
                   width: MediaQuery.of(context).size.width,
                   child: GoogleMap(
                     initialCameraPosition: CameraPosition(
@@ -95,7 +95,7 @@ class Search extends StatelessWidget {
                                         (context, meters, wiget) {
                                       return (meters != null)
                                           ? Text(
-                                          '${places[index].vicinity} \u00b7 ${(meters / 1609).round()} mi')
+                                          '${places[index].vicinity} \u00b7 ${(meters / 1000).round()} km')
                                           : Container();
                                     },
                                   )
