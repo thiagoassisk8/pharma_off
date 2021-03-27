@@ -11,6 +11,7 @@ import 'package:pharma_off/services/marker_service.dart';
 class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Place>>>(context);
     final geoService = GeoLocatorService();
@@ -19,6 +20,16 @@ class Search extends StatelessWidget {
     return FutureProvider(
       create: (context) => placesProvider,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          elevation: 0,
+          title: Image.asset('assets/images/pharmaoff_logo_azul.png',
+            height: 110,
+            width: 110,
+          ),
+        ),
         body: (currentPosition != null)
             ? Consumer<List<Place>>(
           builder: (_, places, __) {
@@ -95,7 +106,7 @@ class Search extends StatelessWidget {
                                         (context, meters, wiget) {
                                       return (meters != null)
                                           ? Text(
-                                          '${places[index].vicinity} \u00b7 ${(meters / 1000).round()} km')
+                                          '${places[index].vicinity} \u00b7 ${meters.round()} metros ')
                                           : Container();
                                     },
                                   )
