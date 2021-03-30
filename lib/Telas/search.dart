@@ -44,7 +44,7 @@ class Search extends StatelessWidget {
                     initialCameraPosition: CameraPosition(
                         target: LatLng(currentPosition.latitude,
                             currentPosition.longitude),
-                        zoom: 16.0),
+                        zoom: 17.0),
                     zoomGesturesEnabled: true,
                     markers: Set<Marker>.of(markers),
                   ),
