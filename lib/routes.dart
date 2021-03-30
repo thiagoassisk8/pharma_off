@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:pharma_off/Telas/home/components/lista.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
 //import 'package:pharma_off/Telas/home/components/mapa.dart';
 
@@ -14,6 +15,7 @@ final Map<String, WidgetBuilder> routes = {
   formulario.routeName: (context) => formulario(),
   //Mapa.routeName: (context) => Mapa(),
   HomeScreen.routeName: (context) => HomeScreen(),
+  Lista.routeName: (context) => Lista(),
 
  // CartScreen.routeName: (context) => CartScreen(),
 

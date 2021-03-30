@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharma_off/Telas/home/components/lista.dart';
 
 import 'package:pharma_off/Telas/home/components/suporte.dart';
 
@@ -53,7 +54,8 @@ class CustomBottomNavBar extends StatelessWidget {
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
                   color: Colors.black87,
                 ),
-                onPressed: () {},
+                // onPressed: () =>
+                //   Navigator.pushNamed(context, Lista.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Location point.svg",

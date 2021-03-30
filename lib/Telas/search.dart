@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:pharma_off/Telas/home/components/lista.dart';
 import '../models/place.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pharma_off/services/geolocator_service.dart';
@@ -29,6 +30,18 @@ class Search extends StatelessWidget {
             height: 110,
             width: 110,
           ),
+          actions: <Widget>[
+            IconButton(
+              padding: EdgeInsets.fromLTRB(0, 0, 35, 0),
+              icon: Icon(
+                Icons.assignment,
+                color: Colors.black45,
+                size: 38,
+              ),
+             // onPressed: () =>
+             // Navigator.pushNamed(context, Lista.routeName),
+            )
+          ],
         ),
         body: (currentPosition != null)
             ? Consumer<List<Place>>(
@@ -38,7 +51,7 @@ class Search extends StatelessWidget {
                 ? Column(
               children: <Widget>[
                 Container(
-                  height: MediaQuery.of(context).size.height / 2,
+                  height: MediaQuery.of(context).size.height / 1.12,
                   width: MediaQuery.of(context).size.width,
                   child: GoogleMap(
                     initialCameraPosition: CameraPosition(
