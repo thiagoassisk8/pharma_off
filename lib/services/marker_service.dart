@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'package:pharma_off/models/place.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -12,7 +14,8 @@ class MarkerService {
           draggable: false,
           icon: place.icon,
           infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
-          position: LatLng(place.geometry.location.lat, place.geometry.location.lng)
+          position: LatLng(place.geometry.location.lat, place.geometry.location.lng),
+
       );
 
       markers.add(marker);

@@ -38,8 +38,8 @@ class Search extends StatelessWidget {
                 color: Colors.black45,
                 size: 38,
               ),
-             // onPressed: () =>
-             // Navigator.pushNamed(context, Lista.routeName),
+             onPressed: () =>
+             Navigator.pushNamed(context, Lista.routeName),
             )
           ],
         ),
