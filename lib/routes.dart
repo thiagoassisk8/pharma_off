@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:pharma_off/Telas/home/components/lista.dart';
+import 'package:pharma_off/Telas/lista.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
 //import 'package:pharma_off/Telas/home/components/mapa.dart';
 

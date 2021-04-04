@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/models/place.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pharma_off/services/geolocator_service.dart';
-import 'package:pharma_off/services/marker_service.dart';
+// import 'package:pharma_off/services/marker_service.dart';
 
 class Lista extends StatelessWidget {
   static String routeName = "/lista";
@@ -16,7 +16,7 @@ class Lista extends StatelessWidget {
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Place>>>(context);
     final geoService = GeoLocatorService();
-    final markerService = MarkerService();
+
 
     return FutureProvider(
       create: (context) => placesProvider,
@@ -30,22 +30,10 @@ class Lista extends StatelessWidget {
         body: (currentPosition != null)
             ? Consumer<List<Place>>(
           builder: (_, places, __) {
-            var markers = (places != null) ? markerService.getMarkers(places) : List<Marker>();
+            // var markers = (places != null) ? markerService.getMarkers(places) : List<Marker>();
             return (places != null)
                 ? Column(
               children: <Widget>[
-                Container(
-                  height: MediaQuery.of(context).size.height / 99,
-                  width: MediaQuery.of(context).size.width,
-                  child: GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                        target: LatLng(currentPosition.latitude,
-                            currentPosition.longitude),
-                        zoom: 17.0),
-                    zoomGesturesEnabled: true,
-                    markers: Set<Marker>.of(markers),
-                  ),
-                ),
                 Expanded(
                   child: (places.length > 0) ? ListView.builder(
                       itemCount: places.length,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/Telas/home/components/suporte.dart';
-import 'package:pharma_off/Telas/search.dart';
+import 'package:pharma_off/Telas/mapa.dart';
 
 
 import '../../../size_config.dart';
