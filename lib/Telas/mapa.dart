@@ -9,10 +9,9 @@ import '../models/place.dart';
 // import 'package:pharma_off/services/geolocator_service.dart';
 import 'package:pharma_off/services/marker_service.dart';
 
-class Search extends StatelessWidget {
+class MapaState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
 
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Place>>>(context);

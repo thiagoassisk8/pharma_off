@@ -14,7 +14,7 @@ class Body extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: getProportionateScreenHeight(20)),
-            Search(),
+            MapaState(),
 
           ],
         ),
