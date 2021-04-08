@@ -13,8 +13,8 @@ void AddInfoPontos(context, place) {
       return Container(
           height: MediaQuery
               .of(context)
-              .size
-              .height * .98,
+              .size.height * .98, //não brinquem com isso não é o tamanho do pop up
+
           child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: Column(
@@ -22,12 +22,14 @@ void AddInfoPontos(context, place) {
 
                     Column(
                         children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                              child: Image.asset(
-                                "assets/images/scuplash_2.png",
+
+
+                          // Padding(
+                          //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          //     child: Image.asset(
+                          //       "assets/images/scuplash_2.png",
                                 // fit: BoxFit.fitWidth,
-                              )),
+                              // )),
                           Divider(
                             height: 10,
                             thickness: 1,
@@ -37,23 +39,21 @@ void AddInfoPontos(context, place) {
                           ),
 
 
-                          // Text("place.nome",
-                          //
-                          //     style: TextStyle(
-                          //         fontSize: 18,
-                          //         fontWeight: FontWeight.bold,
-                          //         fontFamily: 'RobotoMono',
-                          //         color: Colors.white)),
-                          //
-                          Text("Pontos: 200",
+                          Text(place,
+                              style: TextStyle(
+                                  fontSize: 24,
+
+                                  fontFamily: 'RobotoMono',
+                                  color: Colors.black)),
+                          Text('',
                               style: TextStyle(
                                   fontSize: 16,
                                   fontFamily: 'RobotoMono',
-                                  color: Colors.white)),
+                                  color: Colors.black)),
                           Divider(
-                            height: 10,
-                            thickness: 1,
-                            color: Colors.white.withOpacity(1),
+                            height: 14,
+                            thickness: 5,
+                            color: Colors.blue,
                             indent: 0,
                             endIndent: 0,
                           ),
@@ -78,9 +78,6 @@ void AddInfoPontos(context, place) {
   );
 }
 class MapaState extends StatelessWidget {
-
-
-
 
   @override
   Widget build(BuildContext context) {
