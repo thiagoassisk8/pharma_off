@@ -53,7 +53,7 @@ class Cupons extends StatelessWidget {
                                       .lng),
                           child: Card(
                             child: ListTile(
-                              title: Text(places[index].name),
+                              title: Text("cupon Z"),
                               subtitle: Column(
                                 crossAxisAlignment:
                                 CrossAxisAlignment.start,

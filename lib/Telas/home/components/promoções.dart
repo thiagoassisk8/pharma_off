@@ -53,7 +53,7 @@ class promocoes extends StatelessWidget {
                                       .lng),
                           child: Card(
                             child: ListTile(
-                              title: Text(places[index].name),
+                              title: Text('promoção Y'),
                               subtitle: Column(
                                 crossAxisAlignment:
                                 CrossAxisAlignment.start,

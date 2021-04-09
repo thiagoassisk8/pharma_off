@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pharma_off/models/place.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/Telas/lista.dart';
 import '../models/place.dart';
 
-void AddInfoPontos(context, place) {
+
+
+void AddInfoFarmacias(context, place) {
   showModalBottomSheet(
     context: context,
     // backgroundColor: Colors.green[700],
@@ -23,13 +26,6 @@ void AddInfoPontos(context, place) {
                     Column(
                         children: <Widget>[
 
-
-                          // Padding(
-                          //     padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          //     child: Image.asset(
-                          //       "assets/images/scuplash_2.png",
-                                // fit: BoxFit.fitWidth,
-                              // )),
                           Divider(
                             height: 10,
                             thickness: 1,
@@ -38,16 +34,21 @@ void AddInfoPontos(context, place) {
                             endIndent: 0,
                           ),
 
-
-                          Text(place,
+                          Text(place.name,
                               style: TextStyle(
-                                  fontSize: 24,
-
+                                  fontSize: 22,
                                   fontFamily: 'RobotoMono',
                                   color: Colors.black)),
-                          Text('',
+                          Divider(
+                            height: 4,
+                            // thickness: 5,
+                            color: Colors.white,
+                            // indent: 0,
+                            // endIndent: 0,
+                          ),
+                          Text(place.open_now.toString(),
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 18,
                                   fontFamily: 'RobotoMono',
                                   color: Colors.black)),
                           Divider(
@@ -63,15 +64,16 @@ void AddInfoPontos(context, place) {
                                     onPressed:(){debugPrint("Ponto Visitado!");} ,
                                     // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
                                     child: Image.asset('assets/icons/Gobutton.png',
-                                      height: 88,
+
+                                      height: 228,
                                       width: 88,)),
-                                FlatButton(
-                                  onPressed: (){debugPrint("Rota Traçada!");},
-                                  child: Image.asset('assets/icons/Gobutton.png',
-                                    height: 88,
-                                    width: 88,
-                                  ),
-                                ),
+                                // FlatButton(
+                                //   onPressed: (){debugPrint("Rota Traçada!");},
+                                //   child: Image.asset('assets/icons/Gobutton.png',
+                                //     height: 88,
+                                //     width: 88,
+                                //   ),
+                                // ),
                               ]),
                         ]),])));
     },
@@ -89,9 +91,12 @@ class MapaState extends StatelessWidget {
           markerId: MarkerId(place.name),
           draggable: false,
           icon: place.icon,
-          infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
-          onTap: () {AddInfoPontos(context, place.name);},
           position: LatLng(place.geometry.location.lat, place.geometry.location.lng),
+          infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
+            onTap: () {
+              AddInfoFarmacias(context, place);
+              },
+
 
         );
 
@@ -165,10 +170,3 @@ class MapaState extends StatelessWidget {
   }
 
 }
-// class MarkerService {
-
-
-
-
-
-// }

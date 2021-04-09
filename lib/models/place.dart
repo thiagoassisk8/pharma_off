@@ -2,6 +2,7 @@ import 'package:pharma_off/models/geometry.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Place{
+
   final String name;
   final double rating;
   final int userRatingCount;
@@ -10,6 +11,9 @@ class Place{
   final BitmapDescriptor icon;
   final String photo_reference;
   final bool open_now;
+
+  // static var fromJson;
+
 
   Place({this.geometry, this.name, this.rating, this.userRatingCount, this.vicinity,this.icon,this.photo_reference,this.open_now});
 

@@ -53,7 +53,7 @@ class desejos extends StatelessWidget {
                                       .lng),
                           child: Card(
                             child: ListTile(
-                              title: Text(places[index].name),
+                              title: Text('farmacia X'),
                               subtitle: Column(
                                 crossAxisAlignment:
                                 CrossAxisAlignment.start,
