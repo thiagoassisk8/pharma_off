@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharma_off/Telas/home/components/desejos.dart';
+import 'package:pharma_off/Telas/home/components/promo%C3%A7%C3%B5es.dart';
 import 'package:pharma_off/Telas/lista.dart';
 
 import 'package:pharma_off/Telas/home/components/suporte.dart';
-
+import 'package:pharma_off/Telas/home/components/cupons.dart';
 import 'package:pharma_off/Telas/home/home_screen.dart';
 
 import '../constants.dart';
@@ -48,14 +50,14 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, HomeScreen.routeName),
+                   Navigator.pushNamed(context, promocoes.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
                   color: Colors.black87,
                 ),
-                // onPressed: () =>
-                //   Navigator.pushNamed(context, Lista.routeName),
+                onPressed: () =>
+                Navigator.pushNamed(context, desejos.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Location point.svg",
@@ -65,10 +67,11 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: ()=>Navigator.pushNamed(context, HomeScreen.routeName),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg",
+                icon: SvgPicture.asset("assets/icons/Bill Icon.svg",
                   color: Colors.black,
                 ),
-                onPressed: () {},
+                onPressed: ()=>
+                    Navigator.pushNamed(context, Cupons.routeName),
               ),
               IconButton(
                 icon: SvgPicture.asset(
