@@ -1,4 +1,4 @@
-import 'package:pharma_off/models/location.dart';
+import 'package:pharma_off/home/models/location.dart';
 
 class Geometry {
   final Location location;

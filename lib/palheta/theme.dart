@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/size_config.dart';
+import 'package:pharma_off/palheta/size_config.dart';
 // import 'constants.dart';
 
 const kPrimaryColor = Color(0xFF1565C0);

@@ -1,5 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pharma_off/models/place.dart';
+import 'package:pharma_off/home/models/place.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 

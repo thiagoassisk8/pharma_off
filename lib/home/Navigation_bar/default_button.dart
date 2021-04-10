@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theme.dart';
-import '../size_config.dart';
+import 'package:pharma_off/palheta/theme.dart';
+import 'package:pharma_off/palheta/size_config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({

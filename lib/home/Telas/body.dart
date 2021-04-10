@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/Telas/home/components/suporte.dart';
-import 'package:pharma_off/Telas/mapa.dart';
+import 'package:pharma_off/home/services/mapa.dart';
 
 
-import '../../../size_config.dart';
+import 'package:pharma_off/palheta/size_config.dart';
 
 
 class Body extends StatelessWidget {

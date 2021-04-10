@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pharma_off/models/place.dart';
+import 'package:pharma_off/home/models/place.dart';
 import 'package:provider/provider.dart';
-import 'package:pharma_off/models/location.dart';
+import 'package:pharma_off/home/models/location.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/Telas/lista.dart';
+import 'package:pharma_off/home/Telas/lista.dart';
 import '../models/place.dart';
-import 'package:pharma_off/services/places_service.dart';
+import 'package:pharma_off/home/services/places_service.dart';
 
 
 void AddInfoFarmacias(context, place) {

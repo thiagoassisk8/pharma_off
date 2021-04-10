@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/Telas/home/home_screen.dart';
-import 'package:pharma_off/size_config.dart';
-import 'package:pharma_off/theme.dart';
-import '../components/splash_content.dart';
-import '../../../components/default_button.dart';
+import 'package:pharma_off/home/home_screen.dart';
+import 'package:pharma_off/palheta/size_config.dart';
+import 'package:pharma_off/palheta/theme.dart';
+import '../componentes/splash_content.dart';
+import 'package:pharma_off/home/Navigation_bar/default_button.dart';
 
 
 

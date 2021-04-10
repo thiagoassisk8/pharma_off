@@ -1,4 +1,4 @@
-import 'package:pharma_off/models/geometry.dart';
+import 'package:pharma_off/home/models/geometry.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Place{

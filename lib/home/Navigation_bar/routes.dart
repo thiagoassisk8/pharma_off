@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:pharma_off/Telas/home/components/cupons.dart';
-import 'package:pharma_off/Telas/home/components/desejos.dart';
-import 'package:pharma_off/Telas/home/components/promocoes.dart';
-import 'package:pharma_off/Telas/lista.dart';
-import 'package:pharma_off/Telas/home/components/suporte.dart';
-import 'package:pharma_off/Telas/home/home_screen.dart';
-import 'package:pharma_off/Telas/splash/splash_screen.dart';
+import 'package:pharma_off/home/Telas/cupons.dart';
+import 'package:pharma_off/home/Telas/desejos.dart';
+import 'package:pharma_off/home/Telas/promocoes.dart';
+import 'package:pharma_off/home/Telas/lista.dart';
+import 'package:pharma_off/home/Telas/suporte.dart';
+import 'package:pharma_off/home/home_screen.dart';
+import 'package:pharma_off/splash/splash_screen.dart';
 
 
 // All our routes will be available here

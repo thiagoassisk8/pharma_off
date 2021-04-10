@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pharma_off/theme.dart';
-import 'package:pharma_off/Telas/splash/splash_screen.dart';
-import 'package:pharma_off/routes.dart';
+import 'package:pharma_off/palheta/theme.dart';
+import 'package:pharma_off/splash/splash_screen.dart';
+import 'package:pharma_off/home/Navigation_bar/routes.dart';
 
 
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/models/place.dart';
-import 'package:pharma_off/services/geolocator_service.dart';
-import 'package:pharma_off/services/places_service.dart';
+import 'package:pharma_off/home/models/place.dart';
+import 'package:pharma_off/home/services/geolocator_service.dart';
+import 'package:pharma_off/home/services/places_service.dart';
 import 'package:provider/provider.dart';
-// import 'package:pharma_off/models/place.dart';
+
 
 
 void main() {
@@ -19,7 +19,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final teste=15;
+  // final teste=15;
   final locatorService = GeoLocatorService();
   final placesService = PlacesService();
   // This widget is the root of your application.

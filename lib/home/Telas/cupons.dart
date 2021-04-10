@@ -3,9 +3,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/models/place.dart';
+import 'package:pharma_off/home/models/place.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:pharma_off/services/geolocator_service.dart';
+import 'package:pharma_off/home/services/geolocator_service.dart';
 // import 'package:pharma_off/services/marker_service.dart';
 
 class Cupons extends StatelessWidget {
