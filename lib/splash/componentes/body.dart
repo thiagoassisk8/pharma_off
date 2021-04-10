@@ -99,7 +99,7 @@ class _BodyState extends State<Body> {
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+        color: currentPage == index ? AzulPrimario : Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:pharma_off/palheta/size_config.dart';
+import 'package:pharma_off/palheta/theme.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
@@ -17,7 +18,7 @@ class SplashContent extends StatelessWidget {
         Spacer(flex: 10),
         Text(
           text,
-          style: new TextStyle(fontSize: 19),
+          style: new TextStyle(fontSize: 20,color: AzulPrimario,fontWeight: FontWeight.bold),
           textAlign: TextAlign.center,
         ),
         Spacer(flex: 5),

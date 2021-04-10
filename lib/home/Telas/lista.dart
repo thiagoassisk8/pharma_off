@@ -27,8 +27,7 @@ class Lista extends StatelessWidget {
           title: Text("Farmácias próximas",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
           ),
 
-        body: (currentPosition != null)
-            ? Consumer<List<Estabecimento>>(
+        body: (currentPosition != null) ? Consumer<List<Estabecimento>>(
           builder: (_, estabelecimentos, __) {
             // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
             return (estabelecimentos != null)

@@ -10,7 +10,13 @@ class SplashScreen extends StatelessWidget {
 
     SizeConfig().init(context);
     return Scaffold(
-      body: Body(),
-    );
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage("assets/images/fundo_tela_inicial.jpg"), fit: BoxFit.fill),
+        ),
+
+      child: Body(),
+
+    ));
   }
 }

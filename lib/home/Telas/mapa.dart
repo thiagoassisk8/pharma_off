@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:pharma_off/home/objetos/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/home/Telas/lista.dart';
+import 'package:pharma_off/palheta/theme.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 
 
@@ -43,7 +45,7 @@ void AddInfoFarmacias(context, place) {
 
 
                 Container(
-                    color: Colors.blue,
+                    color: AzulPrimario,
                     height: 60,
                     width: MediaQuery.of(context).size.width,
                     padding: EdgeInsets.symmetric(vertical: 10),
@@ -75,17 +77,25 @@ void AddInfoFarmacias(context, place) {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
 
-                          Text("Endereço",
+                          Text("Endereço: \n" + place.vicinity,
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 16,
                                   fontFamily: 'RobotoMono',
                                   color: Colors.black)),
 
-                          Text("Rating",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: 'RobotoMono',
-                                  color: Colors.black)),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(height: 3.0,),
+                              (place.rating != null) ? Row(children: <Widget>[
+                                  RatingBarIndicator(rating: place.rating,
+                                    itemBuilder: (context, index) => Icon(Icons.star, color: Colors.amber),
+                                    itemCount: 5,
+                                    itemSize: 20.0,
+                                    direction: Axis.horizontal,
+                                  )
+                                ],) : Row(),
+                            ],),
 
 
                         ])),

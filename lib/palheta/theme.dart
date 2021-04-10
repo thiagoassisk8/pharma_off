@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 // import 'constants.dart';
 
-const kPrimaryColor = Color(0xFF1565C0);
-const kPrimaryLightColor = Color(0xFFFFECDF);
-const kPrimaryGradientColor = LinearGradient(
-  begin: Alignment.topLeft,
-  end: Alignment.bottomRight,
-  colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
-);
+const AzulPrimario = Color(0xFF1565C0);
+
+// const kPrimaryGradientColor = LinearGradient(
+//   begin: Alignment.topLeft,
+//   end: Alignment.bottomRight,
+//   colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
+// );
+
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
 
