@@ -3,7 +3,7 @@ import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
-class TipoEstabeleciemento {
+class BuscaEstabeleciemento {
   var tipodebusca = 'drugstore';
   final key = 'AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0';
 
