@@ -3,7 +3,7 @@ import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import '../componentes/splash_content.dart';
-import 'package:pharma_off/home/Navigation_bar/default_button.dart';
+import 'package:pharma_off/splash/componentes/default_button.dart';
 
 
 
@@ -78,7 +78,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Continue",
                       press: () {
-                        Navigator.pushNamed(context, HomeScreen.routeName);
+                        Navigator.pushNamed(context, HomeScreen.NomeNavegacao);
                       },
                     ),
                     Spacer(),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pharma_off/home/models/place.dart';
+import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:provider/provider.dart';
-import 'package:pharma_off/home/models/location.dart';
+import 'package:pharma_off/home/objetos/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/home/Telas/lista.dart';
-import '../models/place.dart';
-import 'package:pharma_off/home/services/places_service.dart';
+
 
 
 void AddInfoFarmacias(context, place) {
@@ -104,10 +103,10 @@ class MapaState extends StatelessWidget {
 
 
 
-    List<Marker> getMarkers(List<Place> places){
+    List<Marker> getMarkers(List<Estabecimento> estabelecimentos){
       var markers = List<Marker>();
 
-      places.forEach((place){
+      estabelecimentos.forEach((place){
         Marker marker = Marker(
           markerId: MarkerId(place.name),
           draggable: false,
@@ -129,11 +128,11 @@ class MapaState extends StatelessWidget {
 
 
     final currentPosition = Provider.of<Position>(context);
-    final placesProvider = Provider.of<Future<List<Place>>>(context);
+    final estabelecimentosProvider = Provider.of<Future<List<Estabecimento>>>(context);
     // final markerService = MarkerService();
 
     return FutureProvider(
-      create: (context) => placesProvider,
+      create: (context) => estabelecimentosProvider,
       child:
       Scaffold(
         extendBodyBehindAppBar: true,
@@ -155,15 +154,15 @@ class MapaState extends StatelessWidget {
                 size: 38,
               ),
               onPressed: () =>
-                  Navigator.pushNamed(context, Lista.routeName),
+                  Navigator.pushNamed(context, Lista.NomeNavegacao),
             )
           ],
         ),
         body: (currentPosition != null)
-            ? Consumer<List<Place>>(
-          builder: (_, places, __) {
-            var markers = (places != null) ? getMarkers(places) : List<Marker>();
-            return (places != null) ? Column(
+            ? Consumer<List<Estabecimento>>(
+          builder: (_, estabelecimentos, __) {
+            var markers = (estabelecimentos != null) ? getMarkers(estabelecimentos) : List<Marker>();
+            return (estabelecimentos != null) ? Column(
               children: <Widget>[
                 Container(
                   height: MediaQuery.of(context).size.height / 1.12,

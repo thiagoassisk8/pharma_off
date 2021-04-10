@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/home/services/mapa.dart';
+import 'package:pharma_off/home/Telas/mapa.dart';
 
 
 import 'package:pharma_off/palheta/size_config.dart';

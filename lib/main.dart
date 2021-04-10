@@ -7,9 +7,9 @@ import 'package:pharma_off/home/Navigation_bar/routes.dart';
 
 
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/home/models/place.dart';
-import 'package:pharma_off/home/services/geolocator_service.dart';
-import 'package:pharma_off/home/services/places_service.dart';
+import 'package:pharma_off/home/objetos/estabelecimento.dart';
+import 'package:pharma_off/home/servicos/geolocator_service.dart';
+import 'package:pharma_off/home/servicos/BuscaEstabelecimento.dart';
 import 'package:provider/provider.dart';
 
 
@@ -21,7 +21,7 @@ void main() {
 class MyApp extends StatelessWidget {
   // final teste=15;
   final locatorService = GeoLocatorService();
-  final placesService = PlacesService();
+  final tipoEstabelecimento = TipoEstabeleciemento();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
           return BitmapDescriptor.fromAssetImage(configuration, 'assets/images/farmacia145.png');
 
         }),
-        ProxyProvider2<Position,BitmapDescriptor,Future<List<Place>>>(
+        ProxyProvider2<Position,BitmapDescriptor,Future<List<Estabecimento>>>(
           update: (context,position,icon,places){
-            return (position !=null) ? placesService.getPlaces(position.latitude, position.longitude, icon) :null;
+            return (position !=null) ? tipoEstabelecimento.getPlaces(position.latitude, position.longitude, icon) :null;
 
           },
         )
@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'PharmaOFF',
         theme: theme(),
-        initialRoute: SplashScreen.routeName,
-        routes: routes,
+        initialRoute: SplashScreen.NomeNavegacao,
+        routes: navegacoes,
       ),
     );
   }

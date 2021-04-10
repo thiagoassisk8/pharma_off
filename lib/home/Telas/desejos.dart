@@ -3,18 +3,18 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/home/models/place.dart';
+import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:pharma_off/home/services/geolocator_service.dart';
+import 'package:pharma_off/home/servicos/geolocator_service.dart';
 // import 'package:pharma_off/services/marker_service.dart';
 
 class desejos extends StatelessWidget {
-  static String routeName = "/desejos";
+  static String NomeNavegacao = "/desejos";
   @override
   Widget build(BuildContext context) {
 
     final currentPosition = Provider.of<Position>(context);
-    final placesProvider = Provider.of<Future<List<Place>>>(context);
+    final placesProvider = Provider.of<Future<List<Estabecimento>>>(context);
     final geoService = GeoLocatorService();
 
 
@@ -28,26 +28,26 @@ class desejos extends StatelessWidget {
         ),
 
         body: (currentPosition != null)
-            ? Consumer<List<Place>>(
-          builder: (_, places, __) {
-            // var markers = (places != null) ? markerService.getMarkers(places) : List<Marker>();
-            return (places != null)
+            ? Consumer<List<Estabecimento>>(
+          builder: (_, estabelecimentos, __) {
+            // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
+            return (estabelecimentos != null)
                 ? Column(
               children: <Widget>[
                 Expanded(
-                  child: (places.length > 0) ? ListView.builder(
-                      itemCount: places.length,
+                  child: (estabelecimentos.length > 0) ? ListView.builder(
+                      itemCount: estabelecimentos.length,
                       itemBuilder: (context, index) {
                         return FutureProvider(
                           create: (context) =>
                               geoService.getDistance(
                                   currentPosition.latitude,
                                   currentPosition.longitude,
-                                  places[index]
+                                  estabelecimentos[index]
                                       .geometry
                                       .location
                                       .lat,
-                                  places[index]
+                                  estabelecimentos[index]
                                       .geometry
                                       .location
                                       .lng),
@@ -61,11 +61,11 @@ class desejos extends StatelessWidget {
                                   SizedBox(
                                     height: 3.0,
                                   ),
-                                  (places[index].rating != null)
+                                  (estabelecimentos[index].rating != null)
                                       ? Row(
                                     children: <Widget>[
                                       RatingBarIndicator(
-                                        rating: places[index]
+                                        rating: estabelecimentos[index]
                                             .rating,
                                         itemBuilder: (context,
                                             index) =>
@@ -88,7 +88,7 @@ class desejos extends StatelessWidget {
                                         (context, meters, wiget) {
                                       return (meters != null)
                                           ? Text(
-                                          '${places[index].vicinity} \u00b7 ${meters.round()} metros ')
+                                          '${estabelecimentos[index].vicinity} \u00b7 ${meters.round()} metros ')
                                           : Container();
                                     },
                                   )
@@ -100,11 +100,11 @@ class desejos extends StatelessWidget {
                                 Theme.of(context).primaryColor,
                                 onPressed: () {
                                   _launchMapsUrl(
-                                      places[index]
+                                      estabelecimentos[index]
                                           .geometry
                                           .location
                                           .lat,
-                                      places[index]
+                                      estabelecimentos[index]
                                           .geometry
                                           .location
                                           .lng);

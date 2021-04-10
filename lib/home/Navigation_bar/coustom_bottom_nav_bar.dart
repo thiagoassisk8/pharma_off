@@ -53,35 +53,35 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                   Navigator.pushNamed(context, promocoes.routeName),
+                   Navigator.pushNamed(context, promocoes.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
                   color: Colors.black87,
                 ),
                 onPressed: () =>
-                Navigator.pushNamed(context, desejos.routeName),
+                Navigator.pushNamed(context, desejos.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Location point.svg",
                   color: Colors.blueAccent,
                   height: 105,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, HomeScreen.routeName),
+                onPressed: ()=>Navigator.pushNamed(context, HomeScreen.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset("assets/icons/Bill Icon.svg",
                   color: Colors.black,
                 ),
                 onPressed: ()=>
-                    Navigator.pushNamed(context, Cupons.routeName),
+                    Navigator.pushNamed(context, Cupons.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/suporte-tecnico.svg",
                   color: Colors.black,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, formulario.routeName),
+                onPressed: ()=>Navigator.pushNamed(context, formulario.NomeNavegacao),
               ),
             ],
           )),

@@ -1,7 +1,7 @@
-import 'package:pharma_off/home/models/geometry.dart';
+import 'package:pharma_off/home/objetos/geometry.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class Place{
+class Estabecimento{
 
   final String name;
   final double rating;
@@ -15,9 +15,9 @@ class Place{
   // static var fromJson;
 
 
-  Place({this.geometry, this.name, this.rating, this.userRatingCount, this.vicinity,this.icon,this.photo_reference,this.open_now});
+  Estabecimento({this.geometry, this.name, this.rating, this.userRatingCount, this.vicinity,this.icon,this.photo_reference,this.open_now});
 
-  Place.fromJson(Map<dynamic, dynamic> parsedJson, BitmapDescriptor icon):
+  Estabecimento.fromJson(Map<dynamic, dynamic> parsedJson, BitmapDescriptor icon):
         name = parsedJson['name'],
         rating = (parsedJson['rating'] !=null) ? parsedJson['rating'].toDouble() : null,
         photo_reference =parsedJson['photoReference'],

@@ -4,7 +4,7 @@ import 'package:pharma_off/home/Telas/mapa.dart';
 
 
 class HomeScreen extends StatelessWidget {
-  static String routeName = "/home";
+  static String NomeNavegacao = "/home";
   @override
   Widget build(BuildContext context) {
     return Scaffold(

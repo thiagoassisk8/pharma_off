@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class formulario extends StatelessWidget {
-  static String routeName = "/fomulario";
+  static String NomeNavegacao = "/formulario";
   @override
   formulario createState() => formulario();
 
