@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/Telas/home/home_screen.dart';
 import 'package:pharma_off/size_config.dart';
-import 'package:pharma_off/constants.dart';
+import 'package:pharma_off/theme.dart';
 import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
 

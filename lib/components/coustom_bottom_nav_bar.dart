@@ -2,17 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/Telas/home/components/desejos.dart';
-import 'package:pharma_off/Telas/home/components/promo%C3%A7%C3%B5es.dart';
-import 'package:pharma_off/Telas/lista.dart';
+import 'package:pharma_off/Telas/home/components/promocoes.dart';
+
 
 import 'package:pharma_off/Telas/home/components/suporte.dart';
 import 'package:pharma_off/Telas/home/components/cupons.dart';
 import 'package:pharma_off/Telas/home/home_screen.dart';
 
-import '../constants.dart';
-import '../enums.dart';
+
+
+enum MenuState { home, favorite, message, profile }
 
 class CustomBottomNavBar extends StatelessWidget {
+
+
   const CustomBottomNavBar({
     Key key,
     @required this.selectedMenu,

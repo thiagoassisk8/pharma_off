@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:pharma_off/Telas/home/home_screen.dart';
 import 'package:pharma_off/Telas/splash/components/body.dart';
-
 import 'package:pharma_off/size_config.dart';
 
 class SplashScreen extends StatelessWidget {

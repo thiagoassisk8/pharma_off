@@ -19,4 +19,5 @@ class PlacesService {
 
   //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-15.7361710,-47.8960675&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0
 //-15.7361710, -47.8960675
+//https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${kGoogleApiKey}
 }

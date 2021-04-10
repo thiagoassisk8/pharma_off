@@ -1,4 +1,4 @@
-  import 'package:flutter/cupertino.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/theme.dart';
@@ -11,7 +11,7 @@ import 'package:pharma_off/models/place.dart';
 import 'package:pharma_off/services/geolocator_service.dart';
 import 'package:pharma_off/services/places_service.dart';
 import 'package:provider/provider.dart';
-import 'package:pharma_off/models/place.dart';
+// import 'package:pharma_off/models/place.dart';
 
 
 void main() {
