@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/models/place.dart';
 import 'package:provider/provider.dart';
+import 'package:pharma_off/models/location.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/Telas/lista.dart';
 import '../models/place.dart';
-
+import 'package:pharma_off/services/places_service.dart';
 
 
 void AddInfoFarmacias(context, place) {
@@ -13,6 +14,12 @@ void AddInfoFarmacias(context, place) {
     context: context,
     // backgroundColor: Colors.green[700],
     builder: (BuildContext bc) {
+
+      String buildPhotoURL(photoReference) {
+        return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$photoReference&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0";
+      }
+      var chavefotolocalizacao = 'ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z';
+
       return Container(
           height: MediaQuery
               .of(context)
@@ -38,7 +45,8 @@ void AddInfoFarmacias(context, place) {
                               style: TextStyle(
                                   fontSize: 22,
                                   fontFamily: 'RobotoMono',
-                                  color: Colors.black)),
+                                  color: Colors.black,
+                              )),
                           Divider(
                             height: 4,
                             // thickness: 5,
@@ -51,6 +59,8 @@ void AddInfoFarmacias(context, place) {
                                   fontSize: 18,
                                   fontFamily: 'RobotoMono',
                                   color: Colors.black)),
+
+
                           Divider(
                             height: 14,
                             thickness: 5,
@@ -58,8 +68,15 @@ void AddInfoFarmacias(context, place) {
                             indent: 0,
                             endIndent: 0,
                           ),
+
+
                           Row(
                               children: <Widget>[
+
+                                Image.network(buildPhotoURL(chavefotolocalizacao),
+                                  height: 235,
+                                  width: 245,
+                                ),
                                 FlatButton(
                                     onPressed:(){debugPrint("Ponto Visitado!");} ,
                                     // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
@@ -83,6 +100,10 @@ class MapaState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
+
     List<Marker> getMarkers(List<Place> places){
       var markers = List<Marker>();
 
