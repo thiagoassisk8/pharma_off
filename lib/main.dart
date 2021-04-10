@@ -21,7 +21,7 @@ void main() {
 class MyApp extends StatelessWidget {
   // final teste=15;
   final locatorService = GeoLocatorService();
-  final tipoEstabelecimento = TipoEstabeleciemento();
+  final tipoEstabelecimento = BuscaEstabeleciemento();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

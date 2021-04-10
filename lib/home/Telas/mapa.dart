@@ -10,6 +10,9 @@ import 'package:pharma_off/home/Telas/lista.dart';
 
 void AddInfoFarmacias(context, place) {
   showModalBottomSheet(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(15.0),
+    ),
     context: context,
     // backgroundColor: Colors.green[700],
     builder: (BuildContext bc) {
@@ -20,78 +23,91 @@ void AddInfoFarmacias(context, place) {
       var chavefotolocalizacao = 'ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z';
 
       return Container(
-          height: MediaQuery
-              .of(context)
-              .size.height * .98, //não brinquem com isso não é o tamanho do pop up
+        height: MediaQuery.of(context).size.height * .58, //não brinquem com isso não é o tamanho do pop up
 
-          child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Column(
-                  children: <Widget>[
 
+
+        child: Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: Column(
+              children: <Widget>[
+
+                ClipRRect(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
+                  child: Image.network(buildPhotoURL(chavefotolocalizacao),
+                      height: 200.0,
+                      width:  MediaQuery.of(context).size.width,
+                      fit:BoxFit.cover
+                  ),
+                ),
+
+
+                Container(
+                    color: Colors.blue,
+                    height: 60,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child:
                     Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-
-                          Divider(
-                            height: 10,
-                            thickness: 1,
-                            color: Colors.white.withOpacity(1),
-                            indent: 0,
-                            endIndent: 0,
-                          ),
 
                           Text(place.name,
                               style: TextStyle(
-                                  fontSize: 22,
-                                  fontFamily: 'RobotoMono',
-                                  color: Colors.black,
+                                fontSize: 17,
+                                fontFamily: 'RobotoMono',
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               )),
-                          Divider(
-                            height: 4,
-                            // thickness: 5,
-                            color: Colors.white,
-                            // indent: 0,
-                            // endIndent: 0,
-                          ),
+
                           Text(place.open_now.toString(),
                               style: TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
+                                  fontFamily: 'RobotoMono',
+                                  color: Colors.black)),
+                        ])),
+
+
+                SizedBox(
+                    width: MediaQuery.of(context).size.width, // set this
+                    child:
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+                          Text("Endereço",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'RobotoMono',
+                                  color: Colors.black)),
+
+                          Text("Rating",
+                              style: TextStyle(
+                                  fontSize: 15,
                                   fontFamily: 'RobotoMono',
                                   color: Colors.black)),
 
 
-                          Divider(
-                            height: 14,
-                            thickness: 5,
-                            color: Colors.blue,
-                            indent: 0,
-                            endIndent: 0,
-                          ),
+                        ])),
 
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                  color: Colors.grey,
+                  indent: 0,
+                  endIndent: 0,
+                ),
+                FlatButton(
+                    onPressed:(){debugPrint("Ponto Visitado!");} ,
+                    // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
+                    child: Image.asset('assets/icons/Gobutton.png',
+                      height: 50,
+                      width: 100,
+                    )),
 
-                          Row(
-                              children: <Widget>[
-
-                                Image.network(buildPhotoURL(chavefotolocalizacao),
-                                  height: 235,
-                                  width: 245,
-                                ),
-                                FlatButton(
-                                    onPressed:(){debugPrint("Ponto Visitado!");} ,
-                                    // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
-                                    child: Image.asset('assets/icons/Gobutton.png',
-
-                                      height: 228,
-                                      width: 88,)),
-                                // FlatButton(
-                                //   onPressed: (){debugPrint("Rota Traçada!");},
-                                //   child: Image.asset('assets/icons/Gobutton.png',
-                                //     height: 88,
-                                //     width: 88,
-                                //   ),
-                                // ),
-                              ]),
-                        ]),])));
+              ]),
+        ),
+      );
     },
   );
 }
