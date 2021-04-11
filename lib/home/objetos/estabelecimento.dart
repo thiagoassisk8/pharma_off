@@ -20,7 +20,7 @@ class Estabecimento{
   Estabecimento.fromJson(Map<dynamic, dynamic> parsedJson, BitmapDescriptor icon):
         name = parsedJson['name'],
         rating = (parsedJson['rating'] !=null) ? parsedJson['rating'].toDouble() : null,
-        photo_reference =parsedJson['photoReference'],
+        photo_reference =(parsedJson['photo_reference']!= null)?parsedJson['photo_reference'] : null,
         userRatingCount = (parsedJson['user_ratings_total'] != null) ? parsedJson['user_ratings_total'] : null,
         vicinity = parsedJson['vicinity'],
         open_now = parsedJson['open_now'] ,

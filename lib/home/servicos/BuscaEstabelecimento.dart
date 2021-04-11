@@ -8,7 +8,7 @@ class BuscaEstabeleciemento {
   final key = 'AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0';
 
    Future<List<Estabecimento>> getPlaces(double lat, double lng,BitmapDescriptor icon) async {
-
+    // var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&photo?maxwidth=400&photoreference=ATtYBwKqFXzX_8Ot4E5-ylsopu3HEj5R23Y_Lqd-XOSXW9kuG-kQpmyS4EhAG7_7E83Qq8YASWKxz9mntV1nh5SDvt1wP-3aow-p3f40lDoAB69o_Jp7sxvRsspfexJOiSyGc1aWHgbrmohsr7KS8OrpzSgwHCmYHLiydSzGczeQBKdPni8&type=$tipodebusca&rankby=distance&key=$key');
     var response = await http.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=$tipodebusca&rankby=distance&key=$key');
     var json = convert.jsonDecode(response.body);
     var jsonResults = json['results'] as List;
@@ -18,7 +18,7 @@ class BuscaEstabeleciemento {
 
   }
 
-  //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}/nearbysearch/json?location=-15.7361710,-47.8960675&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0
+  //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-15.7361710,-47.8960675&photo?maxwidth=400&photoreference=${photoReference}&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0
 //-15.7361710, -47.8960675
 //https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoReference}&key=${kGoogleApiKey}
 

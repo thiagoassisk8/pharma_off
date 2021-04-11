@@ -20,7 +20,11 @@ void AddInfoFarmacias(context, place) {
     builder: (BuildContext bc) {
 
       String buildPhotoURL(photoReference) {
+        print(place.name);
+        print(place.photo_reference);
         return "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=$photoReference&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0";
+
+        // return "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${place.geometry.location.lat},${place.geometry.location.lng}&photo?maxwidth=400&photoreference=${photoReference}&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0";
       }
       var chavefotolocalizacao = 'ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z';
 
@@ -33,10 +37,10 @@ void AddInfoFarmacias(context, place) {
           padding: const EdgeInsets.all(0.0),
           child: Column(
               children: <Widget>[
-
+              //place.photo_reference
                 ClipRRect(
                   borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
-                  child: Image.network(buildPhotoURL(chavefotolocalizacao),
+                  child: Image.network('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwLmrjQBuf8aStp8wXiZeJenCP1ldVXqdyttyfmXhvMF4LlwXZRIXGg23wQ7_JO-7gFzOyfvalHFdjxfWdKhL31spTDNh0OAgCM9Zu2CVunMxAgm9_fP6AU3d1fBKunTgdzV9D0PS-ZCoj0qqmyLoXxfdJoxW7V14RvID-6ijT-tQ0YD&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0',
                       height: 200.0,
                       width:  MediaQuery.of(context).size.width,
                       fit:BoxFit.cover
@@ -88,13 +92,13 @@ void AddInfoFarmacias(context, place) {
                             children: <Widget>[
                               SizedBox(height: 3.0,),
                               (place.rating != null) ? Row(children: <Widget>[
-                                  RatingBarIndicator(rating: place.rating,
-                                    itemBuilder: (context, index) => Icon(Icons.star, color: Colors.amber),
-                                    itemCount: 5,
-                                    itemSize: 20.0,
-                                    direction: Axis.horizontal,
-                                  )
-                                ],) : Row(),
+                                RatingBarIndicator(rating: place.rating,
+                                  itemBuilder: (context, index) => Icon(Icons.star, color: Colors.amber),
+                                  itemCount: 5,
+                                  itemSize: 20.0,
+                                  direction: Axis.horizontal,
+                                )
+                              ],) : Row(),
                             ],),
 
 
@@ -108,7 +112,7 @@ void AddInfoFarmacias(context, place) {
                   endIndent: 0,
                 ),
                 FlatButton(
-                    onPressed:(){debugPrint("Ponto Visitado!");} ,
+                    onPressed:(){buildPhotoURL('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwJh4f7dfjI2ol2-ubvHxmsqTyQF2rV95Rsv4wNL-JSg6dMSbyPo8ux4dkE1J3UH1Q_Qex1a9B0qzbKH8jQ3h4345XNuDe3QGI4FLUymn0YnK7WtqulyIocO4WllfBVrPyQ2rd-dfJ7q_8Eds5puFcUDSzT2PukIOEBNpNYFejLgz4Qm&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0');} ,
                     // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
                     child: Image.asset('assets/icons/Gobutton.png',
                       height: 50,
@@ -139,9 +143,9 @@ class MapaState extends StatelessWidget {
           icon: place.icon,
           position: LatLng(place.geometry.location.lat, place.geometry.location.lng),
           infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
-            onTap: () {
-              AddInfoFarmacias(context, place);
-              },
+          onTap: () {
+            AddInfoFarmacias(context, place);
+          },
 
 
         );
