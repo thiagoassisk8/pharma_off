@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 
 class SizeConfig {
+
+  ContainerFoto(img){
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(img),
+          ),
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
+  }
+
   static MediaQueryData _mediaQueryData;
   static double screenWidth;
   static double screenHeight;
@@ -14,6 +31,10 @@ class SizeConfig {
     orientation = _mediaQueryData.orientation;
   }
 }
+
+
+
+
 
 // Get the proportionate height as per screen size
 double getProportionateScreenHeight(double inputHeight) {
