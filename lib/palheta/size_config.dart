@@ -17,6 +17,28 @@ class SizeConfig {
       ),
     );
   }
+  ContainerTexto(){
+    return Container(
+      height: 100,
+      width: 200,
+      child: Column(
+        children:<Widget>[
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text('Farmacia Popular',style: TextStyle(fontSize: 20),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: Text('Farmacia Popular',style: TextStyle(fontSize: 20),
+          ),
+          ),
+
+        ],
+      ),
+
+    );
+  }
 
   static MediaQueryData _mediaQueryData;
   static double screenWidth;

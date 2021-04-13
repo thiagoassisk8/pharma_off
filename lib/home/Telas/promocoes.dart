@@ -6,16 +6,18 @@ import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pharma_off/home/servicos/geolocator_service.dart';
-// import 'package:pharma_off/services/marker_service.dart';
+import 'package:pharma_off/palheta/size_config.dart';
 
 class promocoes extends StatelessWidget {
   static String NomeNavegacao = "/promocoes";
+
   @override
   Widget build(BuildContext context) {
 
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Estabecimento>>>(context);
     final geoService = GeoLocatorService();
+    final sizeconfig = SizeConfig();
 
 
     return FutureProvider(
@@ -34,6 +36,7 @@ class promocoes extends StatelessWidget {
             return (estabelecimentos != null)
                 ? Column(
               children: <Widget>[
+                // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
                 Expanded(
                   child: (estabelecimentos.length > 0) ? ListView.builder(
                       itemCount: estabelecimentos.length,
