@@ -17,7 +17,7 @@ class FlutterIcons {
   static const IconData nike = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData left_open_1 = IconData(0xf007, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
-class ShoeModel {
+class Produto {
   final String name;
   final double price;
   final String desc;
@@ -25,7 +25,7 @@ class ShoeModel {
   final String brand;
   final String imgPath;
 
-  ShoeModel({
+  Produto({
     this.name,
     this.price,
     this.desc,
@@ -34,8 +34,8 @@ class ShoeModel {
     this.imgPath,
   });
 
-  static List<ShoeModel> list = [
-    ShoeModel(
+  static List<Produto> list = [
+    Produto(
       name: "Ivermectina",
       desc:
           "Descrição de cada produto irá ficar aqui",
@@ -44,7 +44,7 @@ class ShoeModel {
       brand: "Rosario",
       imgPath: "remedio.png",
     ),
-    ShoeModel(
+    Produto(
       name: "Creme",
       desc:
           "Descrição de cada produto irá ficar aqui",
@@ -53,7 +53,7 @@ class ShoeModel {
       brand: "Converse",
       imgPath: "creme.png",
     ),
-    ShoeModel(
+    Produto(
       name: "Mascaras",
       desc:
           "Descrição de cada produto irá ficar aqui",

@@ -13,7 +13,7 @@ import 'dart:math' as math;
 
 class promocoes extends StatelessWidget {
   static String NomeNavegacao = "/promocoes";
-  List<ShoeModel> shoeList = ShoeModel.list;
+  List<Produto> ProdutoLista = Produto.list;
   @override
   Widget build(BuildContext context) {
 
@@ -63,7 +63,7 @@ class promocoes extends StatelessWidget {
                   height: 300,
                   margin: EdgeInsets.symmetric(vertical: 16),
                   child: ListView.builder(
-                    itemCount: shoeList.length,
+                    itemCount: ProdutoLista.length,
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(horizontal: 16),
@@ -73,7 +73,7 @@ class promocoes extends StatelessWidget {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => DetailPage(
-                                shoeList[index],
+                                ProdutoLista[index],
                               ),
                             ),
                           );
@@ -91,13 +91,13 @@ class promocoes extends StatelessWidget {
                                 bottom: 130,
                                 right: 10,
                                 child: Hero(
-                                  tag: "hero${shoeList[index].imgPath}",
+                                  tag: "hero${ProdutoLista[index].imgPath}",
                                   child: Transform.rotate(
                                     angle: -math.pi / 7,
                                     child: Image(
                                       width: 220,
                                       image: AssetImage(
-                                          "assets/images/${shoeList[index].imgPath}"),
+                                          "assets/images/${ProdutoLista[index].imgPath}"),
                                     ),
                                   ),
                                 ),
@@ -133,7 +133,7 @@ class promocoes extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 24),
-                ...shoeList.map((data) {
+                ...ProdutoLista.map((data) {
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(

@@ -7,8 +7,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'dart:math' as math;
 
 class DetailPage extends StatefulWidget {
-  final ShoeModel shoeModel;
-  DetailPage(this.shoeModel);
+  final Produto produto;
+  DetailPage(this.produto);
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -19,9 +19,9 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      backgroundColor: widget.shoeModel.color,
+      backgroundColor: widget.produto.color,
       appBar: AppBar(
-        backgroundColor: widget.shoeModel.color,
+        backgroundColor: widget.produto.color,
         elevation: 0,
         title: Text("Produto",textScaleFactor: 1.1, style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
         leading: IconButton(
@@ -57,7 +57,7 @@ class _DetailPageState extends State<DetailPage> {
                           width: 300,
                           child: Text(
                             // 'Teste',
-                            "${widget.shoeModel.name}",
+                            "${widget.produto.name}",
                             style: TextStyle(
                               fontSize: 32,
                             ),
@@ -75,7 +75,7 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         SizedBox(height: 16),
                         Text(
-                          "${widget.shoeModel.desc}",
+                          "${widget.produto.desc}",
                           style: TextStyle(
                             color: Colors.black38,
                           ),
@@ -110,12 +110,12 @@ class _DetailPageState extends State<DetailPage> {
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Hero(
-                tag: "hero${widget.shoeModel.imgPath}",
+                tag: "hero${widget.produto.imgPath}",
                 child: Transform.rotate(
                   angle: -math.pi / 7,
                   child: Image(
                     width: MediaQuery.of(context).size.width * .85,
-                    image: AssetImage("assets/images/${widget.shoeModel.imgPath}"),
+                    image: AssetImage("assets/images/${widget.produto.imgPath}"),
                   ),
                 ),
               ),
@@ -158,7 +158,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Text(
-                "\$${widget.shoeModel.price.toInt()}",
+                "\$${widget.produto.price.toInt()}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
