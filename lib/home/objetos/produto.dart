@@ -1,5 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/palheta/theme.dart';
+
+
+class Produto {
+  final String estabelecimento;
+  final String name;
+  final double price;
+  final String desc;
+  final Color color;
+  final String imgPath;
+
+  Produto({
+    this.estabelecimento,
+    this.name,
+    this.price,
+    this.desc,
+    this.color,
+    this.imgPath,
+  });
+
+
+  static List<Produto> list = [
+    Produto(
+      estabelecimento: "Rosario",
+      name: "Ivermectina",
+      desc:
+          "Descrição de cada produto irá ficar aqui",
+      price: 184,
+      color: AppColors.blueColor,
+      imgPath: "remedio.png",
+    ),
+    Produto(
+      estabelecimento: "Rosario",
+      name: "Creme",
+      desc:
+          "Descrição de cada produto irá ficar aqui",
+      price: 123,
+      color: AppColors.blueColor,
+      imgPath: "creme.png",
+    ),
+    Produto(
+      estabelecimento: "Drogasil",
+      name: "Mascaras",
+      desc:
+          "Descrição de cada produto irá ficar aqui",
+      price: 135,
+      color: AppColors.blueColor,
+      imgPath: "mascaras.png",
+    ),
+  ];
+}
 class FlutterIcons {
   FlutterIcons._();
 
@@ -16,51 +66,4 @@ class FlutterIcons {
   static const IconData search = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData nike = IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData left_open_1 = IconData(0xf007, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-}
-class Produto {
-  final String name;
-  final double price;
-  final String desc;
-  final Color color;
-  final String brand;
-  final String imgPath;
-
-  Produto({
-    this.name,
-    this.price,
-    this.desc,
-    this.color,
-    this.brand,
-    this.imgPath,
-  });
-
-  static List<Produto> list = [
-    Produto(
-      name: "Ivermectina",
-      desc:
-          "Descrição de cada produto irá ficar aqui",
-      price: 184,
-      color: AppColors.blueColor,
-      brand: "Rosario",
-      imgPath: "remedio.png",
-    ),
-    Produto(
-      name: "Creme",
-      desc:
-          "Descrição de cada produto irá ficar aqui",
-      price: 123,
-      color: AppColors.blueColor,
-      brand: "Converse",
-      imgPath: "creme.png",
-    ),
-    Produto(
-      name: "Mascaras",
-      desc:
-          "Descrição de cada produto irá ficar aqui",
-      price: 135,
-      color: AppColors.blueColor,
-      brand: "Drogasil",
-      imgPath: "mascaras.png",
-    ),
-  ];
 }

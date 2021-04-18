@@ -184,7 +184,7 @@ class promocoes extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "${data.brand}",
+                                  "${data.estabelecimento}",
                                   style: TextStyle(
                                     color: Colors.black26,
                                     height: 1.5,
@@ -196,7 +196,7 @@ class promocoes extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: Text(
-                              "\$${data.price.toInt()}",
+                              "\$ ${data.price.toInt()}",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
