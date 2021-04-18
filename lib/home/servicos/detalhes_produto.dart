@@ -23,7 +23,7 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         backgroundColor: widget.shoeModel.color,
         elevation: 0,
-        title: Text("CATEGORIES"),
+        title: Text("Produto",textScaleFactor: 1.1, style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -152,7 +152,7 @@ class _DetailPageState extends State<DetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "PRICE",
+                "Preço",
                 style: TextStyle(
                   color: Colors.black26,
                 ),

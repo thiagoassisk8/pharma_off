@@ -38,7 +38,7 @@ class ShoeModel {
     ShoeModel(
       name: "Ivermectina",
       desc:
-          "A cura pro covid 19",
+          "Descrição de cada produto irá ficar aqui",
       price: 184,
       color: AppColors.blueColor,
       brand: "Rosario",
@@ -47,18 +47,18 @@ class ShoeModel {
     ShoeModel(
       name: "Creme",
       desc:
-          "Familiar but always fresh, the iconic Air Jordan 1 is remastered for today's sneakerhead culture. This Retro High OG version goes all in with full-grain leather, comfortable cushioning and classic design details.",
+          "Descrição de cada produto irá ficar aqui",
       price: 123,
-      color: AppColors.yellowColor,
+      color: AppColors.blueColor,
       brand: "Converse",
       imgPath: "creme.png",
     ),
     ShoeModel(
       name: "Mascaras",
       desc:
-          "Charlatanismo do Bolsonaro",
+          "Descrição de cada produto irá ficar aqui",
       price: 135,
-      color: AppColors.redColor,
+      color: AppColors.blueColor,
       brand: "Drogasil",
       imgPath: "mascaras.png",
     ),
