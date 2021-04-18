@@ -10,8 +10,18 @@ const AzulPrimario = Color(0xFF1565C0);
 //   colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
 // );
 
+
 const kSecondaryColor = Color(0xFF979797);
 const kTextColor = Color(0xFF757575);
+
+class AppColors {
+  static final Color blueColor = Color(0XFF0c99c3);
+  static final Color greenColor = Color(0XFF3dc39d);
+  static final Color yellowColor = Color(0XFFdac007);
+  static final Color redColor = Color(0XFFbe0b2b);
+  static final Color orangeColor = Color(0XFFbe740b);
+}
+
 
 const kAnimationDuration = Duration(milliseconds: 200);
 

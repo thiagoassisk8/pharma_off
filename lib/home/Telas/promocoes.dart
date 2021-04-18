@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:pharma_off/home/servicos/geolocator_service.dart';
 import 'package:pharma_off/palheta/size_config.dart';
+import 'package:pharma_off/home/objetos/produto.dart';
+import 'dart:math' as math;
 
 class promocoes extends StatelessWidget {
   static String NomeNavegacao = "/promocoes";
-
+  List<ShoeModel> shoeList = ShoeModel.list;
   @override
   Widget build(BuildContext context) {
 
@@ -37,87 +40,174 @@ class promocoes extends StatelessWidget {
                 ? Column(
               children: <Widget>[
                 // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
-                Expanded(
-                  child: (estabelecimentos.length > 0) ? ListView.builder(
-                      itemCount: estabelecimentos.length,
-                      itemBuilder: (context, index) {
-                        return FutureProvider(
-                          create: (context) =>
-                              geoService.getDistance(
-                                  currentPosition.latitude,
-                                  currentPosition.longitude,
-                                  estabelecimentos[index]
-                                      .geometry
-                                      .location
-                                      .lat,
-                                  estabelecimentos[index]
-                                      .geometry
-                                      .location
-                                      .lng),
-                          child: Card(
-                            child: ListTile(
-                              title: Text('promoção Y'),
-                              subtitle: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 3.0,
-                                  ),
-                                  (estabelecimentos[index].rating != null)
-                                      ? Row(
-                                    children: <Widget>[
-                                      RatingBarIndicator(
-                                        rating: estabelecimentos[index]
-                                            .rating,
-                                        itemBuilder: (context,
-                                            index) =>
-                                            Icon(Icons.star,
-                                                color: Colors
-                                                    .amber),
-                                        itemCount: 5,
-                                        itemSize: 10.0,
-                                        direction:
-                                        Axis.horizontal,
-                                      )
-                                    ],
-                                  )
-                                      : Row(),
-                                  SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Consumer<double>(
-                                    builder:
-                                        (context, meters, wiget) {
-                                      return (meters != null)
-                                          ? Text(
-                                          '${estabelecimentos[index].vicinity} \u00b7 ${meters.round()} metros ')
-                                          : Container();
-                                    },
-                                  )
-                                ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "Categories",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(FlutterIcons.search, color: Colors.black26),
+                        onPressed: null,
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 300,
+                  margin: EdgeInsets.symmetric(vertical: 16),
+                  child: ListView.builder(
+                    itemCount: shoeList.length,
+                    scrollDirection: Axis.horizontal,
+                    physics: BouncingScrollPhysics(),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => DetailPage(
+                                shoeList[index],
                               ),
-                              trailing: IconButton(
-                                icon: Icon(Icons.directions),
-                                color:
-                                Theme.of(context).primaryColor,
-                                onPressed: () {
-                                  _launchMapsUrl(
-                                      estabelecimentos[index]
-                                          .geometry
-                                          .location
-                                          .lat,
-                                      estabelecimentos[index]
-                                          .geometry
-                                          .location
-                                          .lng);
-                                },
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 230,
+                          margin: EdgeInsets.only(right: 16),
+                          child: Stack(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(top: 25),
+                                // child: _buildBackground(index, 230),
+                              ),
+                              Positioned(
+                                bottom: 130,
+                                right: 10,
+                                child: Hero(
+                                  tag: "hero${shoeList[index].imgPath}",
+                                  child: Transform.rotate(
+                                    angle: -math.pi / 7,
+                                    child: Image(
+                                      width: 220,
+                                      image: AssetImage(
+                                          "assets/images/${shoeList[index].imgPath}"),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 16),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        "JUST FOR YOU",
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "VIEW ALL",
+                        style: TextStyle(
+                          color: Colors.green,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 24),
+                ...shoeList.map((data) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => DetailPage(
+                            data,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(25),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage("assets/images/${data.imgPath}"),
+                            width: 100,
+                            height: 60,
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width * .4,
+                                  child: Text(
+                                    "${data.name}",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  "${data.brand}",
+                                  style: TextStyle(
+                                    color: Colors.black26,
+                                    height: 1.5,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              "\$${data.price.toInt()}",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
                             ),
                           ),
-                        );
-                      }) : Center(child:Text('Não há nenhuma farmacia por aqui'),),
-                )
+                        ],
+                      ),
+                    ),
+                  );
+                }),
               ],
             )
                 : Center(child: CircularProgressIndicator());
