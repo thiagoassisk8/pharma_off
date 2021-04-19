@@ -47,7 +47,7 @@ class CustomBottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/Shop Icon.svg",
+                  "assets/icons/cupons.svg",
                   color: Colors.black,
                 ),
                 onPressed: () =>
@@ -68,18 +68,18 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: ()=>Navigator.pushNamed(context, HomeScreen.NomeNavegacao),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Bill Icon.svg",
+                icon: SvgPicture.asset("assets/icons/suporte-24-horas (1).svg",
                   color: Colors.black,
                 ),
                 onPressed: ()=>
-                    Navigator.pushNamed(context, Cupons.NomeNavegacao),
+                    Navigator.pushNamed(context, formulario.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/suporte-tecnico.svg",
+                  "assets/icons/user.svg",
                   color: Colors.black,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, formulario.NomeNavegacao),
+                onPressed: ()=>Navigator.pushNamed(context, Cupons.NomeNavegacao),
               ),
             ],
           )),
