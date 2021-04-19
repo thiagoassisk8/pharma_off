@@ -47,7 +47,7 @@ class CustomBottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: SvgPicture.asset(
-                  "assets/icons/cupons.svg",
+                  "assets/icons/oferta.svg",
                   color: Colors.black,
                 ),
                 onPressed: () =>
