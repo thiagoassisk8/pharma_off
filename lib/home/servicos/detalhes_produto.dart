@@ -80,15 +80,15 @@ class _DetailPageState extends State<DetailPage> {
                             color: Colors.black38,
                           ),
                         ),
-                        SizedBox(height: 24),
+                        // SizedBox(height: 24),
                         // Text(
-                        //   "COLOR OPTIONS",
-                        //   style: TextStyle(
-                        //     fontWeight: FontWeight.bold,
-                        //     fontSize: 18,
-                        //   ),
+                          // "COLOR OPTIONS",
+                          // style: TextStyle(
+                          //   fontWeight: FontWeight.bold,
+                          //   fontSize: 18,
+                          // ),
                         // ),
-                        SizedBox(height: 16),
+                        // SizedBox(height: 16),
                         // Row(
                           // children: <Widget>[
                           //   _buildColorOption(AppColors.blueColor),
@@ -128,7 +128,7 @@ class _DetailPageState extends State<DetailPage> {
 
   Widget _buildBottom() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -158,10 +158,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Text(
-                "\$${widget.produto.price.toInt()}",
+                "R\$ ${widget.produto.price.toInt()}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 28,
+                  fontSize: 23,
                 ),
               ),
             ],
@@ -206,22 +206,22 @@ class _DetailPageState extends State<DetailPage> {
   Widget _buildRating() {
     return Row(
       children: <Widget>[
-        RatingBar(
-          initialRating: 3,
-          minRating: 1,
-          direction: Axis.horizontal,
-          allowHalfRating: true,
-          itemCount: 5,
-          itemSize: 20,
-          itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
+        // RatingBar(
+        //   initialRating: 3,
+        //   minRating: 1,
+        //   direction: Axis.horizontal,
+        //   allowHalfRating: true,
+        //   itemCount: 5,
+        //   itemSize: 20,
+        //   itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
           // itemBuilder: (context, _) => Icon(
           //   Icons.star,
           //   color: Colors.amber,
           // ),
-          onRatingUpdate: (rating) {
-            print(rating);
-          },
-        ),
+          // onRatingUpdate: (rating) {
+          //   print(rating);
+          // },
+        // ),
         SizedBox(width: 16),
         Text(
           "134 Reviews",
