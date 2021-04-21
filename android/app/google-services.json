@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278824070402",
+    "project_id": "pharma-off",
+    "storage_bucket": "pharma-off.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278824070402:android:ce15e7e9a37ef627e0e61b",
+        "android_client_info": {
+          "package_name": "oliveira.com.pharma_off"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278824070402-emv16d3pih1imq1qlqj7eku488en3hnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANs7Z_KsSDYCw9QMfDRI1h76DOoPfk4HI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278824070402-emv16d3pih1imq1qlqj7eku488en3hnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
