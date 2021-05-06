@@ -3,7 +3,6 @@ import 'package:pharma_off/palheta/theme.dart';
 import 'package:http/http.dart' as http;
 
 class Produto {
-  static const _baseUrl = '';
   final String estabelecimento;
   final String name;
   final double price;

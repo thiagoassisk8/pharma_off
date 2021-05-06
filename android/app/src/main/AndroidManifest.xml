@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="pharma_off"
+        android:label="PharmaOFF"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0"/>
@@ -48,4 +48,5 @@
             android:value="2" />
     </application>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
