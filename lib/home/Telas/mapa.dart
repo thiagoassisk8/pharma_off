@@ -7,8 +7,20 @@ import 'package:pharma_off/home/Telas/lista.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pharma_off/palheta/size_config.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final sizeconfig = SizeConfig();
+
+
+void launchMapsUrl(double lat, double lng) async {
+  final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Não foi possivel encontrar a $url';
+  }
+}
+
 
 void AddInfoFarmacias(context, place) {
   showModalBottomSheet(
@@ -114,16 +126,8 @@ void AddInfoFarmacias(context, place) {
                 ),
 
                 FlatButton(
-                    onPressed:(){
-                      // _launchMapsUrl(
-                      // estabelecimentos[index]
-                      // .geometry
-                      // .location
-                      // .lat,
-                      // estabelecimentos[index]
-                      // .geometry
-                      // .location
-                      // .lng);
+                    onPressed:(){launchMapsUrl(place.geometry.location.lat,place.geometry.location.lng);
+
                     },
                     // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
                     child: Image.asset('assets/icons/Gobutton.png',
@@ -137,6 +141,8 @@ void AddInfoFarmacias(context, place) {
     },
   );
 }
+
+
 class MapaState extends StatelessWidget {
 
   @override
@@ -146,6 +152,7 @@ class MapaState extends StatelessWidget {
 
 
     List<Marker> getMarkers(List<Estabecimento> estabelecimentos){
+
       var markers = List<Marker>();
 
       estabelecimentos.forEach((place){
@@ -153,6 +160,7 @@ class MapaState extends StatelessWidget {
           markerId: MarkerId(place.name),
           draggable: false,
           icon: place.icon,
+
           position: LatLng(place.geometry.location.lat, place.geometry.location.lng),
           infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
           onTap: () {
@@ -229,6 +237,11 @@ class MapaState extends StatelessWidget {
         ),
       ),
     );
+
+
+
   }
 
+
 }
+
