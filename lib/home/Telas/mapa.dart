@@ -114,7 +114,17 @@ void AddInfoFarmacias(context, place) {
                 ),
 
                 FlatButton(
-                    onPressed:(){buildPhotoURL('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwJh4f7dfjI2ol2-ubvHxmsqTyQF2rV95Rsv4wNL-JSg6dMSbyPo8ux4dkE1J3UH1Q_Qex1a9B0qzbKH8jQ3h4345XNuDe3QGI4FLUymn0YnK7WtqulyIocO4WllfBVrPyQ2rd-dfJ7q_8Eds5puFcUDSzT2PukIOEBNpNYFejLgz4Qm&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0');} ,
+                    onPressed:(){
+                      // _launchMapsUrl(
+                      // estabelecimentos[index]
+                      // .geometry
+                      // .location
+                      // .lat,
+                      // estabelecimentos[index]
+                      // .geometry
+                      // .location
+                      // .lng);
+                    },
                     // padding: EdgeInsets.fromLTRB(90, 0, 10, 0),
                     child: Image.asset('assets/icons/Gobutton.png',
                       height: 50,
