@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/Cart.dart';
-import 'package:pharma_off/home/Telas/cart/components/body.dart';
-import 'package:pharma_off/home/Telas/cart/components/check_out_card.dart';
+import 'package:pharma_off/home/Telas/cart/componentes/body.dart';
+import 'package:pharma_off/home/Telas/cart/componentes/check_out_card.dart';
 
 
 

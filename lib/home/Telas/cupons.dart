@@ -1,138 +1,241 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:provider/provider.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/home/objetos/estabelecimento.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:pharma_off/home/servicos/geolocator_service.dart';
-// import 'package:pharma_off/services/marker_service.dart';
+import 'package:flutter/services.dart';
+
+
 
 class Cupons extends StatelessWidget {
-  static String NomeNavegacao = "/cupons";
-  @override
-  Widget build(BuildContext context) {
 
-    final currentPosition = Provider.of<Position>(context);
-    final placesProvider = Provider.of<Future<List<Estabecimento>>>(context);
-    final geoService = GeoLocatorService();
+  bool _rememberMe = false;
+  Widget _buildEmailTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Email',
 
-
-    return FutureProvider(
-      create: (context) => placesProvider,
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Cupons",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         ),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
 
-        body: (currentPosition != null)
-            ? Consumer<List<Estabecimento>>(
-          builder: (_, estabelecimentos, __) {
-            // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
-            return (estabelecimentos != null)
-                ? Column(
-              children: <Widget>[
-                Expanded(
-                  child: (estabelecimentos.length > 0) ? ListView.builder(
-                      itemCount: estabelecimentos.length,
-                      itemBuilder: (context, index) {
-                        return FutureProvider(
-                          create: (context) =>
-                              geoService.getDistance(
-                                  currentPosition.latitude,
-                                  currentPosition.longitude,
-                                  estabelecimentos[index]
-                                      .geometry
-                                      .location
-                                      .lat,
-                                  estabelecimentos[index]
-                                      .geometry
-                                      .location
-                                      .lng),
-                          child: Card(
-                            child: ListTile(
-                              title: Text("cupon Z"),
-                              subtitle: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 3.0,
-                                  ),
-                                  (estabelecimentos[index].rating != null)
-                                      ? Row(
-                                    children: <Widget>[
-                                      RatingBarIndicator(
-                                        rating: estabelecimentos[index]
-                                            .rating,
-                                        itemBuilder: (context,
-                                            index) =>
-                                            Icon(Icons.star,
-                                                color: Colors
-                                                    .amber),
-                                        itemCount: 5,
-                                        itemSize: 10.0,
-                                        direction:
-                                        Axis.horizontal,
-                                      )
-                                    ],
-                                  )
-                                      : Row(),
-                                  SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Consumer<double>(
-                                    builder:
-                                        (context, meters, wiget) {
-                                      return (meters != null)
-                                          ? Text(
-                                          '${estabelecimentos[index].vicinity} \u00b7 ${meters.round()} metros ')
-                                          : Container();
-                                    },
-                                  )
-                                ],
-                              ),
-                              trailing: IconButton(
-                                icon: Icon(Icons.directions),
-                                color:
-                                Theme.of(context).primaryColor,
-                                onPressed: () {
-                                  _launchMapsUrl(
-                                      estabelecimentos[index]
-                                          .geometry
-                                          .location
-                                          .lat,
-                                      estabelecimentos[index]
-                                          .geometry
-                                          .location
-                                          .lng);
-                                },
-                              ),
-                            ),
-                          ),
-                        );
-                      }) : Center(child:Text('Não há nenhuma farmacia por aqui'),),
-                )
-              ],
-            )
-                : Center(child: CircularProgressIndicator());
-          },
-        )
-            : Center(
-          child: CircularProgressIndicator(),
+          height: 20.0,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 24.0),
+              prefixIcon: Icon(
+                Icons.email,
+                color: Colors.green,
+              ),
+              hintText: 'Digite seu Email',
+
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPasswordTF() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text('Senha',),
+        SizedBox(height: 10.0),
+        Container(
+          alignment: Alignment.centerLeft,
+
+          height: 60.0,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'OpenSans',
+            ),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(top: 14.0),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.green,
+              ),
+              hintText: 'Digite sua senha',
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildForgotPasswordBtn() {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: FlatButton(
+        onPressed: () => print('Forgot Password Button Pressed'),
+        padding: EdgeInsets.only(right: 0.0),
+        child: Text(
+          'Esqueci minha senha',
         ),
       ),
     );
   }
 
-  void _launchMapsUrl(double lat, double lng) async {
-    final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Não foi possivel encontrar a $url';
-    }
+
+
+  Widget _buildLoginBtn() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.0),
+      width: double.infinity,
+      child: RaisedButton(
+        elevation: 5.0,
+        onPressed: (
+
+            ) => print('Login Button Pressed'),
+        padding: EdgeInsets.all(15.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        color: Colors.white,
+        child: Text('LOGIN',
+          style: TextStyle(
+            color: Colors.green,
+            letterSpacing: 1.5,
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'OpenSans',
+          ),
+        ),
+      ),
+    );
   }
+
+  Widget _buildSignInWithText() {
+    return Column(
+      children: <Widget>[
+        Text(
+          ' OU ',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        SizedBox(height: 20.0),
+        Text('Sign in with',),
+      ],
+    );
+  }
+
+  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 60.0,
+        width: 60.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black26,
+              offset: Offset(0, 2),
+              blurRadius: 6.0,
+            ),],
+          image: DecorationImage(
+            image: logo,
+          ),),),);}
+
+  Widget _buildSocialBtnRow() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 30.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _buildSocialBtn(
+                () => print('Login with Google'),
+            AssetImage('imagens/google.png',),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSignupBtn() {
+    return GestureDetector(
+      onTap: () => print('Sign Up Button Pressed'),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'Não possui conta? ',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            TextSpan(
+              text: 'Cadastre-se',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  static String NomeNavegacao = "/cupons";
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[50],
+      body:
+
+      AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.dark,
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(
+                horizontal: 40.0,
+                vertical: 90.0,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    "assets/images/pharmaoff_logo_azul.png",
+                    fit: BoxFit.fill,
+                    height: 60.0,
+                  ),
+                  SizedBox(height: 50.0),
+                  _buildEmailTF(),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  // _buildEmailTF(),
+                  _buildPasswordTF(),
+                  _buildForgotPasswordBtn(),
+                  _buildLoginBtn(),
+                  _buildSignInWithText(),
+                  _buildSocialBtnRow(),
+                  _buildSignupBtn(),
+                ],
+              ),
+            ),
+          )
+      ),
+    );
+
+
+  }
+
 }

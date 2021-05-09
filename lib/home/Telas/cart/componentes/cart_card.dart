@@ -28,10 +28,13 @@ class CartCard extends StatelessWidget {
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
               ),
-                child: Image.asset(cart.produto.imgPath)
+              child:Image.asset(
+                  "assets/images/${cart.produto.imgPath}"),
+            ),
+
             ),
           ),
-        ),
+        // ),
         SizedBox(width: 20),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
