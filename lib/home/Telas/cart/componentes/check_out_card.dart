@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
+import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
-import '';
 
 //import '../../../constants.dart';
 //import '../../../size_config.dart';
@@ -51,9 +51,10 @@ class CheckoutCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
+
                 ),
                 Spacer(),
-                Text("Add voucher code"),
+                Text("Adicionar cupom de desconto"),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -71,7 +72,7 @@ class CheckoutCard extends StatelessWidget {
                     text: "Total:\n",
                     children: [
                       TextSpan(
-                        text: "\$337.15",
+                        text: "R\$337.15",
                         style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                     ],
@@ -80,8 +81,15 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Check Out",
-                    press: () {},
+                    text: "Finalizar compra",
+                    press: () async{
+                      PaymentResult result = await MercadoPagoMobileCheckout.startCheckout(
+                      'TEST-cda7d84b-8754-4347-877d-8fc9101d9fd4',
+                       '225872531-e7de10ba-e714-4242-977b-039070b187db',
+                      );
+                      print(result.toString());
+                      //https://api.mercadopago.com/checkout/preferences?access_token=TEST-1522632008171671-051013-04bea01f5f0a5d93a1a22b25a183f417-225872531
+                    },
                   ),
                 ),
               ],

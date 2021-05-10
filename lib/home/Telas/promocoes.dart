@@ -29,7 +29,7 @@ class promocoes extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Promoções",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+          title: Text("Ofertas",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         ),
 
         body: (currentPosition != null)

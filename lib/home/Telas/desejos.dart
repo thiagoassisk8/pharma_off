@@ -22,8 +22,8 @@ class desejos extends StatelessWidget {
       title: Column(
         children: [
           Text(
-            "Lista de Desejos",
-            style: TextStyle(color: Colors.black),
+            "Lista de Desejos", textScaleFactor: 0.9, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold),
+
           ),
           Text(
             "${listaCarrinho.length} itens",

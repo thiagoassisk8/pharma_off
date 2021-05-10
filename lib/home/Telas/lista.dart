@@ -123,8 +123,11 @@ class Lista extends StatelessWidget {
           child: CircularProgressIndicator(),
         ),
       ),
+
     );
+
   }
+
 
   void _launchMapsUrl(double lat, double lng) async {
     final url = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
