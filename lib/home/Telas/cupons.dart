@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pharma_off/palheta/theme.dart';
 
 
 
@@ -17,8 +18,6 @@ class Cupons extends StatelessWidget {
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-
-          height: 20.0,
           child: TextField(
             keyboardType: TextInputType.emailAddress,
             style: TextStyle(
@@ -27,10 +26,10 @@ class Cupons extends StatelessWidget {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 24.0),
+              contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.green,
+                color: AzulPrimario,
               ),
               hintText: 'Digite seu Email',
 
@@ -49,8 +48,6 @@ class Cupons extends StatelessWidget {
         SizedBox(height: 10.0),
         Container(
           alignment: Alignment.centerLeft,
-
-          height: 60.0,
           child: TextField(
             obscureText: true,
             style: TextStyle(
@@ -62,7 +59,7 @@ class Cupons extends StatelessWidget {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.green,
+                color: AzulPrimario,
               ),
               hintText: 'Digite sua senha',
             ),
@@ -89,7 +86,7 @@ class Cupons extends StatelessWidget {
 
   Widget _buildLoginBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.0),
+      padding: EdgeInsets.symmetric(vertical: 55.0),
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
@@ -103,7 +100,7 @@ class Cupons extends StatelessWidget {
         color: Colors.white,
         child: Text('LOGIN',
           style: TextStyle(
-            color: Colors.green,
+            color: AzulPrimario,
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -114,55 +111,6 @@ class Cupons extends StatelessWidget {
     );
   }
 
-  Widget _buildSignInWithText() {
-    return Column(
-      children: <Widget>[
-        Text(
-          ' OU ',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-        SizedBox(height: 20.0),
-        Text('Sign in with',),
-      ],
-    );
-  }
-
-  Widget _buildSocialBtn(Function onTap, AssetImage logo) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: 60.0,
-        width: 60.0,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black26,
-              offset: Offset(0, 2),
-              blurRadius: 6.0,
-            ),],
-          image: DecorationImage(
-            image: logo,
-          ),),),);}
-
-  Widget _buildSocialBtnRow() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 30.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _buildSocialBtn(
-                () => print('Login with Google'),
-            AssetImage('imagens/google.png',),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildSignupBtn() {
     return GestureDetector(
@@ -170,6 +118,7 @@ class Cupons extends StatelessWidget {
       child: RichText(
         text: TextSpan(
           children: [
+
             TextSpan(
               text: 'Não possui conta? ',
               style: TextStyle(
@@ -181,7 +130,7 @@ class Cupons extends StatelessWidget {
             TextSpan(
               text: 'Cadastre-se',
               style: TextStyle(
-                color: Colors.black,
+                color: AzulPrimario,
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -225,8 +174,6 @@ class Cupons extends StatelessWidget {
                   _buildPasswordTF(),
                   _buildForgotPasswordBtn(),
                   _buildLoginBtn(),
-                  _buildSignInWithText(),
-                  _buildSocialBtnRow(),
                   _buildSignupBtn(),
                 ],
               ),

@@ -53,8 +53,9 @@ class CheckoutCard extends StatelessWidget {
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
 
                 ),
-                Spacer(),
-                Text("Adicionar cupom de desconto"),
+                 Spacer(),
+                 Text("Cupons disponíveis"),
+
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -81,7 +82,7 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Finalizar compra",
+                    text: "Aplicar Cupom",
                     press: (){},
                   ),
                 ),
