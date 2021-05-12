@@ -12,8 +12,8 @@ class Cart {
 // Demo data for our cart
 
  List<Cart> listaCarrinho = [
-   Cart(produto: Produto.list[0], numDeItem: 2),
-   Cart(produto: Produto.list[1], numDeItem: 1),
-   Cart(produto: Produto.list[2], numDeItem: 1),];
+   // Cart(produto: Produto.list[0], numDeItem: 2),
+   // Cart(produto: Produto.list[1], numDeItem: 1),
+   ];
 
 

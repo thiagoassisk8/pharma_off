@@ -142,13 +142,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.14.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -219,13 +212,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
-  json_annotation:
-    dependency: transitive
-    description:
-      name: json_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   location:
     dependency: "direct main"
     description:
@@ -261,13 +247,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.10"
-  mercado_pago_mobile_checkout:
-    dependency: "direct main"
-    description:
-      name: mercado_pago_mobile_checkout
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0"
   meta:
     dependency: transitive
     description:

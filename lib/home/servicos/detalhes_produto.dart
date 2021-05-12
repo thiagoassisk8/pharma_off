@@ -5,6 +5,13 @@ import 'package:pharma_off/home/servicos/app_clipper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'dart:math' as math;
+import 'package:pharma_off/home/objetos/Cart.dart';
+
+void AddnoCarrinho(produto) {
+  listaCarrinho.add(Cart(produto: produto,numDeItem: 1));
+
+
+}
 
 class DetailPage extends StatefulWidget {
   final Produto produto;
@@ -167,23 +174,18 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 16,
-              horizontal: 50,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.greenColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(50),
+            child: FlatButton(
+              padding: EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 50,
               ),
+              child: Text('Adicionar ao carrinho'),
+              onPressed: () {AddnoCarrinho(widget.produto);},
+
             ),
-            child: Text(
-              "Adicionar ao Carrinho",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
+
           ),
+
         ],
       ),
     );
