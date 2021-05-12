@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
-
+// import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 
 class Cart {
   final Produto produto;
@@ -15,3 +15,5 @@ class Cart {
    Cart(produto: Produto.list[0], numDeItem: 2),
    Cart(produto: Produto.list[1], numDeItem: 1),
    Cart(produto: Produto.list[2], numDeItem: 1),];
+
+

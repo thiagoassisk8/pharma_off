@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
-import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
+// import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
 
 
 //import '../../../constants.dart';
@@ -82,14 +82,7 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Finalizar compra",
-                    press: () async{
-                      PaymentResult result = await MercadoPagoMobileCheckout.startCheckout(
-                      'TEST-cda7d84b-8754-4347-877d-8fc9101d9fd4',
-                       '225872531-e7de10ba-e714-4242-977b-039070b187db',
-                      );
-                      print(result.toString());
-                      //https://api.mercadopago.com/checkout/preferences?access_token=TEST-1522632008171671-051013-04bea01f5f0a5d93a1a22b25a183f417-225872531
-                    },
+                    press: (){},
                   ),
                 ),
               ],
