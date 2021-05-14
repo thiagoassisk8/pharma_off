@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:provider/provider.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:pharma_off/home/Telas/lista.dart';
+import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pharma_off/palheta/size_config.dart';

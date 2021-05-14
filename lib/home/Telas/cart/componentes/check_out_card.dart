@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharma_off/home/objetos/Cart.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
-// import 'package:mercado_pago_mobile_checkout/mercado_pago_mobile_checkout.dart';
-
-
-//import '../../../constants.dart';
-//import '../../../size_config.dart';
 
 class CheckoutCard extends StatelessWidget {
+  void CalcularCartFinal(product) {
+    print(Cart(produto: product.list[0].price, numDeItem: 0));
+    // cart.produto.;
+
+  }
+
   const CheckoutCard({
     Key key,
   }) : super(key: key);
@@ -84,6 +86,7 @@ class CheckoutCard extends StatelessWidget {
                   child: DefaultButton(
                     text: "Aplicar Cupom",
                     press: (){},
+                    //CalcularCartFinal(Cart);
                   ),
                 ),
               ],

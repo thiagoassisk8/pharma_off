@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'file:///F:/pharma_off/lib/home/Telas/Register/cadastro.dart';
-import 'file:///F:/pharma_off/lib/home/Telas/Register/Login.dart';
+import 'package:pharma_off/home/Telas/Register/cadastro.dart';
+import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
-import 'package:pharma_off/home/Telas/lista.dart';
+import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/splash/splash_screen.dart';

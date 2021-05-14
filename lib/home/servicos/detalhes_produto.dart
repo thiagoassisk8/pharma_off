@@ -1,14 +1,12 @@
-// import 'package:app_shoe_shop/core/const.dart';
-import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/servicos/app_clipper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'dart:math' as math;
 import 'package:pharma_off/home/objetos/Cart.dart';
 
-void AddnoCarrinho(produto) {
-  listaCarrinho.add(Cart(produto: produto,numDeItem: 1));
+void AddnoCarrinho(product) {
+  listaCarrinho.add(Cart(produto: product,numDeItem: 1));
+  print(listaCarrinho);
 
 
 }

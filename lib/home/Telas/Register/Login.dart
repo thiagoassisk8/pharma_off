@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'file:///F:/pharma_off/lib/home/Telas/Register/cadastro.dart';
+import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 

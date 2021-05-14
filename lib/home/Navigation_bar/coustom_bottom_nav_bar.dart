@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
-import 'file:///F:/pharma_off/lib/home/Telas/Register/Login.dart';
+import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
 
 
