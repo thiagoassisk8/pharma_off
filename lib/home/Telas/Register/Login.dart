@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'file:///F:/pharma_off/lib/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 
 
-class Cupons extends StatelessWidget {
+class Login extends StatelessWidget {
+
 
   bool _rememberMe = false;
+
+  BuildContext get context => null;
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,39 +116,57 @@ class Cupons extends StatelessWidget {
   }
 
 
-  Widget _buildSignupBtn() {
-    return GestureDetector(
-      onTap: () => print('Sign Up Button Pressed'),
-      child: RichText(
-        text: TextSpan(
-          children: [
-
-            TextSpan(
-              text: 'Não possui conta? ',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            TextSpan(
-              text: 'Cadastre-se',
-              style: TextStyle(
-                color: AzulPrimario,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-  static String NomeNavegacao = "/cupons";
+ 
+  static String NomeNavegacao = "/login";
   @override
   Widget build(BuildContext context) {
+
+    Widget _buildSignupBtn() {
+      return FlatButton(
+        // onPressed: ()=> Navigator.pushNamed(context ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(Cadastro.NomeNavegacao);
+        },
+        child: RichText(
+          text: TextSpan(
+            children: [
+
+              TextSpan(
+                text: 'Não possui conta? ',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              TextSpan(
+                text: 'Cadastre-se',
+                style: TextStyle(
+                  color: AzulPrimario,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.white,
+    
+      appBar: AppBar(
+        elevation: 0,
+        title: Text("Login", textScaleFactor: 1.5,
+            style:
+            TextStyle(color: AzulPrimario ,fontWeight: FontWeight.bold)),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
       body:
 
       AnnotatedRegion<SystemUiOverlayStyle>(

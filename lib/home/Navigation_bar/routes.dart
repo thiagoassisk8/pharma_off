@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:pharma_off/home/Telas/cupons.dart';
+import 'file:///F:/pharma_off/lib/home/Telas/Register/cadastro.dart';
+import 'file:///F:/pharma_off/lib/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/lista.dart';
@@ -15,7 +16,8 @@ final Map<String, WidgetBuilder> navegacoes = {
   //Mapa.NomeNavegacao: (context) => Mapa(),
   HomeScreen.NomeNavegacao: (context) => HomeScreen(),
   Lista.NomeNavegacao: (context) => Lista(),
-  Cupons.NomeNavegacao: (context) => Cupons(),
+  Login.NomeNavegacao: (context) => Login(),
+  Cadastro.NomeNavegacao: (context) => Cadastro(),
   promocoes.NomeNavegacao: (context) => promocoes(),
   desejos.NomeNavegacao: (context) => desejos(),
  // CartScreen.NomeNavegacao: (context) => CartScreen(),
