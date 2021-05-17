@@ -125,7 +125,7 @@ class Login extends StatelessWidget {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
         onPressed: () {
-          Navigator.of(context).pushNamed(Cadastro.NomeNavegacao);
+          Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
         },
         child: RichText(
           text: TextSpan(
