@@ -79,7 +79,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   "assets/icons/user.svg",
                   color: Colors.black,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, Login.NomeNavegacao),
+                onPressed: ()=>Navigator.pushNamed(context, login.NomeNavegacao),
               ),
             ],
           )),

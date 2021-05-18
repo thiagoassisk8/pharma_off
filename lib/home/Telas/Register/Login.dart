@@ -5,73 +5,81 @@ import 'package:pharma_off/palheta/theme.dart';
 
 
 
-class Login extends StatelessWidget {
+class login extends StatelessWidget {
+  static String NomeNavegacao = "/login";
+  @override
 
-
+  String email;
+  String senha;
+  bool _showPassword = false;
+  GlobalKey<FormState> _key = new GlobalKey();
+  bool _validate = false;
+  //chaves paras os forms
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  //Widgets
+  //E-mail
   bool _rememberMe = false;
 
   BuildContext get context => null;
   Widget _buildEmailTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Email',
-
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          child: TextField(
-            keyboardType: TextInputType.emailAddress,
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.email,
-                color: AzulPrimario,
-              ),
-              hintText: 'Digite seu Email',
-
-            ),
+    return TextFormField(
+        keyboardType: TextInputType.emailAddress,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(25),),
+          ),
+          prefixIcon: Icon(Icons.email_rounded),
+          labelText: "E-mail",
+          labelStyle: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 15,
           ),
         ),
-      ],
-    );
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "E-mail Obrigatório";
+          }
+          if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+              .hasMatch(value)) {
+            return "Por Favor, entre com um e-mail válido";
+          }
+          return null;
+        }
+          );
   }
 
   Widget _buildPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text('Senha',),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          child: TextField(
-            obscureText: true,
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'OpenSans',
+      return TextFormField(
+          keyboardType: TextInputType.visiblePassword,
+          obscureText: _showPassword == false ? true : false,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25),),
             ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
-                color: AzulPrimario,
+            prefixIcon: Icon(Icons.vpn_key_rounded),
+            labelText: "Senha",
+            labelStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 15,
+            ),
+            suffixIcon: GestureDetector(
+              child: Icon(
+                _showPassword == false ? Icons.visibility_off : Icons.visibility,
+                color: Colors.grey[800],
               ),
-              hintText: 'Digite sua senha',
+              onTap: () {}),
+
             ),
-          ),
-        ),
-      ],
-    );
-  }
+          validator: (String value) {
+            if(value.isEmpty) {
+              return "Senha Obrigatória";
+            }
+            return null;
+          }
+      );
+          }
+
+
 
   Widget _buildForgotPasswordBtn() {
     return Container(
@@ -94,9 +102,7 @@ class Login extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: (
-
-            ) => print('Login Button Pressed'),
+        onPressed: _sendForm,
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -116,11 +122,8 @@ class Login extends StatelessWidget {
   }
 
 
- 
-  static String NomeNavegacao = "/login";
-  @override
-  Widget build(BuildContext context) {
 
+  Widget build(BuildContext context) {
     Widget _buildSignupBtn() {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
@@ -152,14 +155,15 @@ class Login extends StatelessWidget {
         ),
       );
     }
+
     return Scaffold(
       backgroundColor: Colors.white,
-    
+
       appBar: AppBar(
         elevation: 0,
         title: Text("Login", textScaleFactor: 1.5,
             style:
-            TextStyle(color: AzulPrimario ,fontWeight: FontWeight.bold)),
+            TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -169,16 +173,15 @@ class Login extends StatelessWidget {
       ),
       body:
 
-      AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.dark,
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 90.0,
-              ),
+
+      SingleChildScrollView(
+
+        padding: EdgeInsets.all(10.0),
+          child: new Container(
+          margin: new EdgeInsets.all(15.0),
+          child: new Form(
+          key: _key,
+          autovalidate: _validate,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -197,14 +200,30 @@ class Login extends StatelessWidget {
                   _buildForgotPasswordBtn(),
                   _buildLoginBtn(),
                   _buildSignupBtn(),
+
                 ],
               ),
-            ),
-          )
-      ),
-    );
+    ))),
+          );
 
 
   }
+  _sendForm() {
+    if (_key.currentState.validate()) {
+      // Sem erros na validação
+      _key.currentState.save();
+      print("Email $email");
+      print("Digite sua senha $senha");
 
-}
+    } else {
+      // erro de validação
+      //setState(() {
+      //_validate = true;
+      // });
+    }
+  }
+  }
+
+
+
+
