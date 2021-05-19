@@ -39,3 +39,6 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+#remove node modules
+/server/node_modules/
