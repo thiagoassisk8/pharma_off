@@ -1,7 +1,9 @@
+
 import 'package:flutter/widgets.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
+import 'package:pharma_off/home/Telas/esquecisenha.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
@@ -20,6 +22,7 @@ final Map<String, WidgetBuilder> navegacoes = {
   cadastro.NomeNavegacao: (context) => cadastro(),
   promocoes.NomeNavegacao: (context) => promocoes(),
   desejos.NomeNavegacao: (context) => desejos(),
+  esquecisenha.NomeNavegacao: (context) => esquecisenha(),
  // CartScreen.NomeNavegacao: (context) => CartScreen(),
 
 };

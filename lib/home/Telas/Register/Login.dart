@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
-
+import 'package:pharma_off/home/Telas/esquecisenha.dart';
 
 
 class login extends StatelessWidget {
@@ -81,19 +81,6 @@ class login extends StatelessWidget {
 
 
 
-  Widget _buildForgotPasswordBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: FlatButton(
-        onPressed: () => print('Forgot Password Button Pressed'),
-        padding: EdgeInsets.only(right: 0.0),
-        child: Text(
-          'Esqueci minha senha',
-        ),
-      ),
-    );
-  }
-
 
 
   Widget _buildLoginBtn() {
@@ -124,6 +111,22 @@ class login extends StatelessWidget {
 
 
   Widget build(BuildContext context) {
+
+    Widget _buildForgotPasswordBtn() {
+      return Container(
+        alignment: Alignment.centerRight,
+        child: FlatButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(esquecisenha.NomeNavegacao);
+          },
+          padding: EdgeInsets.only(right: 0.0),
+          child: Text(
+            'Esqueci minha senha',
+          ),
+        ),
+      );
+    }
+
     Widget _buildSignupBtn() {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
