@@ -16,13 +16,17 @@ router.post('/',(req,res,next) => {
         nome:req.body.nome,
         preco:req.body.preco,
         descricao:req.body.desc_produto,
-        img_produto:req.body.img_produto
+        img_produto:req.body.img_produto,
+        cod_estabelecimento:req.body.cod_estabelecimento
     }
+    
+    
+    
 
     mysql.getConnection((error,conn)=>{
         conn.query(
-            'insert into ta_produto(nme_produto, preco_produto, desc_produto, img_produto) values (?,?,?,?)',
-            [req.body.nome,req.body.preco,req.body.desc_produto,req.body.img_produto],
+            'insert into ta_produto(nme_produto, preco_produto, desc_produto, img_produto,cod_establecimento) values (?,?,?,?,?)',
+            [req.body.nome,req.body.preco,req.body.desc_produto,req.body.img_produto,req,req.body.cod_estabelecimento],
             (error,resultado,field) =>  {
                 conn.release();
 
