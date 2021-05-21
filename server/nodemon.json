@@ -1,10 +1,10 @@
 {
     "env":{
-        "mysql_User":"root",
-        "mysql_password":"euamoskate123",
-        "mysql_database":"db_pharmaoff",
-        "mysql_host":"localhost",
-        "mysql_port":3306
+        "MYSQL_USER":"root",
+        "MYSQL_PASSWORD":"euamoskate123",
+        "MYSQL_DATABASE":"db_pharmaoff",
+        "MYSQL_HOST":"localhost",
+        "MYSQL_PORT":3306
     
     }
 }

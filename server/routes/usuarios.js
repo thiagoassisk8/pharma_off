@@ -15,7 +15,7 @@ router.post('/cadastro', (req, res, next) => {
                     if (errBcrypt) { return res.status(500).send({ error: errBcrypt }) }
                     conn.query(
                         `INSERT INTO pessoa (nme_pessoa, email_pessoa,pwd_pessoa) VALUES (?,?,?)`,
-                        [req.body.email, hash],
+                        [req.body.nome, req.body.email,hash],
                         (error, results) => {
                             conn.release();
                             if (error) { return res.status(500).send({ error: error }) }
@@ -33,6 +33,8 @@ router.post('/cadastro', (req, res, next) => {
         })
 
     });
-})
+});
+
+
 
 module.exports = router; 
