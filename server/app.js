@@ -4,6 +4,7 @@ const morgan = require('morgan');
 
 
 const rotaProdutos = require('./routes/produtos');
+const rotaUsuarios = require('./routes/usuarios');
 const rotaPedidos = require('./routes/pedidos');
 const bodyParser = require('body-parser');
 
@@ -28,6 +29,7 @@ app.use((req,res,next)=>{
 
 app.use('/produtos',rotaProdutos);
 app.use('/pedidos',rotaPedidos);
+app.use('/usuarios',rotaUsuarios);
 
 //Se a rota não for encontrada
 app.use((req,res,next) =>{
