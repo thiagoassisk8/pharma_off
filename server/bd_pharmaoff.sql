@@ -6,7 +6,7 @@ create table tb_pessoa(
 id_pessoa int primary key auto_increment,
 nme_pessoa varchar (10) not null,
 email_pessoa varchar (50) not null,
-pwd_pessoa varchar (20) not null
+pwd_pessoa varchar (500) not null
 );
 
 Create table tb_estabelecimento (
@@ -46,7 +46,7 @@ constraint ProdutoCupom foreign key (cod_produto) references ta_produto (id_prod
 create table tb_listaDesejos(
 id_listaDesejos int primary key auto_increment,
 cod_pessoa int not null,    
-CONSTRAINT ListaDesejosLista FOREIGN KEY (cod_pessoa) REFERENCES Pessoa (id_pessoa)	
+CONSTRAINT ListaDesejosLista FOREIGN KEY (cod_pessoa) REFERENCES tb_pessoa (id_pessoa)	
 );
 
 
