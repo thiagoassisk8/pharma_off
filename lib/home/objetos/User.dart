@@ -1,11 +1,11 @@
-class User {
+class PharmaUser {
   String status;
   int results;
   List<dynamic> data = [];
 
-  User({this.status, this.results, this.data});
+  PharmaUser({this.status, this.results, this.data});
 
-  User.fromJson(Map<String, dynamic> json) {
+  PharmaUser.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     results = json['results'];
     data = (json['data'][0] as List)

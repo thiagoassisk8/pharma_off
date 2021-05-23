@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
+import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
+
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/Telas/esquecisenha.dart';
-// import 'package:pharma_off/home/rest_api/LoginUser.dart';
+import 'package:pharma_off/home/rest_api/LoginUser.dart';
+import 'package:pharma_off/home/servicos/ListarUsers.dart';
+
+var _userObject = {};
 
 class login extends StatelessWidget {
   static String NomeNavegacao = "/login";
   @override
   String email;
   String senha;
+
   bool _showPassword = false;
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
   //chaves paras os forms
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   //Widgets
   //E-mail
   bool _rememberMe = false;
@@ -129,6 +136,7 @@ class login extends StatelessWidget {
         onPressed: () {
           Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
         },
+
         child: RichText(
           text: TextSpan(
             children: [
@@ -163,8 +171,55 @@ class login extends StatelessWidget {
             style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.of(context).pop();
+          // onPressed: () async {
+          // Navigator.of(context).pop();
+          // },
+          onPressed: () async {
+            if (!_formKey.currentState.validate()) {
+              return;
+            }
+            _formKey.currentState.save();
+            var listUsers = await APIGetUsers().getAllUsers();
+            var usuarios = listUsers.data;
+
+            // if(Helpers().isStudent(us ers, email) != null) {
+            Map userLogged = Complemento().getnameuser(usuarios, email);
+            var response = await APILogin().login(email, senha);
+            if (response.token != null) {
+              SnackBar snackbar = new SnackBar(
+                content: Text(
+                  "Usuário Logado com Sucesso!!",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.green[600],
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackbar);
+              //salvando dados do user
+              Complemento().saveDataUser(userLogged);
+              print(response.data);
+
+              Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
+            } else {
+              SnackBar snackbar = new SnackBar(
+                content: Text(
+                  "E-mail ou Senha Inválidos!!",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Colors.red[600],
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            }
+            // }
+            // else{
+            // SnackBar snackbar = new SnackBar(
+            // content: Text(
+            // "Esse Usuario(a) não exite!!",
+            // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            // ),
+            // backgroundColor: Colors.red[600],
+            // );
+            // ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            // }
           },
         ),
       ),
