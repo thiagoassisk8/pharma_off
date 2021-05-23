@@ -6,10 +6,10 @@ import 'package:http/http.dart' as http;
 class APISingUp {
   Future<JsonDefault> singUp(
       String nme_pessoa, String email_pessoa, String pwd_pessoa) async {
-    // String url = "10.0.2.2:3000";
+    // String url = "localhost:3000";
     String url = "rest-api-pharmaoff.herokuapp.com";
     final http.Response response = await http.post(
-        Uri.http(url, "/usuarios/signup"),
+        Uri.http(url, "/usuarios/cadastro"),
         body: jsonEncode(<String, dynamic>{
           "nme_pessoa": nme_pessoa,
           "email_pessoa": email_pessoa,
@@ -31,7 +31,6 @@ class APISingUp {
       print("FAIL: ${response.statusCode}");
       print("FAIL: ${response.body}");
       return JsonDefault.fromJson(json.decode(response.body));
-      //throw Exception("Falha no carregamento dos dados!!!!");
     }
   }
 }
