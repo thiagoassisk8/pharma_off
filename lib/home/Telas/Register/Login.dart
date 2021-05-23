@@ -3,12 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/Telas/esquecisenha.dart';
-
+// import 'package:pharma_off/home/rest_api/LoginUser.dart';
 
 class login extends StatelessWidget {
   static String NomeNavegacao = "/login";
   @override
-
   String email;
   String senha;
   bool _showPassword = false;
@@ -26,7 +25,9 @@ class login extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(25),),
+            borderRadius: BorderRadius.all(
+              Radius.circular(25),
+            ),
           ),
           prefixIcon: Icon(Icons.email_rounded),
           labelText: "E-mail",
@@ -44,44 +45,41 @@ class login extends StatelessWidget {
             return "Por Favor, entre com um e-mail válido";
           }
           return null;
-        }
-          );
+        });
   }
 
   Widget _buildPasswordTF() {
-      return TextFormField(
-          keyboardType: TextInputType.visiblePassword,
-          obscureText: _showPassword == false ? true : false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(25),),
+    return TextFormField(
+        keyboardType: TextInputType.visiblePassword,
+        obscureText: _showPassword == false ? true : false,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(25),
             ),
-            prefixIcon: Icon(Icons.vpn_key_rounded),
-            labelText: "Senha",
-            labelStyle: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 15,
-            ),
-            suffixIcon: GestureDetector(
+          ),
+          prefixIcon: Icon(Icons.vpn_key_rounded),
+          labelText: "Senha",
+          labelStyle: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 15,
+          ),
+          suffixIcon: GestureDetector(
               child: Icon(
-                _showPassword == false ? Icons.visibility_off : Icons.visibility,
+                _showPassword == false
+                    ? Icons.visibility_off
+                    : Icons.visibility,
                 color: Colors.grey[800],
               ),
               onTap: () {}),
-
-            ),
-          validator: (String value) {
-            if(value.isEmpty) {
-              return "Senha Obrigatória";
-            }
-            return null;
+        ),
+        validator: (String value) {
+          if (value.isEmpty) {
+            return "Senha Obrigatória";
           }
-      );
-          }
-
-
-
-
+          return null;
+        });
+  }
 
   Widget _buildLoginBtn() {
     return Container(
@@ -95,7 +93,8 @@ class login extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.0),
         ),
         color: Colors.white,
-        child: Text('LOGIN',
+        child: Text(
+          'LOGIN',
           style: TextStyle(
             color: AzulPrimario,
             letterSpacing: 1.5,
@@ -108,10 +107,7 @@ class login extends StatelessWidget {
     );
   }
 
-
-
   Widget build(BuildContext context) {
-
     Widget _buildForgotPasswordBtn() {
       return Container(
         alignment: Alignment.centerRight,
@@ -136,7 +132,6 @@ class login extends StatelessWidget {
         child: RichText(
           text: TextSpan(
             children: [
-
               TextSpan(
                 text: 'Não possui conta? ',
                 style: TextStyle(
@@ -161,12 +156,11 @@ class login extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: AppBar(
         elevation: 0,
-        title: Text("Login", textScaleFactor: 1.5,
-            style:
-            TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
+        title: Text("Login",
+            textScaleFactor: 1.5,
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -174,50 +168,43 @@ class login extends StatelessWidget {
           },
         ),
       ),
-      body:
-
-
-      SingleChildScrollView(
-
-        padding: EdgeInsets.all(10.0),
+      body: SingleChildScrollView(
+          padding: EdgeInsets.all(10.0),
           child: new Container(
-          margin: new EdgeInsets.all(15.0),
-          child: new Form(
-          key: _key,
-          autovalidate: _validate,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    "assets/images/pharmaoff_logo_azul.png",
-                    fit: BoxFit.fill,
-                    height: 60.0,
-                  ),
-                  SizedBox(height: 50.0),
-                  _buildEmailTF(),
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  // _buildEmailTF(),
-                  _buildPasswordTF(),
-                  _buildForgotPasswordBtn(),
-                  _buildLoginBtn(),
-                  _buildSignupBtn(),
-
-                ],
-              ),
-    ))),
-          );
-
-
+              margin: new EdgeInsets.all(15.0),
+              child: new Form(
+                key: _key,
+                autovalidate: _validate,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      "assets/images/pharmaoff_logo_azul.png",
+                      fit: BoxFit.fill,
+                      height: 60.0,
+                    ),
+                    SizedBox(height: 50.0),
+                    _buildEmailTF(),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    // _buildEmailTF(),
+                    _buildPasswordTF(),
+                    _buildForgotPasswordBtn(),
+                    _buildLoginBtn(),
+                    _buildSignupBtn(),
+                  ],
+                ),
+              ))),
+    );
   }
+
   _sendForm() {
     if (_key.currentState.validate()) {
       // Sem erros na validação
       _key.currentState.save();
       print("Email $email");
       print("Digite sua senha $senha");
-
     } else {
       // erro de validação
       //setState(() {
@@ -225,8 +212,4 @@ class login extends StatelessWidget {
       // });
     }
   }
-  }
-
-
-
-
+}
