@@ -4,15 +4,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/splash/splash_screen.dart';
 import 'package:pharma_off/home/Navigation_bar/routes.dart';
-
-
 import 'package:geolocator/geolocator.dart';
 import 'package:pharma_off/home/objetos/estabelecimento.dart';
 import 'package:pharma_off/home/servicos/geolocator_service.dart';
 import 'package:pharma_off/home/servicos/BuscaEstabelecimento.dart';
 import 'package:provider/provider.dart';
-
-
 
 void main() {
   runApp(MyApp());
@@ -28,16 +24,19 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         FutureProvider(create: (context) => locatorService.getLocation()),
-        FutureProvider(create: (context){
-          ImageConfiguration configuration = createLocalImageConfiguration(context);
+        FutureProvider(create: (context) {
+          ImageConfiguration configuration =
+              createLocalImageConfiguration(context);
 
-          return BitmapDescriptor.fromAssetImage(configuration, 'assets/images/farmacia145.png');
-
+          return BitmapDescriptor.fromAssetImage(
+              configuration, 'assets/images/farmacia145.png');
         }),
-        ProxyProvider2<Position,BitmapDescriptor,Future<List<Estabecimento>>>(
-          update: (context,position,icon,places){
-            return (position !=null) ? tipoEstabelecimento.getPlaces(position.latitude, position.longitude, icon) :null;
-
+        ProxyProvider2<Position, BitmapDescriptor, Future<List<Estabecimento>>>(
+          update: (context, position, icon, places) {
+            return (position != null)
+                ? tipoEstabelecimento.getPlaces(
+                    position.latitude, position.longitude, icon)
+                : null;
           },
         )
       ],
