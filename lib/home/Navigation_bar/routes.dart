@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
+import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
-import 'package:pharma_off/home/Telas/esquecisenha.dart';
+import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
@@ -18,6 +19,7 @@ final Map<String, WidgetBuilder> navegacoes = {
   Lista.NomeNavegacao: (context) => Lista(),
   login.NomeNavegacao: (context) => LoginUser(),
   cadastro.NomeNavegacao: (context) => cadastro(),
+  profileScreen.NomeNavegacao: (context) => profileScreen(),
   promocoes.NomeNavegacao: (context) => promocoes(),
   desejos.NomeNavegacao: (context) => desejos(),
   esquecisenha.NomeNavegacao: (context) => esquecisenha(),

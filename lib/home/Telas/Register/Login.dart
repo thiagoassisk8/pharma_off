@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
+import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
 
 import 'package:pharma_off/palheta/theme.dart';
-import 'package:pharma_off/home/Telas/esquecisenha.dart';
+import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
 import 'package:pharma_off/home/rest_api/LoginUser.dart';
 import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
 
@@ -141,6 +142,8 @@ class login extends State<LoginUser> {
               backgroundColor: Colors.red[600],
             );
             ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            Navigator.of(context)
+                .pushReplacementNamed(profileScreen.NomeNavegacao);
           }
           // }
           // else{
