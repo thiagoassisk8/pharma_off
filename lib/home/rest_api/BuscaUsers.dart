@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 
 class APIGetUsers {
   Future<PharmaUser> getAllUsers() async {
-    // String url = "localhost:3000";
-    String url = "rest-api-pharmaoff.herokuapp.com";
+    String url = "127.0.0.1:3000";
+    // String url = "rest-api-pharmaoff.herokuapp.com";
 
     final http.Response response = await http.get(Uri.http(url, "/usuarios"));
 

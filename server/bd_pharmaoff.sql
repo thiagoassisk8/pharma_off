@@ -4,7 +4,7 @@ use db_PharmaOff;
 #TABLETION
 create table tb_pessoa(
 id_pessoa int primary key auto_increment,
-nme_pessoa varchar (10) not null,
+nme_pessoa varchar (10) default null,
 email_pessoa varchar (50) not null,
 pwd_pessoa varchar (500) not null
 );

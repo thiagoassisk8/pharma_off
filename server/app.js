@@ -17,6 +17,7 @@ app.use((req,res,next)=>{
     res.header(
         'Access-Control-Allow-Header',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+      
     );
 
     if (req.method === 'OPTIONS') {
