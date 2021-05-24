@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 router.post('/cadastro', (req, res, next) => {
     mysql.getConnection((err, conn) => {

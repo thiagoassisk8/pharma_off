@@ -21,16 +21,31 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO ta_produto (nme_produto, preco_produto,desc_produto,img_produto,cod_estabelecimento) VALUES (?,?,?,?,?)',
-            [req.body.nme_produto, req.body.preco_produto,req.body.desc_produto,req.body.img_produto,req.body.cod_estabelecimento],
-            (error, resultado, field) => {
+            'INSERT INTO ta_produto (nme_produto, preco_produto,preco_desconto_produto,desc_produto,img_produto,qtd_produto,cod_estabelecimento) VALUES (?,?,?,?,?,?,?);',
+            [req.body.nme_produto, 
+            req.body.preco_produto,
+            req.body.preco_desconto_produto,
+            req.body.desc_produto,
+            req.body.img_produto,
+            req.body.qtd_produto,
+            req.body.cod_estabelecimento],
+            (error, result, field) => {
                 conn.release();
                 if (error) { return res.status(500).send({ error: error }) }
-
-                res.status(201).send({
+                const response = {
                     mensagem: 'Produto inserido com sucesso',
-                    id_produto: resultado.insertId
-                });
+                    produtoCriado: {
+                        id_produto: result.id_produto,
+                        nome: req.body.nme_produto,
+                        preco: req.body.preco_produto,
+                        request: {
+                            tipo: 'POST',
+                            descricao: 'Retorna todos os produtos',
+                            url: 'http://localhost:3000/produtos'
+                        }
+                    }
+                }
+                return res.status(201).send(response);
             }
         )
     });
