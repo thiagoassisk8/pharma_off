@@ -105,7 +105,7 @@ class cadastro extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginBtn() {
+  Widget _buildSignupBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 55.0),
       width: double.infinity,
@@ -203,7 +203,7 @@ class cadastro extends StatelessWidget {
                     // _buildEmailTF(),
 
                     _buildConfirmaSenha(),
-                    _buildLoginBtn(),
+                    _buildSignupBtn(),
                   ],
                 ),
               ))),

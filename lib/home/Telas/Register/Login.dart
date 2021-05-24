@@ -10,7 +10,14 @@ import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
 
 var _userObject = {};
 
-class login extends StatelessWidget {
+class LoginUser extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return login();
+  }
+}
+
+class login extends State<LoginUser> {
   static String NomeNavegacao = "/login";
   @override
   String email;
@@ -18,7 +25,7 @@ class login extends StatelessWidget {
 
   bool _showPassword = false;
   GlobalKey<FormState> _key = new GlobalKey();
-  bool _validate = false;
+
   //chaves paras os forms
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -29,63 +36,69 @@ class login extends StatelessWidget {
   BuildContext get context => null;
   Widget _buildEmailTF() {
     return TextFormField(
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(25),
-            ),
-          ),
-          prefixIcon: Icon(Icons.email_rounded),
-          labelText: "E-mail",
-          labelStyle: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 15,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(25),
           ),
         ),
-        validator: (String value) {
-          if (value.isEmpty) {
-            return "E-mail Obrigatório";
-          }
-          if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-              .hasMatch(value)) {
-            return "Por Favor, entre com um e-mail válido";
-          }
-          return null;
-        });
+        prefixIcon: Icon(Icons.email_rounded),
+        labelText: "E-mail",
+        labelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 15,
+        ),
+      ),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return "E-mail Obrigatório";
+        }
+        if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(value)) {
+          return "Por Favor, entre com um e-mail válido";
+        }
+        return null;
+      },
+      onSaved: (String value) {
+        email = value;
+      },
+    );
   }
 
   Widget _buildPasswordTF() {
     return TextFormField(
-        keyboardType: TextInputType.visiblePassword,
-        obscureText: _showPassword == false ? true : false,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(25),
-            ),
+      keyboardType: TextInputType.visiblePassword,
+      obscureText: _showPassword == false ? true : false,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(25),
           ),
-          prefixIcon: Icon(Icons.vpn_key_rounded),
-          labelText: "Senha",
-          labelStyle: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 15,
-          ),
-          suffixIcon: GestureDetector(
-              child: Icon(
-                _showPassword == false
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-                color: Colors.grey[800],
-              ),
-              onTap: () {}),
         ),
-        validator: (String value) {
-          if (value.isEmpty) {
-            return "Senha Obrigatória";
-          }
-          return null;
-        });
+        prefixIcon: Icon(Icons.vpn_key_rounded),
+        labelText: "Senha",
+        labelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 15,
+        ),
+        suffixIcon: GestureDetector(
+            child: Icon(
+              _showPassword == false ? Icons.visibility_off : Icons.visibility,
+              color: Colors.grey[800],
+            ),
+            onTap: () {}),
+      ),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return "Senha Obrigatória";
+        }
+        return null;
+      },
+      onSaved: (String value) {
+        senha = value;
+      },
+    );
   }
 
   Widget _buildLoginBtn() {
@@ -94,7 +107,53 @@ class login extends StatelessWidget {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: _sendForm,
+        onPressed: () async {
+          if (!_formKey.currentState.validate()) {
+            return;
+          }
+          _formKey.currentState.save();
+          var listUsers = await APIGetUsers().getAllUsers();
+          var usuarios = listUsers.data;
+
+          // if(Helpers().isStudent(us ers, email) != null) {
+          Map userLogged = Complemento().getnameuser(usuarios, email);
+          var response = await APILogin().login(email, senha);
+          if (response.token != null) {
+            SnackBar snackbar = new SnackBar(
+              content: Text(
+                "Usuário Logado com Sucesso!!",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              backgroundColor: Colors.green[600],
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackbar);
+            //salvando dados do user
+            Complemento().saveDataUser(userLogged);
+            print(response.data);
+
+            Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
+          } else {
+            SnackBar snackbar = new SnackBar(
+              content: Text(
+                "E-mail ou Senha Inválidos!!",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              backgroundColor: Colors.red[600],
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackbar);
+          }
+          // }
+          // else{
+          // SnackBar snackbar = new SnackBar(
+          // content: Text(
+          // "Usuario não exite!!",
+          // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          // ),
+          // backgroundColor: Colors.red[600],
+          // );
+          // ScaffoldMessenger.of(context).showSnackBar(snackbar);
+          // }
+        },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
@@ -171,55 +230,8 @@ class login extends StatelessWidget {
             style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          // onPressed: () async {
-          // Navigator.of(context).pop();
-          // },
           onPressed: () async {
-            if (!_formKey.currentState.validate()) {
-              return;
-            }
-            _formKey.currentState.save();
-            var listUsers = await APIGetUsers().getAllUsers();
-            var usuarios = listUsers.data;
-
-            // if(Helpers().isStudent(us ers, email) != null) {
-            Map userLogged = Complemento().getnameuser(usuarios, email);
-            var response = await APILogin().login(email, senha);
-            if (response.token != null) {
-              SnackBar snackbar = new SnackBar(
-                content: Text(
-                  "Usuário Logado com Sucesso!!",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                backgroundColor: Colors.green[600],
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              //salvando dados do user
-              Complemento().saveDataUser(userLogged);
-              print(response.data);
-
-              Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
-            } else {
-              SnackBar snackbar = new SnackBar(
-                content: Text(
-                  "E-mail ou Senha Inválidos!!",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                backgroundColor: Colors.red[600],
-              );
-              ScaffoldMessenger.of(context).showSnackBar(snackbar);
-            }
-            // }
-            // else{
-            // SnackBar snackbar = new SnackBar(
-            // content: Text(
-            // "Esse Usuario(a) não exite!!",
-            // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            // ),
-            // backgroundColor: Colors.red[600],
-            // );
-            // ScaffoldMessenger.of(context).showSnackBar(snackbar);
-            // }
+            Navigator.of(context).pop();
           },
         ),
       ),
@@ -229,7 +241,7 @@ class login extends StatelessWidget {
               margin: new EdgeInsets.all(15.0),
               child: new Form(
                 key: _key,
-                autovalidate: _validate,
+                // autovalidate: _validate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
