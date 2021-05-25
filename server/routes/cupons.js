@@ -1,8 +1,7 @@
-const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
-const login = require('../middleware/login')
+
 
 // RETORNA TODOS OS CUPONS
 router.get('/', (req, res, next) => {
@@ -67,7 +66,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-// RETORNA OS DADOS DE UM CUPOM
+// RETORNA OS DADOS DE UM CUPOM ESPECIFICO
 router.get('/:id_cupom', (req, res, next)=> {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
@@ -89,7 +88,7 @@ router.get('/:id_cupom', (req, res, next)=> {
                         preco: result[0].sts_ativo_cupom,
                         request: {
                             tipo: 'GET',
-                            descricao: 'Retorna todos os cupons',
+                            descricao: 'Retorna o cupom especifico',
                             url: 'http://localhost:3000/cupons'
                         }
                     }

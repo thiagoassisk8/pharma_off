@@ -8,13 +8,29 @@ router.get('/', (req, res, next) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
             'SELECT * FROM ta_produto;',
-            (error, resultado, fields) => {
+            (error, result, fields) => {
                 if (error) { return res.status(500).send({ error: error }) }
-                return res.status(200).send({response: resultado})
+                const response = {
+                    quantidade: result.length,
+                    produtos: result.map(prod => {
+                        return {
+                            id_produto: prod.id_produto,
+                            nome: prod.nme_produto,
+                            preco: prod.preco_produto,
+                            request: {
+                                tipo: 'GET',
+                                descricao: 'Retorna o todos os produtos',
+                                url: 'http://localhost:3000/produtos/' + prod.id_produto
+                            }
+                        }
+                    })
+                }
+                return res.status(200).send(response);
             }
         )
     });
 });
+
 
 // INSERE UM PRODUTO
 router.post('/', (req, res, next) => {
@@ -39,7 +55,7 @@ router.post('/', (req, res, next) => {
                         nome: req.body.nme_produto,
                         preco: req.body.preco_produto,
                         request: {
-                            tipo: 'POST',
+                            tipo: 'GET',
                             descricao: 'Retorna todos os produtos',
                             url: 'http://localhost:3000/produtos'
                         }
@@ -51,21 +67,38 @@ router.post('/', (req, res, next) => {
     });
 });
 
-// RETORNA OS DADOS DE UM PRODUTO
+// RETORNA OS DADOS DE UM PRODUTO ESPECIFICO
 router.get('/:id_produto', (req, res, next)=> {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM ts_produto WHERE id_produto = ?;',
+            'SELECT * FROM ta_produto WHERE id_produto = ?;',
             [req.params.id_produto],
-            (error, resultado, fields) => {
+            (error, result, fields) => {
                 if (error) { return res.status(500).send({ error: error }) }
-                return res.status(200).send({response: resultado})
+                
+                if (result.length == 0) {
+                    return res.status(404).send({
+                        mensagem: 'Não foi encontrado produto com este ID'
+                    })
+                }
+                const response = {
+                    produto: {
+                        id_produto: result[0].id_produto,
+                        nome: result[0].nme_produto,
+                        preco: result[0].preco_produto,
+                        request: {
+                            tipo: 'GET',
+                            descricao: 'Retorna os detalhes de um produto específico',
+                            url: 'http://localhost:3000/produtos'
+                        }
+                    }
+                }
+                return res.status(200).send(response);
             }
         )
     });
 });
-
 // ALTERA UM PRODUTO
 router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
