@@ -34,5 +34,6 @@ class Complemento {
     id_pessoa = userLogged['id_pessoa'];
     nme_pessoa = userLogged['nme_pessoa'];
     email_pessoa = userLogged['email_pessoa'];
+    // token = userLogged['token'];
   }
 }

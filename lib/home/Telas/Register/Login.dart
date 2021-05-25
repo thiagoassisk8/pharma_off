@@ -83,11 +83,16 @@ class login extends State<LoginUser> {
           fontSize: 15,
         ),
         suffixIcon: GestureDetector(
-            child: Icon(
-              _showPassword == false ? Icons.visibility_off : Icons.visibility,
-              color: Colors.grey[800],
-            ),
-            onTap: () {}),
+          child: Icon(
+            _showPassword == false ? Icons.visibility_off : Icons.visibility,
+            color: Colors.grey[800],
+          ),
+          onTap: () {
+            setState(() {
+              _showPassword = !_showPassword;
+            });
+          },
+        ),
       ),
       validator: (String value) {
         if (value.isEmpty) {
@@ -225,57 +230,58 @@ class login extends State<LoginUser> {
       // Sem erros na validação
       // _formKey.currentState.save();
       // if (!_formKey.currentState.validate()) {
-      print('dentro do if :${_formKey}');
-      return;
-    }
-    print('fora do if :${_formKey}');
-    _formKey.currentState.save();
-    var listUsers = await APIGetUsers().getAllUsers();
-    var usuarios = listUsers.data;
+      // print('dentro do if :${_formKey}');
+      // return;
+      // }
+      print('fora do if :${_formKey}');
+      _formKey.currentState.save();
+      var listUsers = await APIGetUsers().getAllUsers();
+      var usuarios = listUsers.data;
 
-    Map userLogged = Complemento().getnameuser(usuarios, email);
+      Map userLogged = Complemento().getnameuser(usuarios, email);
 
-    // if(Complemento().isUser(users, email) != null) {
-    Map UserLogged = Complemento().getUsersfromEmail(usuarios, email);
-    var response = await APILogin().login(email, senha);
-    // var responsee = await APILogin().login(email, senha);
-    if (response.token != null) {
-      print('deu tudo certo');
-      SnackBar snackbar = new SnackBar(
-        content: Text(
-          "Usuário Logado com Sucesso!!",
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.green[600],
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      //salvando dados do user
-      Complemento().saveDataUser(userLogged);
-      print(response.data);
+      // if(Complemento().isUser(users, email) != null) {
+      Map UserLogged = Complemento().getUsersfromEmail(usuarios, email);
+      var response = await APILogin().login(email, senha);
+      print(response.token);
+      // var responsee = await APILogin().login(email, senha);
+      if (response.token != null) {
+        print('deu tudo certo');
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "Usuário Logado com Sucesso!!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        //salvando dados do user
+        Complemento().saveDataUser(userLogged);
+        print(response.data);
+      } else {
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "E-mail ou Senha Inválidos!!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.red[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        Navigator.pushReplacementNamed(context, profileScreen.NomeNavegacao);
+      }
     } else {
       SnackBar snackbar = new SnackBar(
         content: Text(
-          "E-mail ou Senha Inválidos!!",
+          "Usuário não exite, faça o cadastro!!",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red[600],
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      Navigator.pushReplacementNamed(context, profileScreen.NomeNavegacao);
+      // erro de validação
+      // setState(() {
+      // _validate = true;
+      // });
     }
-    // } else {
-    // SnackBar snackbar = new SnackBar(
-    // content: Text(
-    // "Usuário não exite, faça o cadastro!!",
-    // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    // ),
-    // backgroundColor: Colors.red[600],
-    // );
-    // ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    // erro de validação
-    // setState(() {
-    // _validate = true;
-    // });
   }
 }
-// }
