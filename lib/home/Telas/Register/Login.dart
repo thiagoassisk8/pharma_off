@@ -35,6 +35,7 @@ class login extends State<LoginUser> {
   bool _rememberMe = false;
 
   BuildContext get context => null;
+
   Widget _buildEmailTF() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
@@ -102,79 +103,7 @@ class login extends State<LoginUser> {
     );
   }
 
-  Widget _buildLoginBtn() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 55.0),
-      width: double.infinity,
-      child: RaisedButton(
-        elevation: 5.0,
-        onPressed: () async {
-          if (!_formKey.currentState.validate()) {
-            return;
-          }
-          _formKey.currentState.save();
-          var listUsers = await APIGetUsers().getAllUsers();
-          var usuarios = listUsers.data;
 
-          // if(Helpers().isStudent(us ers, email) != null) {
-          Map userLogged = Complemento().getnameuser(usuarios, email);
-          var response = await APILogin().login(email, senha);
-          if (response.token != null) {
-            SnackBar snackbar = new SnackBar(
-              content: Text(
-                "Usuário Logado com Sucesso!!",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              backgroundColor: Colors.green[600],
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackbar);
-            //salvando dados do user
-            Complemento().saveDataUser(userLogged);
-            print(response.data);
-
-            Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
-          } else {
-            SnackBar snackbar = new SnackBar(
-              content: Text(
-                "E-mail ou Senha Inválidos!!",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              backgroundColor: Colors.red[600],
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackbar);
-            Navigator.of(context)
-                .pushReplacementNamed(profileScreen.NomeNavegacao);
-          }
-          // }
-          // else{
-          // SnackBar snackbar = new SnackBar(
-          // content: Text(
-          // "Usuario não exite!!",
-          // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          // ),
-          // backgroundColor: Colors.red[600],
-          // );
-          // ScaffoldMessenger.of(context).showSnackBar(snackbar);
-          // }
-        },
-        padding: EdgeInsets.all(15.0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0),
-        ),
-        color: Colors.white,
-        child: Text(
-          'LOGIN',
-          style: TextStyle(
-            color: AzulPrimario,
-            letterSpacing: 1.5,
-            fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'OpenSans',
-          ),
-        ),
-      ),
-    );
-  }
 
   Widget build(BuildContext context) {
     Widget _buildForgotPasswordBtn() {
@@ -191,7 +120,30 @@ class login extends State<LoginUser> {
         ),
       );
     }
-
+    Widget _buildLoginBtn() {
+      return Container(
+        padding: EdgeInsets.symmetric(vertical: 55.0),
+        width: double.infinity,
+        child: RaisedButton(
+          elevation: 5.0,
+          onPressed:_sendForm,
+          padding: EdgeInsets.all(15.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0),
+          ),
+          color: Colors.white,
+          child: Text('LOGIN',
+            style: TextStyle(
+              color: AzulPrimario,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'OpenSans',
+            ),
+          ),
+        ),
+      );
+    }
     Widget _buildSignupBtn() {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
@@ -224,11 +176,13 @@ class login extends State<LoginUser> {
       );
     }
 
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Login",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        title: Text("Login", textScaleFactor: 1.1,
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () async {
@@ -266,13 +220,43 @@ class login extends State<LoginUser> {
               ))),
     );
   }
-
-  _sendForm() {
+  _sendForm() async {
+    Navigator.pushNamed(context, profileScreen.NomeNavegacao);
     if (_key.currentState.validate()) {
       // Sem erros na validação
       _key.currentState.save();
-      print("Email $email");
-      print("Digite sua senha $senha");
+      if (!_formKey.currentState.validate()) {
+        return;
+      }
+      _formKey.currentState.save();
+      var listUsers = await APIGetUsers().getAllUsers();
+      var usuarios = listUsers.data;
+
+      // if(Helpers().isStudent(us ers, email) != null) {
+      Map userLogged = Complemento().getnameuser(usuarios, email);
+      var response = await APILogin().login(email, senha);
+      if (response.token != null) {
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "Usuário Logado com Sucesso!!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        //salvando dados do user
+        Complemento().saveDataUser(userLogged);
+        print(response.data);
+      } else {
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "E-mail ou Senha Inválidos!!",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.red[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      }
     } else {
       // erro de validação
       //setState(() {
@@ -280,4 +264,5 @@ class login extends State<LoginUser> {
       // });
     }
   }
-}
+
+  }
