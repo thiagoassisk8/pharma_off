@@ -15,7 +15,7 @@ class cadastro extends StatelessWidget {
   String confirmsenha;
   bool _showPassword = false;
 
-  GlobalKey<FormState> _key = new GlobalKey();
+  GlobalKey<FormState> _key = new GlobalKey<FormState>();
   bool _validate = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyToken = GlobalKey<FormState>();
@@ -24,30 +24,35 @@ class cadastro extends StatelessWidget {
   BuildContext get context => null;
   Widget _buildEmailTF() {
     return TextFormField(
-        keyboardType: TextInputType.emailAddress,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(25),
-            ),
-          ),
-          prefixIcon: Icon(Icons.email_rounded),
-          labelText: "E-mail",
-          labelStyle: TextStyle(
-            fontWeight: FontWeight.w400,
-            fontSize: 15,
+      keyboardType: TextInputType.emailAddress,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(25),
           ),
         ),
-        validator: (String value) {
-          if (value.isEmpty) {
-            return "E-mail Obrigatório";
-          }
-          if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-              .hasMatch(value)) {
-            return "Por Favor, entre com um e-mail válido";
-          }
-          return null;
-        });
+        prefixIcon: Icon(Icons.email_rounded),
+        labelText: "E-mail",
+        labelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 15,
+        ),
+      ),
+      validator: (String value) {
+        if (value.isEmpty) {
+          return "E-mail Obrigatório";
+        }
+        if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(value)) {
+          return "Por Favor, entre com um e-mail válido";
+        }
+
+        return null;
+      },
+      onSaved: (String value) {
+        _userObject['email_pessoa'] = value;
+      },
+    );
   }
 
   Widget _buildPasswordTF() {
@@ -73,6 +78,9 @@ class cadastro extends StatelessWidget {
           return "Senha Obrigatória";
         }
         return null;
+      },
+      onSaved: (String value) {
+        _userObject['pwd_pessoa'] = value;
       },
     );
   }
@@ -102,6 +110,9 @@ class cadastro extends StatelessWidget {
           return "As senhas não coincidem";
         }
         return null;
+      },
+      onSaved: (String value) {
+        _userObject['pwd_pessoa'] = value;
       },
     );
   }
