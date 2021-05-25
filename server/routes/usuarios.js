@@ -72,4 +72,35 @@ router.post('/login', (req, res, next) => {
     });
 })
 
+// retorna todos os usuários
+router.get('/', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return res.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM tb_pessoa;',
+            (error, result, fields) => {
+                if (error) { return res.status(500).send({ error: error }) }
+                const response = {
+                    quantidade: result.length,
+                    usuarios: result.map(user => {
+                        return {
+                            id_pessoa: user.id_pessoa,
+                            nome: user.nme_pessoa,
+                            email: user.email_pessoa,
+                            pwd_pessoa:user.pwd_pessoa,
+                            request: {
+                                tipo: 'GET',
+                                descricao: 'Retorna o todos os usuarios',
+                                url: 'http://localhost:3000/usuarios/' + user.id_pessoa
+                            }
+                        }
+                    })
+                }
+                return res.status(200).send(response);
+            }
+        )
+    });
+});
+
+
 module.exports = router; 
