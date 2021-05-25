@@ -227,10 +227,8 @@ class login extends State<LoginUser> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
-        title: Text("Login",
-            textScaleFactor: 1.5,
-            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        title: Text("Login",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () async {

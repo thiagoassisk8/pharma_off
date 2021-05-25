@@ -23,10 +23,8 @@ class esquecisenha extends StatelessWidget {
         appBar:
 
         AppBar(
-          elevation: 0,
-          title: Text("Redefinir senha", textScaleFactor: 1.3,
-              style:
-              TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
+          centerTitle: true,
+          title: Text("Redefinir Senha",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {

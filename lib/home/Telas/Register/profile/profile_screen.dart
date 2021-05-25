@@ -11,10 +11,8 @@ class profileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
-        title: Text("Perfil do Usuário",
-            textScaleFactor: 1.3,
-            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        title: Text("Perfil do Usuário",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {

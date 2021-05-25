@@ -12,15 +12,18 @@ class formulario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // theme: new ThemeData(scaffoldBackgroundColor: const Color(0xf4f4f4)),
-      home: new Scaffold(
+    return Scaffold(
 
-        appBar: new AppBar(
-          title: new Text('Suporte'),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
           centerTitle: true,
-
-
+          title: Text("Suporte",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
         ),
 
         body:
@@ -35,8 +38,8 @@ class formulario extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
+
   }
 
   Widget _formUI() {
@@ -146,7 +149,7 @@ class formulario extends StatelessWidget {
       // Sem erros na validação
       _key.currentState.save();
       print("Nome $nome");
-      print("Ceclular $celular");
+      print("Celular $celular");
       print("Email $email");
       print("Mensagem $mensagem");
     } else {
