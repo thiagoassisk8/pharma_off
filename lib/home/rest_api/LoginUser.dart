@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 class APILogin {
   Future<JsonDefault> login(String email_pessoa, String pwd_pessoa) async {
-    String url = "127.0.0.1:3000";
+    String url = "10.0.2.2:3000";
     // String url = "rest-api-pharmaoff.herokuapp.com";
 
     final http.Response response = await http.post(

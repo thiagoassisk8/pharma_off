@@ -132,8 +132,7 @@ class cadastro extends StatelessWidget {
                 backgroundColor: Colors.green[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              // Navigator.of(context).pushReplacementNamed("/login");
-
+              Navigator.pushReplacementNamed(context, login.NomeNavegacao);
             } else {
               SnackBar snackbar = new SnackBar(
                 content: Text(
@@ -171,7 +170,9 @@ class cadastro extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Sign Up",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        title: Text("Sign Up",
+            textScaleFactor: 1.1,
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -184,7 +185,7 @@ class cadastro extends StatelessWidget {
           child: new Container(
               margin: new EdgeInsets.all(15.0),
               child: new Form(
-                key: _key,
+                key: _formKey,
                 autovalidate: _validate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -212,9 +213,9 @@ class cadastro extends StatelessWidget {
   }
 
   _sendForm() {
-    if (_key.currentState.validate()) {
+    if (_formKey.currentState.validate()) {
       // Sem erros na validação
-      _key.currentState.save();
+      _formKey.currentState.save();
       print("Email $email");
       print("Digite sua senha $senha");
       print("Digite a senha novamente $confirmsenha");

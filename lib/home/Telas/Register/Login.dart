@@ -34,8 +34,6 @@ class login extends State<LoginUser> {
   //E-mail
   bool _rememberMe = false;
 
-  BuildContext get context => null;
-
   Widget _buildEmailTF() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
@@ -103,8 +101,6 @@ class login extends State<LoginUser> {
     );
   }
 
-
-
   Widget build(BuildContext context) {
     Widget _buildForgotPasswordBtn() {
       return Container(
@@ -120,19 +116,21 @@ class login extends State<LoginUser> {
         ),
       );
     }
+
     Widget _buildLoginBtn() {
       return Container(
         padding: EdgeInsets.symmetric(vertical: 55.0),
         width: double.infinity,
         child: RaisedButton(
           elevation: 5.0,
-          onPressed:_sendForm,
+          onPressed: _sendForm,
           padding: EdgeInsets.all(15.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
           color: Colors.white,
-          child: Text('LOGIN',
+          child: Text(
+            'LOGIN',
             style: TextStyle(
               color: AzulPrimario,
               letterSpacing: 1.5,
@@ -144,6 +142,7 @@ class login extends State<LoginUser> {
         ),
       );
     }
+
     Widget _buildSignupBtn() {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
@@ -176,12 +175,12 @@ class login extends State<LoginUser> {
       );
     }
 
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Login", textScaleFactor: 1.1,
+        title: Text("Login",
+            textScaleFactor: 1.1,
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -195,7 +194,7 @@ class login extends State<LoginUser> {
           child: new Container(
               margin: new EdgeInsets.all(15.0),
               child: new Form(
-                key: _key,
+                key: _formKey,
                 // autovalidate: _validate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -220,11 +219,11 @@ class login extends State<LoginUser> {
               ))),
     );
   }
+
   _sendForm() async {
-    Navigator.pushNamed(context, profileScreen.NomeNavegacao);
-    if (_key.currentState.validate()) {
+    if (_formKey.currentState.validate()) {
       // Sem erros na validação
-      _key.currentState.save();
+      _formKey.currentState.save();
       if (!_formKey.currentState.validate()) {
         return;
       }
@@ -232,7 +231,6 @@ class login extends State<LoginUser> {
       var listUsers = await APIGetUsers().getAllUsers();
       var usuarios = listUsers.data;
 
-      // if(Helpers().isStudent(us ers, email) != null) {
       Map userLogged = Complemento().getnameuser(usuarios, email);
       var response = await APILogin().login(email, senha);
       if (response.token != null) {
@@ -256,6 +254,7 @@ class login extends State<LoginUser> {
           backgroundColor: Colors.red[600],
         );
         ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        Navigator.pushReplacementNamed(context, profileScreen.NomeNavegacao);
       }
     } else {
       // erro de validação
@@ -264,5 +263,4 @@ class login extends State<LoginUser> {
       // });
     }
   }
-
-  }
+}
