@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:provider/provider.dart';
@@ -11,17 +10,15 @@ import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'dart:math' as math;
 
-class promocoes extends StatelessWidget {
+class Promocoes extends StatelessWidget {
   static String NomeNavegacao = "/promocoes";
   List<Produto> ProdutoLista = Produto.list;
   @override
   Widget build(BuildContext context) {
-
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Estabecimento>>>(context);
     final geoService = GeoLocatorService();
     final sizeconfig = SizeConfig();
-
 
     return FutureProvider(
       create: (context) => placesProvider,
@@ -29,193 +26,208 @@ class promocoes extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Ofertas",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+          title: Text("Ofertas",
+              textScaleFactor: 1.1,
+              style:
+                  TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
         ),
-
         body: (currentPosition != null)
             ? Consumer<List<Estabecimento>>(
-          builder: (_, estabelecimentos, __) {
-            // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
-            return (estabelecimentos != null)
-                ? Column(
-              children: <Widget>[
-                // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "Categories",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 32,
-                        ),
-                      ),
-                      IconButton(
-                        icon: Icon(FlutterIcons.search, color: Colors.black26),
-                        onPressed: null,
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 300,
-                  margin: EdgeInsets.symmetric(vertical: 16),
-                  child: ListView.builder(
-                    itemCount: ProdutoLista.length,
-                    scrollDirection: Axis.horizontal,
-                    physics: BouncingScrollPhysics(),
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => DetailPage(
-                                ProdutoLista[index],
-                              ),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: 230,
-                          margin: EdgeInsets.only(right: 16),
-                          child: Stack(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(top: 25),
-                                // child: _buildBackground(index, 230),
-                              ),
-                              Positioned(
-                                bottom: 130,
-                                right: 10,
-                                child: Hero(
-                                  tag: "hero${ProdutoLista[index].imgPath}",
-                                  child: Transform.rotate(
-                                    angle: -math.pi / 7,
-                                    child: Image(
-                                      width: 220,
-                                      image: AssetImage(
-                                          "assets/images/${ProdutoLista[index].imgPath}"),
+                builder: (_, estabelecimentos, __) {
+                  // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
+                  return (estabelecimentos != null)
+                      ? Column(
+                          children: <Widget>[
+                            // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    "Categories",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 32,
                                     ),
                                   ),
-                                ),
+                                  IconButton(
+                                    icon: Icon(FlutterIcons.search,
+                                        color: Colors.black26),
+                                    onPressed: null,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                SizedBox(height: 16),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "JUST FOR YOU",
-                        style: TextStyle(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "VIEW ALL",
-                        style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 24),
-                ...ProdutoLista.map((data) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => DetailPage(
-                            data,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(left: 16, right: 16, bottom: 10),
-                      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(25),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Image(
-                            image: AssetImage("assets/images/${data.imgPath}"),
-                            width: 100,
-                            height: 60,
-                          ),
-                          SizedBox(width: 16),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width * .4,
-                                  child: Text(
-                                    "${data.name}",
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                            ),
+                            Container(
+                              height: 300,
+                              margin: EdgeInsets.symmetric(vertical: 16),
+                              child: ListView.builder(
+                                itemCount: ProdutoLista.length,
+                                scrollDirection: Axis.horizontal,
+                                physics: BouncingScrollPhysics(),
+                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (_) => DetailPage(
+                                            ProdutoLista[index],
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Container(
+                                      width: 230,
+                                      margin: EdgeInsets.only(right: 16),
+                                      child: Stack(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 25),
+                                            // child: _buildBackground(index, 230),
+                                          ),
+                                          Positioned(
+                                            bottom: 130,
+                                            right: 10,
+                                            child: Hero(
+                                              tag:
+                                                  "hero${ProdutoLista[index].imgPath}",
+                                              child: Transform.rotate(
+                                                angle: -math.pi / 7,
+                                                child: Image(
+                                                  width: 220,
+                                                  image: AssetImage(
+                                                      "assets/images/${ProdutoLista[index].imgPath}"),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            SizedBox(height: 16),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Text(
+                                    "JUST FOR YOU",
                                     style: TextStyle(
+                                      color: Colors.black54,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Text(
-                                  "${data.estabelecimento}",
-                                  style: TextStyle(
-                                    color: Colors.black26,
-                                    height: 1.5,
+                                  Text(
+                                    "VIEW ALL",
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            child: Text(
-                              "R\$ ${data.price.toInt()}",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                                ],
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                }),
-              ],
-            )
-                : Center(child: CircularProgressIndicator());
-          },
-        )
+                            SizedBox(height: 24),
+                            ...ProdutoLista.map((data) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => DetailPage(
+                                        data,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(
+                                      left: 16, right: 16, bottom: 10),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 24),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(25),
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        spreadRadius: 1,
+                                        blurRadius: 10,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Image(
+                                        image: AssetImage(
+                                            "assets/images/${data.imgPath}"),
+                                        width: 100,
+                                        height: 60,
+                                      ),
+                                      SizedBox(width: 16),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .4,
+                                              child: Text(
+                                                "${data.name}",
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                            Text(
+                                              "${data.estabelecimento}",
+                                              style: TextStyle(
+                                                color: Colors.black26,
+                                                height: 1.5,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12),
+                                        child: Text(
+                                          "R\$ ${data.price.toInt()}",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }),
+                          ],
+                        )
+                      : Center(child: CircularProgressIndicator());
+                },
+              )
             : Center(
-          child: CircularProgressIndicator(),
-        ),
+                child: CircularProgressIndicator(),
+              ),
       ),
     );
   }

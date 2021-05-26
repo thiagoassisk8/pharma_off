@@ -4,9 +4,7 @@ import 'package:pharma_off/home/Telas/cart/componentes/body.dart';
 import 'package:pharma_off/home/Telas/cart/componentes/check_out_card.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
-
-
-class desejos extends StatelessWidget {
+class Desejos extends StatelessWidget {
   static String NomeNavegacao = "/desejos";
 
   @override
@@ -23,8 +21,9 @@ class desejos extends StatelessWidget {
       title: Row(
         children: [
           Text(
-            "Lista de Desejos", textScaleFactor: 1, style: TextStyle(color: AzulPrimario,fontWeight: FontWeight.bold),
-
+            "Lista de Desejos",
+            textScaleFactor: 1,
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold),
           ),
           Padding(padding: EdgeInsets.fromLTRB(80, 0, 0, 0)),
           Text(

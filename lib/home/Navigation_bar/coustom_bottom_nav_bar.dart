@@ -1,20 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
 
-
-
 enum MenuState { home, favorite, message, profile }
 
 class CustomBottomNavBar extends StatelessWidget {
-
-
   const CustomBottomNavBar({
     Key key,
     @required this.selectedMenu,
@@ -52,27 +47,31 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                   Navigator.pushNamed(context, promocoes.NomeNavegacao),
+                    Navigator.pushNamed(context, Promocoes.NomeNavegacao),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Heart Icon.svg",
+                icon: SvgPicture.asset(
+                  "assets/icons/Heart Icon.svg",
                   color: Colors.black87,
                 ),
                 onPressed: () =>
-                Navigator.pushNamed(context, desejos.NomeNavegacao),
+                    Navigator.pushNamed(context, Desejos.NomeNavegacao),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/Location point.svg",
+                icon: SvgPicture.asset(
+                  "assets/icons/Location point.svg",
                   color: Colors.blueAccent,
                   height: 105,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, HomeScreen.NomeNavegacao),
+                onPressed: () =>
+                    Navigator.pushNamed(context, HomeScreen.NomeNavegacao),
               ),
               IconButton(
-                icon: SvgPicture.asset("assets/icons/suporte-24-horas (1).svg",
+                icon: SvgPicture.asset(
+                  "assets/icons/suporte-24-horas (1).svg",
                   color: Colors.black,
                 ),
-                onPressed: ()=>
+                onPressed: () =>
                     Navigator.pushNamed(context, formulario.NomeNavegacao),
               ),
               IconButton(
@@ -80,7 +79,8 @@ class CustomBottomNavBar extends StatelessWidget {
                   "assets/icons/user.svg",
                   color: Colors.black,
                 ),
-                onPressed: ()=>Navigator.pushNamed(context, login.NomeNavegacao),
+                onPressed: () =>
+                    Navigator.pushNamed(context, Login.NomeNavegacao),
               ),
             ],
           )),

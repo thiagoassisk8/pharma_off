@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
-
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
 import 'package:pharma_off/home/rest_api/LoginUser.dart';
@@ -14,11 +13,11 @@ var _userObject = {};
 class LoginUser extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return login();
+    return Login();
   }
 }
 
-class login extends State<LoginUser> {
+class Login extends State<LoginUser> {
   static String NomeNavegacao = "/login";
   @override
   String email;
@@ -112,7 +111,7 @@ class login extends State<LoginUser> {
         alignment: Alignment.centerRight,
         child: FlatButton(
           onPressed: () {
-            Navigator.of(context).pushNamed(esquecisenha.NomeNavegacao);
+            Navigator.of(context).pushNamed(Esquecisenha.NomeNavegacao);
           },
           padding: EdgeInsets.only(right: 0.0),
           child: Text(
@@ -152,7 +151,7 @@ class login extends State<LoginUser> {
       return FlatButton(
         // onPressed: ()=> Navigator.pushNamed(context ),
         onPressed: () {
-          Navigator.of(context).pushNamed(cadastro.NomeNavegacao);
+          Navigator.of(context).pushNamed(Cadastro.NomeNavegacao);
         },
 
         child: RichText(
@@ -226,62 +225,62 @@ class login extends State<LoginUser> {
   }
 
   _sendForm() async {
-    if (_formKey.currentState.validate()) {
-      // Sem erros na validação
-      // _formKey.currentState.save();
-      // if (!_formKey.currentState.validate()) {
-      // print('dentro do if :${_formKey}');
-      // return;
-      // }
-      print('fora do if :${_formKey}');
-      _formKey.currentState.save();
-      var listUsers = await APIGetUsers().getAllUsers();
-      var usuarios = listUsers.data;
+    if (!_formKey.currentState.validate()) {
+      print('dentro do if :${_formKey}');
+      return;
+    }
+    _formKey.currentState.save();
+    print('fora do if :${_formKey}');
+    _formKey.currentState.save();
+    var listUsers = await APIGetUsers().getAllUsers();
+    var usuarios = listUsers.data;
 
-      Map userLogged = Complemento().getnameuser(usuarios, email);
+    // Map userLogged = Complemento().getnameuser(usuarios, email);
 
-      // if(Complemento().isUser(users, email) != null) {
-      Map UserLogged = Complemento().getUsersfromEmail(usuarios, email);
-      var response = await APILogin().login(email, senha);
-      print(response.token);
-      // var responsee = await APILogin().login(email, senha);
-      if (response.token != null) {
-        print('deu tudo certo');
-        SnackBar snackbar = new SnackBar(
-          content: Text(
-            "Usuário Logado com Sucesso!!",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.green[600],
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackbar);
-        //salvando dados do user
-        Complemento().saveDataUser(userLogged);
-        print(response.data);
-      } else {
-        SnackBar snackbar = new SnackBar(
-          content: Text(
-            "E-mail ou Senha Inválidos!!",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.red[600],
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackbar);
-        Navigator.pushReplacementNamed(context, profileScreen.NomeNavegacao);
-      }
+    // if(Complemento().isUser(users, email) != null) {
+    Map userLogged = Complemento().getUsersfromEmail(usuarios, email);
+    var response = await APILogin().login(email, senha);
+    print(response.token);
+    print("OLHAA AQUII O RESPONSE DATA >>${response.data}");
+    // var responsee = await APILogin().login(email, senha);
+    if (response.token != null) {
+      print('deu tudo certo');
+      SnackBar snackbar = new SnackBar(
+        content: Text(
+          "Usuário Logado com Sucesso!!",
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.green[600],
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      //salvando dados do user
+      Complemento().saveDataUser(userLogged);
+      print(response.data);
     } else {
       SnackBar snackbar = new SnackBar(
         content: Text(
-          "Usuário não exite, faça o cadastro!!",
+          "E-mail ou Senha Inválidos!!",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.red[600],
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      // erro de validação
-      // setState(() {
-      // _validate = true;
-      // });
+      Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
     }
   }
+  //  else {
+  // SnackBar snackbar = new SnackBar(
+  // content: Text(
+  // "Usuário não exite, faça o cadastro!!",
+  // style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+  // ),
+  // backgroundColor: Colors.red[600],
+  // );
+  // ScaffoldMessenger.of(context).showSnackBar(snackbar);
+  // erro de validação
+  // setState(() {
+  // _validate = true;
+  // });
+  // }
+  // }
 }

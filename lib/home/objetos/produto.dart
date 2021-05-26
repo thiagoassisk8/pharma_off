@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/palheta/theme.dart';
-import 'package:http/http.dart' as http;
 
 class Produto {
   final String estabelecimento;

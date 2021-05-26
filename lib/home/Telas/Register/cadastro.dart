@@ -5,7 +5,14 @@ import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/rest_api/SignUpUser.dart';
 
-class cadastro extends StatelessWidget {
+class CadastroUser extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return Cadastro();
+  }
+}
+
+class Cadastro extends State<CadastroUser> {
   static String NomeNavegacao = "/cadastro";
   @override
   var _userObject = {};
@@ -143,7 +150,7 @@ class cadastro extends StatelessWidget {
                 backgroundColor: Colors.green[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              Navigator.pushReplacementNamed(context, login.NomeNavegacao);
+              Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
             } else {
               SnackBar snackbar = new SnackBar(
                 content: Text(
@@ -153,7 +160,7 @@ class cadastro extends StatelessWidget {
                 backgroundColor: Colors.red[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              Navigator.of(context).pushReplacementNamed(login.NomeNavegacao);
+              Navigator.of(context).pushReplacementNamed(Login.NomeNavegacao);
             }
           }
         },

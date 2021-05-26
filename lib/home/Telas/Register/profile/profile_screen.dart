@@ -4,7 +4,7 @@ import 'package:pharma_off/palheta/theme.dart';
 
 import 'components/body.dart';
 
-class profileScreen extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   static String NomeNavegacao = "/profile";
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,9 @@ class profileScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Perfil do Usuário",textScaleFactor: 1.1, style: TextStyle(color: Colors.blue,fontWeight: FontWeight.bold)),
+        title: Text("Perfil do Usuário",
+            textScaleFactor: 1.1,
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
