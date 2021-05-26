@@ -76,7 +76,7 @@ router.get('/:cod_pessoa', (req, res, next)=> {
              inner join ta_produto on id_produto = cod_produto
              inner join tb_listaDesejos on id_listaDesejos = cod_listadesejos 
              inner join tb_pessoa on id_pessoa = cod_pessoa 
-             where cod_pessoa = ?`,
+             where cod_pessoa = ?;`,
             [req.params.cod_pessoa],
             (error, result, fields) => {
                 if (error) { return res.status(500).send({ error: error }) }
@@ -118,10 +118,11 @@ router.patch('/', (req, res, next) => {
             `UPDATE ta_listaDesejos_produtos
             SET cod_listadesejos = ?,
                 cod_produto  = ?
-            WHERE id_listaDesejos_produtos  = ?`,
+            WHERE id_listaDesejos_produtos  = ?;`,
             [
                 req.body.cod_listadesejos,
                 req.body.cod_produto,
+                req.body.id_listaDesejos_produtos
             ],
             (error, resultado, field) => {
                 conn.release();
@@ -140,7 +141,8 @@ router.delete('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(            
-            `DELETE FROM ta_listaDesejos_produtos WHERE cod_listadesejos = ?`, [req.body.cod_listadesejos],
+            `DELETE FROM ta_listaDesejos_produtos WHERE cod_produto = ?;`, 
+            [req.body.cod_produto],
             (error, result, field) => {
                 conn.release();
                 if (error) { return res.status(500).send({ error: error }) }
