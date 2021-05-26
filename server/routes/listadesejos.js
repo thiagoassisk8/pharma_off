@@ -40,6 +40,15 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
+        conn.query('SELECT * FROM ta_listadesejos_produtos WHERE cod_produto = ?',
+        [req.body.cod_produto],
+        (error, result, field) => {
+            if (error) { return res.status(500).send({ error: error }) }
+            if (result.length == 0) {
+                return res.status(404).send({
+                    mensagem: 'Produto não encontrado'
+                })
+            }
         conn.query(
             'INSERT INTO ta_listadesejos_produtos (cod_listadesejos, cod_produto) VALUES (?,?);',
             [req.body.cod_listadesejos, 
@@ -64,6 +73,7 @@ router.post('/', (req, res, next) => {
                 return res.status(201).send(response);
             }
         )
+      })
     });
 });
 
