@@ -18,14 +18,14 @@ router.get('/', (req, res, next) => {
                     lista: result.map(lista => {
                         return {
                             id_listaDesejos_produtos: lista.id_listaDesejos_produtos,
-                            nome: lista.nme_pessoa,
+                            nome_pessoa: lista.nme_pessoa,
                             id_pessoa: lista.cod_pessoa,
-                            produto: lista.nme_produto,
+                            nome_produto: lista.nme_produto,
                             cod_produto : lista.cod_produto,
                             request: {
                                 tipo: 'GET',
                                 descricao: 'Retorna a lista de desejos de todos os usuarios',
-                                url: 'http://localhost:3000/listaDesejos' + lista.id_listaDesejos_produtos
+                                url: 'http://localhost:3000/listaDesejos/' + lista.id_listaDesejos_produtos
                             }
                         }
                     })
