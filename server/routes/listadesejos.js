@@ -15,17 +15,17 @@ router.get('/', (req, res, next) => {
                 if (error) { return res.status(500).send({ error: error }) }
                 const response = {
                     quantidade: result.length,
-                    lista: result.map(prod => {
+                    lista: result.map(lista => {
                         return {
-                            id_listaDesejos_produtos: prod.id_listaDesejos_produtos,
-                            nome: prod.nme_pessoa,
-                            id_pessoa: prod.cod_pessoa,
-                            produto: prod.nme_produto,
-                            cod_produto : prod.cod_produto,
+                            id_listaDesejos_produtos: lista.id_listaDesejos_produtos,
+                            nome: lista.nme_pessoa,
+                            id_pessoa: lista.cod_pessoa,
+                            produto: lista.nme_produto,
+                            cod_produto : lista.cod_produto,
                             request: {
                                 tipo: 'GET',
                                 descricao: 'Retorna a lista de desejos de todos os usuarios',
-                                url: 'http://localhost:3000/listaDesejos' + prod.id_listaDesejos_produtos
+                                url: 'http://localhost:3000/listaDesejos' + lista.id_listaDesejos_produtos
                             }
                         }
                     })
@@ -110,45 +110,26 @@ router.get('/:cod_pessoa', (req, res, next)=> {
         });
 });
 
-// ALTERA UM CUPOM
+// Altera os detalhes de uma lista específica (não é necessário... mas ta aí)
 router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            `UPDATE ta_cupom
-                SET nome_cupom        = ?,
-                    percent_cupom       = ?,
-                    dta_validade_cupom       = ?,
-                    sts_ativo_cupom       = ?,
-                    cod_produto       = ?,
-                    cod_estabelecimento =?,
-              WHERE id_cupom  = ?`,
+            `UPDATE ta_listaDesejos_produtos
+            SET cod_listadesejos = ?,
+                cod_produto  = ?,
+            WHERE id_listaDesejos_produtos  = ?`,
             [
-                req.body.nome_cupom,
-                req.body.percent_cupom,
-                req.body.dta_validade_cupom,
-                req.body.sts_ativo_cupom,
+                req.body.cod_listadesejos,
                 req.body.cod_produto,
-                req.body.cod_estabelecimento,
-                req.body.id_cupom
             ],
-            (error, result, field) => {
+            (error, resultado, field) => {
                 conn.release();
                 if (error) { return res.status(500).send({ error: error }) }
-                const response = {
-                    mensagem: 'Cupom atualizado com sucesso',
-                    cupomAtualizado: {
-                        id_cupom: req.body.id_cupom,
-                        nome: req.body.nome_cupom,
-                        sts: req.body.sts_ativo_cupom,
-                        request: {
-                            tipo: 'GET',
-                            descricao: 'Retorna os detalhes de um cupom específico',
-                            url: 'http://localhost:3000/cupons/' + req.body.id_cupom
-                        }
-                    }
-                }
-                return res.status(202).send(response);
+
+                res.status(202).send({
+                    mensagem: 'Lista de desejos alterada com sucesso'
+                });
             }
         )
     });

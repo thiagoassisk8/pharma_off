@@ -37,8 +37,8 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO ta_cupom (nome_cupom, percent_cupom,dta_validade_cupom,sts_ativo_cupom,cod_produto,cod_estabelecimento) VALUES (?,?,?,?,?,?);',
-            [req.body.nome_cupom, 
+            'INSERT INTO ta_cupom (nme_cupom, percent_cupom,dta_validade_cupom,sts_ativo_cupom,cod_produto,cod_estabelecimento) VALUES (?,?,?,?,?,?);',
+            [req.body.nme_cupom, 
             req.body.percent_cupom,
             req.body.dta_validade_cupom,
             req.body.sts_ativo_cupom,
@@ -51,7 +51,7 @@ router.post('/', (req, res, next) => {
                     mensagem: 'Cupom inserido com sucesso',
                     cupomCriado: {
                         id_cupom: result.id_cupom,
-                        nome: req.body.nome_cupom,
+                        nome: req.body.nme_cupom,
                         preco: req.body.sts_ativo_cupom,
                         request: {
                             tipo: 'POST',
@@ -105,15 +105,15 @@ router.patch('/', (req, res, next) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
             `UPDATE ta_cupom
-                SET nome_cupom        = ?,
+                SET nme_cupom        = ?,
                     percent_cupom       = ?,
                     dta_validade_cupom       = ?,
                     sts_ativo_cupom       = ?,
                     cod_produto       = ?,
-                    cod_estabelecimento =?,
+                    cod_estabelecimento =?
               WHERE id_cupom  = ?`,
             [
-                req.body.nome_cupom,
+                req.body.nme_cupom,
                 req.body.percent_cupom,
                 req.body.dta_validade_cupom,
                 req.body.sts_ativo_cupom,
@@ -128,7 +128,7 @@ router.patch('/', (req, res, next) => {
                     mensagem: 'Cupom atualizado com sucesso',
                     cupomAtualizado: {
                         id_cupom: req.body.id_cupom,
-                        nome: req.body.nome_cupom,
+                        nome: req.body.nme_cupom,
                         sts: req.body.sts_ativo_cupom,
                         request: {
                             tipo: 'GET',

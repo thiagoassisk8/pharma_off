@@ -109,23 +109,35 @@ router.patch('/', (req, res, next) => {
                     preco_produto       = ?,
                     desc_produto       = ?,
                     img_produto       = ?,
-                    cod_estabelecimento       = ?,
+                    qtd_produto = ?,
+                    cod_estabelecimento       = ?
               WHERE id_produto  = ?`,
             [
                 req.body.nme_produto,
                 req.body.preco_produto,
                 req.body.desc_produto,
                 req.body.img_produto,
+                req.body.qtd_produto,
                 req.body.cod_estabelecimento,
                 req.body.id_produto
             ],
-            (error, resultado, field) => {
+            (error, result, field) => {
                 conn.release();
                 if (error) { return res.status(500).send({ error: error }) }
-
-                res.status(202).send({
-                    mensagem: 'Produto alterado com sucesso'
-                });
+                const response = {
+                    mensagem: 'Produto atualizado com sucesso',
+                    produtoAtualizado: {
+                        id_produto: req.body.id_produto,
+                        nome: req.body.nme_produto,
+                        preco: req.body.preco_produto,
+                        request: {
+                            tipo: 'PATCH',
+                            descricao: 'Alterado os dados de um produto',
+                            url: 'http://localhost:3000/produtos/' + req.body.id_produto
+                        }
+                    }
+                }
+                return res.status(202).send(response);
             }
         )
     });
