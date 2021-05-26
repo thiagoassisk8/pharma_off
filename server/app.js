@@ -10,6 +10,7 @@ const rotaCupons = require('./routes/cupons');
 const bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 

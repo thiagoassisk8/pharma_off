@@ -1,6 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('../mysql').pool;
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function (req,file,cb){
+        cb(null, './uploads/');
+    },
+    filename: function(req,file,cb){
+        let data = new Date().toISOString().replace(/:/g, '-') + '-';
+        cb(null, data + file.originalname );
+    }
+})
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
 
 // RETORNA TODOS OS PRODUTOS
 router.get('/', (req, res, next) => {
@@ -17,6 +43,7 @@ router.get('/', (req, res, next) => {
                             id_produto: prod.id_produto,
                             nome: prod.nme_produto,
                             preco: prod.preco_produto,
+                            img_produto: prod.img_produto,
                             request: {
                                 tipo: 'GET',
                                 descricao: 'Retorna o todos os produtos',
@@ -33,7 +60,8 @@ router.get('/', (req, res, next) => {
 
 
 // INSERE UM PRODUTO
-router.post('/', (req, res, next) => {
+router.post('/', upload.single('produto_imagem'),(req, res, next) => {
+    console.log(req.file);
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
@@ -42,7 +70,7 @@ router.post('/', (req, res, next) => {
             req.body.preco_produto,
             req.body.preco_desconto_produto,
             req.body.desc_produto,
-            req.body.img_produto,
+            req.file.path,
             req.body.qtd_produto,
             req.body.cod_estabelecimento],
             (error, result, field) => {
@@ -54,6 +82,7 @@ router.post('/', (req, res, next) => {
                         id_produto: result.id_produto,
                         nome: req.body.nme_produto,
                         preco: req.body.preco_produto,
+                        img_produto: req.file.path,
                         request: {
                             tipo: 'GET',
                             descricao: 'Retorna todos os produtos',
@@ -87,6 +116,7 @@ router.get('/:id_produto', (req, res, next)=> {
                         id_produto: result[0].id_produto,
                         nome: result[0].nme_produto,
                         preco: result[0].preco_produto,
+                        img_produto: result[0].img_produto,
                         request: {
                             tipo: 'GET',
                             descricao: 'Retorna os detalhes de um produto específico',
