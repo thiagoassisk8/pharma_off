@@ -117,7 +117,7 @@ router.patch('/', (req, res, next) => {
         conn.query(
             `UPDATE ta_listaDesejos_produtos
             SET cod_listadesejos = ?,
-                cod_produto  = ?,
+                cod_produto  = ?
             WHERE id_listaDesejos_produtos  = ?`,
             [
                 req.body.cod_listadesejos,
