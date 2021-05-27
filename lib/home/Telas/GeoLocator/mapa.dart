@@ -77,21 +77,19 @@ class MapaState extends StatelessWidget {
                           children: <Widget>[
                             Container(
                               height: MediaQuery.of(context).size.height / 1.12,
-
                               child: GoogleMap(
                                 mapType: MapType.normal,
                                 initialCameraPosition: CameraPosition(
-                                    target: LatLng(currentPosition.latitude,
-                                        currentPosition.longitude,
+                                    target: LatLng(
+                                      currentPosition.latitude,
+                                      currentPosition.longitude,
                                     ),
                                     zoom: 15.0),
-
                                 zoomGesturesEnabled: true,
                                 markers: Set<Marker>.of(markers),
                                 myLocationEnabled: true,
                                 padding: EdgeInsets.fromLTRB(50, 50, 10, 50),
                               ),
-
                             ),
                             SizedBox(
                               height: 10.0,

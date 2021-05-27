@@ -8,7 +8,7 @@ class PharmaUser {
   PharmaUser.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     results = json['results'];
-    data = (json['data'][0] as List)
+    data = (json['response'][0] as List)
         .map((e) {
           return Data.fromJson(e);
         })

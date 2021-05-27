@@ -241,7 +241,7 @@ class Login extends State<LoginUser> {
     Map userLogged = Complemento().getUsersfromEmail(usuarios, email);
     var response = await APILogin().login(email, senha);
     print(response.token);
-    print("OLHAA AQUII O RESPONSE DATA >>${response.data}");
+    print("OLHAA AQUII O RESPONSE DATA >>${response}");
     // var responsee = await APILogin().login(email, senha);
     if (response.token != null) {
       print('deu tudo certo');
@@ -255,7 +255,8 @@ class Login extends State<LoginUser> {
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       //salvando dados do user
       Complemento().saveDataUser(userLogged);
-      print(response.data);
+      Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
+      print(response);
     } else {
       SnackBar snackbar = new SnackBar(
         content: Text(
@@ -265,7 +266,7 @@ class Login extends State<LoginUser> {
         backgroundColor: Colors.red[600],
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
+      // Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
     }
   }
   //  else {
