@@ -1,33 +1,13 @@
-const express = require('express');
-const router = express.Router();
 const mysql = require('../mysql').pool;
-const multer = require('multer');
 
-const storage = multer.diskStorage({
-    destination: function (req,file,cb){
-        cb(null, './uploads/');
-    },
-    filename: function(req,file,cb){
-        let data = new Date().toISOString().replace(/:/g, '-') + '-';
-        cb(null, data + file.originalname );
-    }
-})
-const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-}
 
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1024 * 1024 * 5
-    },
-    fileFilter: fileFilter
-});
-
+// const upload = multer({
+    // storage: storage,
+    // limits: {
+        // fileSize: 1024 * 1024 * 5
+    // },
+    // fileFilter: fileFilter
+// });
 
 // Retorna todos os produtos
 module.exports.GetAllProducts = async (req, res, next) => {
@@ -60,7 +40,7 @@ module.exports.GetAllProducts = async (req, res, next) => {
 }
 
 // INSERE UM PRODUTO
-module.exports.AddProduct =  upload.single('produto_imagem'),async (req, res, next) => {
+module.exports.AddProduct =  async (req, res, next) => {
     console.log(req.file);
     mysql.getConnection((error, conn)  => {
         if (error) { return res.status(500).send({ error: error }) }
@@ -129,7 +109,7 @@ module.exports.GetProduct = async (req, res, next)=> {
     });
 }
 // ALTERA UM PRODUTO
-module.exports.ChangeProduct = (req, res, next) => {
+module.exports.ChangeProduct = async (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return res.status(500).send({ error: error }) }
         conn.query(
