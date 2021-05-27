@@ -254,8 +254,8 @@ class Login extends State<LoginUser> {
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       //salvando dados do user
-      Complemento().saveDataUser(userLogged);
       Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
+      Complemento().saveDataUser(userLogged);
       print(response);
     } else {
       SnackBar snackbar = new SnackBar(

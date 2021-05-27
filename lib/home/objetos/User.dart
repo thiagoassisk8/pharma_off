@@ -6,14 +6,14 @@ class PharmaUser {
   PharmaUser({this.status, this.results, this.data});
 
   PharmaUser.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    results = json['results'];
-    data = (json['response'][0] as List)
-        .map((e) {
-          return Data.fromJson(e);
-        })
-        .cast<dynamic>()
-        .toList();
+    // status = json['status'];
+    // results = json['results'];
+    // data = (json['response'][0] as List)
+    // .map((e) {
+    // return Data.fromJson(e);
+    // })
+    // .cast<dynamic>()
+    // .toList();
   }
 
   Map<String, dynamic> toJson() {
