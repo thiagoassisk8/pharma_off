@@ -89,7 +89,7 @@ class MapaState extends StatelessWidget {
                                 zoomGesturesEnabled: true,
                                 markers: Set<Marker>.of(markers),
                                 myLocationEnabled: true,
-                                padding: EdgeInsets.fromLTRB(50, 50, 10, 50),
+                                padding: EdgeInsets.fromLTRB(90, 90, 10, 90),
                               ),
 
                             ),
