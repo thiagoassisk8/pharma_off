@@ -10,8 +10,11 @@ import 'package:pharma_off/home/servicos/BuscaEstabelecimento.dart';
 
 final sizeconfig = SizeConfig();
 
+
 class MapaState extends StatelessWidget {
   @override
+
+
   Widget build(BuildContext context) {
     List<Marker> getMarkers(List<Estabecimento> estabelecimentos) {
       var markers = List<Marker>();
@@ -22,7 +25,7 @@ class MapaState extends StatelessWidget {
           draggable: false,
           icon: place.icon,
           position:
-              LatLng(place.geometry.location.lat, place.geometry.location.lng),
+          LatLng(place.geometry.location.lat, place.geometry.location.lng),
           infoWindow: InfoWindow(title: place.name, snippet: place.vicinity),
           onTap: () {
             BuscaEstabeleciemento().AddInfoFarmacias(context, place);
@@ -37,7 +40,7 @@ class MapaState extends StatelessWidget {
 
     final currentPosition = Provider.of<Position>(context);
     final estabelecimentosProvider =
-        Provider.of<Future<List<Estabecimento>>>(context);
+    Provider.of<Future<List<Estabecimento>>>(context);
     // final markerService = MarkerService();
 
     return FutureProvider(
@@ -55,54 +58,63 @@ class MapaState extends StatelessWidget {
           ),
           actions: <Widget>[
             IconButton(
-              padding: EdgeInsets.fromLTRB(0, 0, 35, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
               icon: Icon(
                 Icons.assignment,
                 color: Colors.black45,
-                size: 38,
+                size: 28,
               ),
               onPressed: () =>
                   Navigator.pushNamed(context, Lista.NomeNavegacao),
             )
           ],
         ),
-        body: (currentPosition != null)
+        body:
+
+        (currentPosition != null)
             ? Consumer<List<Estabecimento>>(
-                builder: (_, estabelecimentos, __) {
-                  var markers = (estabelecimentos != null)
-                      ? getMarkers(estabelecimentos)
-                      : List<Marker>();
-                  return (estabelecimentos != null)
-                      ? Column(
-                          children: <Widget>[
-                            Container(
-                              height: MediaQuery.of(context).size.height / 1.12,
-                              child: GoogleMap(
-                                mapType: MapType.normal,
-                                initialCameraPosition: CameraPosition(
-                                    target: LatLng(
-                                      currentPosition.latitude,
-                                      currentPosition.longitude,
-                                    ),
-                                    zoom: 15.0),
-                                zoomGesturesEnabled: true,
-                                markers: Set<Marker>.of(markers),
-                                myLocationEnabled: true,
-                                padding: EdgeInsets.fromLTRB(90, 90, 10, 90),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                          ],
-                        )
-                      : Center(child: CircularProgressIndicator());
-                },
-              )
+          builder: (_, estabelecimentos, __) {
+            var markers = (estabelecimentos != null)
+                ? getMarkers(estabelecimentos)
+                : List<Marker>();
+
+            return (estabelecimentos != null)
+                ? Column(
+              children: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height / 1.12,
+
+                  padding: EdgeInsets.only(top: 75.0),
+                  child: GoogleMap(
+
+                    zoomGesturesEnabled: true,
+                    markers: Set<Marker>.of(markers),
+                    myLocationEnabled: true,
+
+                    initialCameraPosition: CameraPosition(
+                        target: LatLng(currentPosition.latitude,
+                          currentPosition.longitude,
+                        ),
+                        zoom: 15.0),
+
+
+                  ),
+                ),
+
+                SizedBox(
+                  height: 10.0,
+                ),
+              ],
+            )
+                : Center(child: CircularProgressIndicator());
+          },
+        )
             : Center(
-                child: CircularProgressIndicator(),
-              ),
+          child: CircularProgressIndicator(),
+        ),
       ),
+
     );
+
   }
 }

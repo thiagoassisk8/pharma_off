@@ -18,8 +18,10 @@ class Desejos extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       title: Row(
         children: [
+
           Text(
             "Lista de Desejos",
             textScaleFactor: 1,

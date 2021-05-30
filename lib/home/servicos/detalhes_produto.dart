@@ -28,6 +28,7 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         backgroundColor: widget.produto.color,
         elevation: 0,
+        centerTitle: true,
         title: Text("Produto",textScaleFactor: 1.1, style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -64,13 +65,13 @@ class _DetailPageState extends State<DetailPage> {
                             // 'Teste',
                             "${widget.produto.name}",
                             style: TextStyle(
-                              fontSize: 32,
+                              fontSize: 22,
                             ),
                           ),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 10),
                         _buildRating(),
-                        SizedBox(height: 24),
+                        SizedBox(height: 10),
                         Text(
                           "Detalhes",
                           style: TextStyle(
@@ -78,7 +79,7 @@ class _DetailPageState extends State<DetailPage> {
                             fontSize: 18,
                           ),
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 10),
                         Text(
                           "${widget.produto.desc}",
                           style: TextStyle(
@@ -113,13 +114,14 @@ class _DetailPageState extends State<DetailPage> {
               child: _buildBottom(),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 50),
+              padding: const EdgeInsets.only(left: 70 , top: 30),
               child: Hero(
                 tag: "hero${widget.produto.imgPath}",
                 child: Transform.rotate(
-                  angle: -math.pi / 7,
+                  angle: -math.pi / 20,
                   child: Image(
-                    width: MediaQuery.of(context).size.width * .85,
+                    width: MediaQuery.of(context).size.width * .60,
+
                     image: AssetImage("assets/images/${widget.produto.imgPath}"),
                   ),
                 ),
@@ -172,6 +174,7 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           Container(
+
             child: FlatButton(
               padding: EdgeInsets.symmetric(
                 vertical: 16,
@@ -224,7 +227,7 @@ class _DetailPageState extends State<DetailPage> {
         // ),
         SizedBox(width: 16),
         Text(
-          "134 Reviews",
+          "10 Reviews",
           style: TextStyle(
             color: Colors.black26,
           ),

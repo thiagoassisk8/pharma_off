@@ -36,7 +36,8 @@ class Promocoes extends StatelessWidget {
                 builder: (_, estabelecimentos, __) {
                   // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
                   return (estabelecimentos != null)
-                      ? Column(
+                      ?  SingleChildScrollView(
+                  child: Column(
                           children: <Widget>[
                             // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
                             Padding(
@@ -47,7 +48,7 @@ class Promocoes extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Text(
-                                    "Categories",
+                                    "Categorias",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 32,
@@ -80,8 +81,9 @@ class Promocoes extends StatelessWidget {
                                         ),
                                       );
                                     },
+
                                     child: Container(
-                                      width: 230,
+                                      width: 240,
                                       margin: EdgeInsets.only(right: 16),
                                       child: Stack(
                                         children: <Widget>[
@@ -90,13 +92,13 @@ class Promocoes extends StatelessWidget {
                                             // child: _buildBackground(index, 230),
                                           ),
                                           Positioned(
-                                            bottom: 130,
-                                            right: 10,
+                                            bottom: 50,
+                                            right: 0,
                                             child: Hero(
                                               tag:
                                                   "hero${ProdutoLista[index].imgPath}",
                                               child: Transform.rotate(
-                                                angle: -math.pi / 7,
+                                                angle: -math.pi / 27,
                                                 child: Image(
                                                   width: 220,
                                                   image: AssetImage(
@@ -120,23 +122,17 @@ class Promocoes extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Text(
-                                    "JUST FOR YOU",
+                                    "SÓ PARA VOCÊ",
                                     style: TextStyle(
                                       color: Colors.black54,
                                       fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    "VIEW ALL",
-                                    style: TextStyle(
-                                      color: Colors.green,
-                                      fontSize: 12,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                             SizedBox(height: 24),
+
                             ...ProdutoLista.map((data) {
                               return GestureDetector(
                                 onTap: () {
@@ -148,6 +144,7 @@ class Promocoes extends StatelessWidget {
                                     ),
                                   );
                                 },
+
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       left: 16, right: 16, bottom: 10),
@@ -166,12 +163,13 @@ class Promocoes extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+
                                   child: Row(
                                     children: <Widget>[
                                       Image(
                                         image: AssetImage(
                                             "assets/images/${data.imgPath}"),
-                                        width: 100,
+                                        width: 80,
                                         height: 60,
                                       ),
                                       SizedBox(width: 16),
@@ -218,10 +216,10 @@ class Promocoes extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              );
+                                );
                             }),
                           ],
-                        )
+                        ))
                       : Center(child: CircularProgressIndicator());
                 },
               )
