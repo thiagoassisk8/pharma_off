@@ -22,6 +22,7 @@ class Cadastro extends State<CadastroUser> {
   String senha;
   String confirmsenha;
   bool _showPassword = false;
+  bool _showPassword2 = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
@@ -96,7 +97,7 @@ class Cadastro extends State<CadastroUser> {
     return TextFormField(
       controller: _senhaController,
       keyboardType: TextInputType.visiblePassword,
-      obscureText: true,
+      obscureText: _showPassword == false ? true : false,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -108,6 +109,17 @@ class Cadastro extends State<CadastroUser> {
         labelStyle: TextStyle(
           fontWeight: FontWeight.w400,
           fontSize: 15,
+        ),
+        suffixIcon: GestureDetector(
+          child: Icon(
+            _showPassword == false ? Icons.visibility_off : Icons.visibility,
+            color: Colors.grey[800],
+          ),
+          onTap: () {
+            setState(() {
+              _showPassword = !_showPassword;
+            });
+          },
         ),
       ),
       validator: (String value) {
@@ -125,7 +137,7 @@ class Cadastro extends State<CadastroUser> {
   Widget _buildConfirmaSenha() {
     return TextFormField(
       keyboardType: TextInputType.visiblePassword,
-      obscureText: true,
+      obscureText: _showPassword2 == false ? true : false,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
@@ -138,7 +150,19 @@ class Cadastro extends State<CadastroUser> {
           fontWeight: FontWeight.w400,
           fontSize: 15,
         ),
+        suffixIcon: GestureDetector(
+          child: Icon(
+            _showPassword2 == false ? Icons.visibility_off : Icons.visibility,
+            color: Colors.grey[800],
+          ),
+          onTap: () {
+            setState(() {
+              _showPassword2 = !_showPassword2;
+            });
+          },
+        ),
       ),
+
       validator: (String value) {
         if (value.isEmpty) {
           return "Confirmação de senha obrigatória";
