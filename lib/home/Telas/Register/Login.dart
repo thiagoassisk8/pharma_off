@@ -20,8 +20,8 @@ class LoginUser extends StatefulWidget {
 class Login extends State<LoginUser> {
   static String NomeNavegacao = "/login";
   @override
-  String email;
-  String senha;
+  String emailUsuario;
+  String senhaUsuario;
 
   bool _showPassword = false;
   GlobalKey<FormState> _key = new GlobalKey();
@@ -60,7 +60,7 @@ class Login extends State<LoginUser> {
         return null;
       },
       onSaved: (String value) {
-        email = value;
+        emailUsuario = value;
       },
     );
   }
@@ -100,7 +100,7 @@ class Login extends State<LoginUser> {
         return null;
       },
       onSaved: (String value) {
-        senha = value;
+        senhaUsuario = value;
       },
     );
   }
@@ -237,13 +237,14 @@ class Login extends State<LoginUser> {
 
     // Map userLogged = Complemento().getnameuser(usuarios, email);
 
-    // if(Complemento().isUser(users, email) != null) {
-    Map userLogged = Complemento().getUsersfromEmail(usuarios, email);
-    var response = await APILogin().login(email, senha);
+    Map userLogged = Complemento().getUsersfromEmail(usuarios, emailUsuario);
+    var response = await APILogin().login(emailUsuario, senhaUsuario);
     // print(response.token);
+    print(userLogged);
     print("OLHAA AQUII O RESPONSE DATA >>${response}");
     // var responsee = await APILogin().login(email, senha);
-    if (response.token != null) {
+    print("RESPONSE:${response}");
+    if (userLogged != null) {
       print('deu tudo certo');
       SnackBar snackbar = new SnackBar(
         content: Text(
@@ -256,7 +257,7 @@ class Login extends State<LoginUser> {
       //salvando dados do user
       Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
       Complemento().saveDataUser(userLogged);
-      print(response.data);
+      print(userLogged);
     } else {
       SnackBar snackbar = new SnackBar(
         content: Text(
@@ -266,7 +267,7 @@ class Login extends State<LoginUser> {
         backgroundColor: Colors.red[600],
       );
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
-      // Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
+      Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
     }
   }
   //  else {

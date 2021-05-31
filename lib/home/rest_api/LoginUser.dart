@@ -4,15 +4,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class APILogin {
-  Future<JsonDefault> login(String email_usuario, String pwd_usuario) async {
+  Future<JsonDefault> login(String emailUsuario, String pwdUsuario) async {
     String url = "10.0.2.2:3000";
     // String url = "rest-api-pharmaoff.herokuapp.com";
 
     final http.Response response = await http.post(
         Uri.http(url, "/usuarios/login"),
         body: jsonEncode(<String, String>{
-          "email_pessoa": email_usuario,
-          "pwd_pessoa": pwd_usuario,
+          "email_pessoa": emailUsuario,
+          "pwd_pessoa": pwdUsuario,
         }),
         headers: <String, String>{
           "content-type": "application/json; charset=UTF-8"

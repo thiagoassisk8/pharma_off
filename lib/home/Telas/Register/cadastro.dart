@@ -173,7 +173,7 @@ class Cadastro extends State<CadastroUser> {
                 _userObject['pwd_usuario'],
                 _userObject['nme_usuario']);
             //verificando usuário
-            if (response.token != null) {
+            if (response != null) {
               SnackBar snackbar = new SnackBar(
                 content: Text(
                   "Usuário cadastrado com sucesso",

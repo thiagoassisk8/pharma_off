@@ -31,9 +31,10 @@ class Data {
   String email_usuario;
   String pwd_usuario;
   String pwd_changed;
+  String token;
 
   Data(this.id_usuario, this.nme_usuario, this.email_usuario, this.pwd_usuario,
-      this.pwd_changed);
+      this.pwd_changed, this.token);
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
@@ -42,7 +43,7 @@ class Data {
       json['email_usuario'] as String,
       json['pwd_usuario'] as String,
       json['pwd_changed'] as String,
-      // json['token'] as String,
+      json['token'] as String,
     );
   }
 }
