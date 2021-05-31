@@ -23,10 +23,10 @@ class Cadastro extends State<CadastroUser> {
   String confirmsenha;
   bool _showPassword = false;
 
-  GlobalKey<FormState> _key = new GlobalKey<FormState>();
-  bool _validate = false;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
   final GlobalKey<FormState> _formKeyToken = GlobalKey<FormState>();
+  bool _validate = false;
   bool _rememberMe = false;
 
   BuildContext get context => null;
@@ -161,17 +161,17 @@ class Cadastro extends State<CadastroUser> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
+          print(_formKey2);
           if (!_formKeyToken.currentState.validate()) {
             return;
           } else {
-            // _formKey.currentState.save();
-
             _formKeyToken.currentState.save();
 
-            var response = await APISingUp().singUp(
-                _userObject['email_usuario'],
-                _userObject['pwd_usuario'],
-                _userObject['nme_usuario']);
+            // _formKeyToken.currentState.save();
+
+            var response = await APISingUp().singUp(_userObject['nme_usuario'],
+                _userObject['email_usuario'], _userObject['pwd_usuario']);
+            print(response);
             //verificando usuário
             if (response != null) {
               SnackBar snackbar = new SnackBar(
@@ -236,7 +236,7 @@ class Cadastro extends State<CadastroUser> {
               margin: new EdgeInsets.all(15.0),
               child: new Form(
                 key: _formKeyToken,
-                autovalidate: _validate,
+                // autovalidate: _validate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
