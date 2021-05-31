@@ -3,7 +3,7 @@ const router = express.Router();
 const mysql = require('../mysql').pool;
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const UsersControlles = require('../controllers/UsersControllers');
+const UsersControlles = require('../controllers/UsersService');
 
 router.post('/cadastro', UsersControlles.addUser);
 

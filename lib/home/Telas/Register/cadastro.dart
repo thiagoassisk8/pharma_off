@@ -59,16 +59,19 @@ class Cadastro extends State<CadastroUser> {
         return null;
       },
       onSaved: (String value) {
-        _userObject['email_pessoa'] = value;
+        _userObject['email_usuario'] = value;
       },
     );
   }
+
   Widget _buildNome() {
     return TextFormField(
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(25),),
+          borderRadius: BorderRadius.all(
+            Radius.circular(25),
+          ),
         ),
         prefixIcon: Icon(Icons.account_circle_rounded),
         labelText: "Nome",
@@ -78,16 +81,17 @@ class Cadastro extends State<CadastroUser> {
         ),
       ),
       validator: (String value) {
-        if(value.isEmpty) {
+        if (value.isEmpty) {
           return "Nome Obrigatório";
         }
         return null;
       },
       onSaved: (String value) {
-        _userObject['vhr_nome'] = value;
+        _userObject['nme_usuario'] = value;
       },
     );
   }
+
   Widget _buildPasswordTF() {
     return TextFormField(
       controller: _senhaController,
@@ -113,7 +117,7 @@ class Cadastro extends State<CadastroUser> {
         return null;
       },
       onSaved: (String value) {
-        _userObject['pwd_pessoa'] = value;
+        _userObject['pwd_usuario'] = value;
       },
     );
   }
@@ -144,9 +148,9 @@ class Cadastro extends State<CadastroUser> {
         }
         return null;
       },
-      onSaved: (String value) {
-        _userObject['pwd_pessoa'] = value;
-      },
+      // onSaved: (String value) {
+      // _userObject['pwd_usuario'] = value;
+      // },
     );
   }
 
@@ -157,15 +161,17 @@ class Cadastro extends State<CadastroUser> {
       child: RaisedButton(
         elevation: 5.0,
         onPressed: () async {
-          if (!_formKey.currentState.validate()) {
+          if (!_formKeyToken.currentState.validate()) {
             return;
           } else {
-            _formKey.currentState.save();
+            // _formKey.currentState.save();
 
             _formKeyToken.currentState.save();
 
-            var response = await APISingUp().singUp(_userObject['email_pessoa'],
-                _userObject['pwd_pessoa'], _userObject['nme_pessoa']);
+            var response = await APISingUp().singUp(
+                _userObject['email_usuario'],
+                _userObject['pwd_usuario'],
+                _userObject['nme_usuario']);
             //verificando usuário
             if (response.token != null) {
               SnackBar snackbar = new SnackBar(
@@ -176,7 +182,7 @@ class Cadastro extends State<CadastroUser> {
                 backgroundColor: Colors.green[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
+              // Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
             } else {
               SnackBar snackbar = new SnackBar(
                 content: Text(
@@ -186,7 +192,7 @@ class Cadastro extends State<CadastroUser> {
                 backgroundColor: Colors.red[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              Navigator.of(context).pushReplacementNamed(Login.NomeNavegacao);
+              // Navigator.of(context).pushReplacementNamed(Login.NomeNavegacao);
             }
           }
         },
@@ -229,7 +235,7 @@ class Cadastro extends State<CadastroUser> {
           child: new Container(
               margin: new EdgeInsets.all(15.0),
               child: new Form(
-                key: _formKey,
+                key: _formKeyToken,
                 autovalidate: _validate,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -259,9 +265,9 @@ class Cadastro extends State<CadastroUser> {
   }
 
   _sendForm() {
-    if (_formKey.currentState.validate()) {
+    if (_formKeyToken.currentState.validate()) {
       // Sem erros na validação
-      _formKey.currentState.save();
+      // _formKey.currentState.save();
       print("Email $email");
       print("Digite sua senha $senha");
       print("Digite a senha novamente $confirmsenha");
