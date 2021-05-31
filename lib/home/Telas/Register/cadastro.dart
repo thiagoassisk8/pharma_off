@@ -17,6 +17,7 @@ class Cadastro extends State<CadastroUser> {
   @override
   var _userObject = {};
   final _senhaController = TextEditingController();
+  String nome;
   String email;
   String senha;
   String confirmsenha;
@@ -29,6 +30,7 @@ class Cadastro extends State<CadastroUser> {
   bool _rememberMe = false;
 
   BuildContext get context => null;
+
   Widget _buildEmailTF() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
@@ -61,7 +63,31 @@ class Cadastro extends State<CadastroUser> {
       },
     );
   }
-
+  Widget _buildNome() {
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(25),),
+        ),
+        prefixIcon: Icon(Icons.account_circle_rounded),
+        labelText: "Nome",
+        labelStyle: TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 15,
+        ),
+      ),
+      validator: (String value) {
+        if(value.isEmpty) {
+          return "Nome Obrigatório";
+        }
+        return null;
+      },
+      onSaved: (String value) {
+        _userObject['vhr_nome'] = value;
+      },
+    );
+  }
   Widget _buildPasswordTF() {
     return TextFormField(
       controller: _senhaController,
@@ -213,7 +239,9 @@ class Cadastro extends State<CadastroUser> {
                       fit: BoxFit.fill,
                       height: 60.0,
                     ),
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 40.0),
+                    _buildNome(),
+                    SizedBox(height: 40.0),
                     _buildEmailTF(),
                     SizedBox(height: 50.0),
                     _buildPasswordTF(),

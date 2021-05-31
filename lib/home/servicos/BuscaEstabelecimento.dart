@@ -74,7 +74,7 @@ class BuscaEstabeleciemento {
 
               Container(
                   color: AzulPrimario,
-                  height: 60,
+                  height: 50,
                   width: MediaQuery.of(context).size.width,
                   padding: EdgeInsets.symmetric(vertical: 10),
                   child: Column(
@@ -82,17 +82,14 @@ class BuscaEstabeleciemento {
                       children: <Widget>[
                         Text(place.name,
                             style: TextStyle(
-                              fontSize: 17,
-                              fontFamily: 'RobotoMono',
+                              fontSize: 20,
+                              fontFamily: 'Raleway',
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             )),
-                        Text(place.open_now.toString(),
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: 'RobotoMono',
-                                color: Colors.black)),
+
                       ])),
+
 
               SizedBox(
                   width: MediaQuery.of(context).size.width, // set this
@@ -101,7 +98,7 @@ class BuscaEstabeleciemento {
                       children: <Widget>[
                         Text("Endereço: \n" + place.vicinity,
                             style: TextStyle(
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontFamily: 'RobotoMono',
                                 color: Colors.black)),
                         Column(
