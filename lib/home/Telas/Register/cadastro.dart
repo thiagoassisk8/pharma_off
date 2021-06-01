@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
-import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/rest_api/SignUpUser.dart';
 
@@ -29,8 +28,6 @@ class Cadastro extends State<CadastroUser> {
   final GlobalKey<FormState> _formKeyToken = GlobalKey<FormState>();
   bool _validate = false;
   bool _rememberMe = false;
-
-  BuildContext get context => null;
 
   Widget _buildEmailTF() {
     return TextFormField(
@@ -206,7 +203,7 @@ class Cadastro extends State<CadastroUser> {
                 backgroundColor: Colors.green[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              // Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
+              Navigator.pushReplacementNamed(context, Login.NomeNavegacao);
             } else {
               SnackBar snackbar = new SnackBar(
                 content: Text(
@@ -216,7 +213,8 @@ class Cadastro extends State<CadastroUser> {
                 backgroundColor: Colors.red[600],
               );
               ScaffoldMessenger.of(context).showSnackBar(snackbar);
-              // Navigator.of(context).pushReplacementNamed(Login.NomeNavegacao);
+              Navigator.of(context)
+                  .pushReplacementNamed(Cadastro.NomeNavegacao);
             }
           }
         },
