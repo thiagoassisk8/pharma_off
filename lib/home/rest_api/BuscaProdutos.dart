@@ -2,10 +2,10 @@ import "dart:async";
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:http/http.dart' as http;
 
+// String url = "localhost:3000";
 class APIGetProdutos {
   Future<Produto> getAllProdutos() async {
-    String url = "localhost:3000";
-    // String url = "rest-api-pharmaoff.herokuapp.com";
+    String url = "rest-pharmaoff.herokuapp.com";
 
     final http.Response response = await http.get(Uri.http(url, "/produtos"));
     if (response.statusCode == 200) {
