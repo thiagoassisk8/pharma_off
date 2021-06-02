@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pharma_off/home/Navigation_bar/coustom_bottom_nav_bar.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
@@ -22,7 +23,7 @@ class Login extends State<LoginUser> {
   @override
   String emailUsuario;
   String senhaUsuario;
-
+  bool isLogged = false;
   bool _showPassword = false;
   GlobalKey<FormState> _key = new GlobalKey();
 
@@ -246,6 +247,8 @@ class Login extends State<LoginUser> {
     print("RESPONSE:${response}");
     if (userLogged != null) {
       print('deu tudo certo');
+      isLogged = true;
+      // CustomBottomNavBar.islogged = true;
       SnackBar snackbar = new SnackBar(
         content: Text(
           "Usuário Logado com Sucesso!!",
@@ -253,12 +256,14 @@ class Login extends State<LoginUser> {
         ),
         backgroundColor: Colors.green[600],
       );
+
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       //salvando dados do user
       Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
       Complemento().saveDataUser(userLogged);
       print(userLogged);
     } else {
+      isLogged = false;
       SnackBar snackbar = new SnackBar(
         content: Text(
           "E-mail ou Senha Inválidos!!",

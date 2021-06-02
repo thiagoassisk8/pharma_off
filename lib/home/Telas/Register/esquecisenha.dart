@@ -1,20 +1,49 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/rest_api/EsqueciSenha.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 class Esquecisenha extends StatelessWidget {
   static String NomeNavegacao = "/esquecisenha";
-  @override
-  String email;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String senha;
-  bool _showPassword = false;
-  GlobalKey<FormState> _key = new GlobalKey();
-  bool _validate = false;
+  String email;
+  @override
+  // String senha;
+  // bool _showPassword = false;
   bool _rememberMe = false;
 
-  BuildContext get context => null;
   Widget build(BuildContext context) {
+    _sendForm() async {
+      if (!_formKey.currentState.validate()) {
+        return null;
+      } else {
+        _formKey.currentState.save();
+        var response = await APIForgottenPwd().forgotPassword(email);
+        print(response.status);
+
+        if (response.status != "success") {
+          SnackBar snackbar = new SnackBar(
+            content: Text(
+              "Não existe uma conta com este e-mail!!",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.red[600],
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+        } else {
+          SnackBar snackbar = new SnackBar(
+            content: Text(
+              "Enviado com Sucesso!!",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: Colors.green[600],
+          );
+          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+          print(response.data);
+        }
+      }
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -74,37 +103,41 @@ class Esquecisenha extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(25),
-                    ),
-                  ),
-                  prefixIcon: Icon(Icons.email_rounded),
-                  labelText: "E-mail",
-                  labelStyle: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 15,
+              key: _formKey,
+              keyboardType: TextInputType.emailAddress,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(25),
                   ),
                 ),
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return "E-mail Obrigatório";
-                  }
-                  if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-                      .hasMatch(value)) {
-                    return "Por Favor, entre com um e-mail válido";
-                  }
-                  return null;
-                }),
+                prefixIcon: Icon(Icons.email_rounded),
+                labelText: "E-mail",
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 15,
+                ),
+              ),
+              validator: (String value) {
+                if (value.isEmpty) {
+                  return "E-mail Obrigatório";
+                }
+                if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                    .hasMatch(value)) {
+                  return "Por Favor, entre com um e-mail válido";
+                }
+                return null;
+              },
+              onSaved: (String value) {
+                email = value;
+              },
+            ),
             SingleChildScrollView(
               padding: EdgeInsets.all(10.0),
               child: new Container(
                 margin: new EdgeInsets.all(15.0),
                 child: new Form(
-                  key: _key,
-                  autovalidate: _validate,
+                  // autovalidate: _validate,
                   child: RaisedButton(
                     elevation: 5.0,
                     onPressed: _sendForm,
@@ -131,18 +164,5 @@ class Esquecisenha extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  _sendForm() {
-    if (_key.currentState.validate()) {
-      // Sem erros na validação
-      _key.currentState.save();
-      print("Email $email");
-    } else {
-      // erro de validação
-      //setState(() {
-      //_validate = true;
-      // });
-    }
   }
 }

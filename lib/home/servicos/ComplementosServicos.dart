@@ -1,3 +1,5 @@
+import 'package:path/path.dart';
+
 class Complemento {
   int id_usuario = 0;
   String nme_usuario = "";
@@ -35,5 +37,13 @@ class Complemento {
     nme_usuario = userLogged['nme_usuario'];
     email_usuario = userLogged['email_usuario'];
     // token = userLogged['token'];
+  }
+
+  bool isLogged(userstatus) {
+    if (userstatus == true) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

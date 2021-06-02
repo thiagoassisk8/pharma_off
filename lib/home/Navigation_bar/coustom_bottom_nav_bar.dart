@@ -6,9 +6,15 @@ import 'package:pharma_off/home/Telas/promocoes.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
+import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
+import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
+
+// var listUsers = await APIGetUsers().getAllUsers();
+// var usuarios = listUsers.data;
 
 enum MenuState { home, favorite, message, profile }
 
+// Map userLogged = Complemento().getUsersfromEmail(usuarios, emailUsuario);
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
     Key key,
@@ -75,13 +81,18 @@ class CustomBottomNavBar extends StatelessWidget {
                     Navigator.pushNamed(context, formulario.NomeNavegacao),
               ),
               IconButton(
-                icon: SvgPicture.asset(
-                  "assets/icons/user.svg",
-                  color: Colors.black,
-                ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Login.NomeNavegacao),
-              ),
+                  icon: SvgPicture.asset(
+                    "assets/icons/user.svg",
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    // if (Login.isLogged == false) {
+                    Navigator.pushNamed(context, Login.NomeNavegacao);
+                    // } else {
+                    // Navigator.pushReplacementNamed(
+                    // context, ProfileScreen.NomeNavegacao);
+                    // }
+                  }),
             ],
           )),
     );
