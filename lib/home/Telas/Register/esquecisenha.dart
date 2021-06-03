@@ -7,43 +7,13 @@ class Esquecisenha extends StatelessWidget {
   static String NomeNavegacao = "/esquecisenha";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String email;
+  bool _rememberMe = false;
   @override
   // String senha;
   // bool _showPassword = false;
-  bool _rememberMe = false;
 
   Widget build(BuildContext context) {
-    _sendForm() async {
-      if (!_formKey.currentState.validate()) {
-        return null;
-      } else {
-        _formKey.currentState.save();
-        var response = await APIForgottenPwd().forgotPassword(email);
-        print(response.status);
-
-        if (response.status != "success") {
-          SnackBar snackbar = new SnackBar(
-            content: Text(
-              "Não existe uma conta com este e-mail!!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            backgroundColor: Colors.red[600],
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackbar);
-        } else {
-          SnackBar snackbar = new SnackBar(
-            content: Text(
-              "Enviado com Sucesso!!",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            backgroundColor: Colors.green[600],
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackbar);
-          print(response.data);
-        }
-      }
-    }
-
+    // _sendForm()
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -140,7 +110,6 @@ class Esquecisenha extends StatelessWidget {
                   // autovalidate: _validate,
                   child: RaisedButton(
                     elevation: 5.0,
-                    onPressed: _sendForm,
                     padding: EdgeInsets.all(15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
@@ -156,6 +125,40 @@ class Esquecisenha extends StatelessWidget {
                         fontFamily: 'OpenSans',
                       ),
                     ),
+                    onPressed: () async {
+                      print('fORM KEY>>> ${_formKey.currentState}');
+                      if (!_formKey.currentState.validate()) {
+                        return null;
+                      } else {
+                        _formKey.currentState.save();
+                        var response =
+                            await APIForgottenPwd().forgotPassword(email);
+                        print(response.status);
+
+                        if (response.status != "success") {
+                          SnackBar snackbar = new SnackBar(
+                            content: Text(
+                              "Não existe uma conta com este e-mail!!",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            backgroundColor: Colors.red[600],
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                        } else {
+                          SnackBar snackbar = new SnackBar(
+                            content: Text(
+                              "Enviado com Sucesso!!",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            backgroundColor: Colors.green[600],
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                          print(response.data);
+                        }
+                      }
+                    },
                   ),
                 ),
               ),

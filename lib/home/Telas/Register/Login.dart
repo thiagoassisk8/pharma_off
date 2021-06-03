@@ -23,7 +23,7 @@ class Login extends State<LoginUser> {
   @override
   String emailUsuario;
   String senhaUsuario;
-  bool isLogged = false;
+  bool isUserLogged = false;
   bool _showPassword = false;
   GlobalKey<FormState> _key = new GlobalKey();
 
@@ -33,6 +33,15 @@ class Login extends State<LoginUser> {
   //Widgets
   //E-mail
   bool _rememberMe = false;
+  bool isLogged(userstatus) {
+    if (userstatus == true) {
+      isUserLogged = true;
+      return isUserLogged;
+    } else {
+      isUserLogged = false;
+      return isUserLogged;
+    }
+  }
 
   Widget _buildEmailTF() {
     return TextFormField(
@@ -247,7 +256,8 @@ class Login extends State<LoginUser> {
     print("RESPONSE:${response}");
     if (userLogged != null) {
       print('deu tudo certo');
-      isLogged = true;
+      isUserLogged = true;
+      print(isUserLogged);
       // CustomBottomNavBar.islogged = true;
       SnackBar snackbar = new SnackBar(
         content: Text(
@@ -263,7 +273,7 @@ class Login extends State<LoginUser> {
       Complemento().saveDataUser(userLogged);
       print(userLogged);
     } else {
-      isLogged = false;
+      isUserLogged = false;
       SnackBar snackbar = new SnackBar(
         content: Text(
           "E-mail ou Senha Inválidos!!",

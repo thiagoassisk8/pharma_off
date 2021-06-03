@@ -11,6 +11,8 @@ import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
 
 // var listUsers = await APIGetUsers().getAllUsers();
 // var usuarios = listUsers.data;
+// bool Login().islogged = false;
+bool isUserlogged = Login().isLogged(false);
 
 enum MenuState { home, favorite, message, profile }
 
@@ -86,12 +88,13 @@ class CustomBottomNavBar extends StatelessWidget {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    // if (Login.isLogged == false) {
-                    Navigator.pushNamed(context, Login.NomeNavegacao);
-                    // } else {
-                    // Navigator.pushReplacementNamed(
-                    // context, ProfileScreen.NomeNavegacao);
-                    // }
+                    print(isUserlogged);
+                    if (isUserlogged == false) {
+                      Navigator.pushNamed(context, Login.NomeNavegacao);
+                    } else if (isUserlogged == true) {
+                      Navigator.pushReplacementNamed(
+                          context, ProfileScreen.NomeNavegacao);
+                    }
                   }),
             ],
           )),
