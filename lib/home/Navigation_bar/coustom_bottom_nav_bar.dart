@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
-import 'package:pharma_off/home/Telas/promocoes.dart';
+import 'package:pharma_off/home/Telas/categorias/promocoes.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
@@ -55,7 +56,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, Promocoes.NomeNavegacao),
+                    Navigator.pushNamed(context, Categoria.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset(
@@ -84,7 +85,7 @@ class CustomBottomNavBar extends StatelessWidget {
               ),
               IconButton(
                   icon: SvgPicture.asset(
-                    "assets/icons/user.svg",
+                    "assets/icons/User Icon.svg",
                     color: Colors.black,
                   ),
                   onPressed: () {

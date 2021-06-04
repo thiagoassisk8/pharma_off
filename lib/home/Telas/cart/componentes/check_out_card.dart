@@ -6,11 +6,13 @@ import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
+import '../../../objetos/produto.dart';
+
 
 class CheckoutCard extends StatelessWidget {
   void CalcularCartFinal(product) {
     for (var i=0;i<3;i++){
-      print(Cart(produto: Produto.list[i], numDeItem: i));
+      print(Cart(produto: Produto.ofertaslist[i], numDeItem: i));
 
     }
     // print(Cart(produto: Produto.list[0], numDeItem: 0));
@@ -94,7 +96,7 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Aplicar Cupom",
-                    press: (){CalcularCartFinal(Produto.list[0].price);},
+                    press: (){CalcularCartFinal(Produto.ofertaslist[0].price);},
                     // CalcularCartFinal(Cart);
                   ),
                 ),
