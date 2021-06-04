@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
-import 'package:pharma_off/home/Telas/categorias/promocoes.dart';
+import 'package:pharma_off/home/Telas/categorias/pele.dart';
 import 'package:pharma_off/home/Telas/categorias/higiene.dart';
 import 'package:pharma_off/home/Telas/categorias/remedios.dart';
 
@@ -10,9 +10,9 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Rémedios"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Higiene"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Ofertas"},
+      {"icon": "assets/icons/remedio.svg", "text": "Remédios"},
+      {"icon": "assets/icons/higi.svg", "text": "Higiene"},
+      {"icon": "assets/icons/make.svg", "text": "Cuidados Pele e Cabelo"},
 
     ];
     return Padding(
@@ -33,7 +33,7 @@ class Categories extends StatelessWidget {
                 Navigator.pushNamed(context, Higiene.NomeNavegacao);
               }
               else if(index ==2){
-                Navigator.pushNamed(context, Promocoes.NomeNavegacao);
+                Navigator.pushNamed(context, Pele.NomeNavegacao);
               }
                 },
           ),

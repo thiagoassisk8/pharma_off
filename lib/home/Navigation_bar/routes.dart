@@ -5,9 +5,10 @@ import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
-import 'package:pharma_off/home/Telas/categorias/promocoes.dart';
+import 'package:pharma_off/home/Telas/categorias/pele.dart';
 import 'package:pharma_off/home/Telas/categorias/remedios.dart';
 import 'package:pharma_off/home/Telas/categorias/higiene.dart';
+import 'package:pharma_off/home/Telas/categorias/promo.dart';
 import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/home_screen.dart';
@@ -23,10 +24,11 @@ final Map<String, WidgetBuilder> navegacoes = {
   Login.NomeNavegacao: (context) => LoginUser(),
   Cadastro.NomeNavegacao: (context) => CadastroUser(),
   ProfileScreen.NomeNavegacao: (context) => ProfileScreen(),
-  Promocoes.NomeNavegacao: (context) => Promocoes(),
+  Pele.NomeNavegacao: (context) => Pele(),
   Categoria.NomeNavegacao: (context) => Categoria(),
   Desejos.NomeNavegacao: (context) => Desejos(),
   Remedios.NomeNavegacao: (context) => Remedios(),
+  Promocoes.NomeNavegacao: (context) => Promocoes(),
   Higiene.NomeNavegacao: (context) => Higiene(),
   Esquecisenha.NomeNavegacao: (context) => Esquecisenha(),
   // CartScreen.NomeNavegacao: (context) => CartScreen(),

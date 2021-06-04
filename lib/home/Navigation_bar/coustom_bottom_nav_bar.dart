@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
-import 'package:pharma_off/home/Telas/categorias/promocoes.dart';
+import 'package:pharma_off/home/Telas/categorias/promo.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
@@ -64,7 +64,7 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black87,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, Desejos.NomeNavegacao),
+                    Navigator.pushNamed(context, Promocoes.NomeNavegacao),
               ),
               IconButton(
                 icon: SvgPicture.asset(

@@ -6,7 +6,6 @@ class SearchField extends StatelessWidget {
   const SearchField({
     Key key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +23,7 @@ class SearchField extends StatelessWidget {
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
-            hintText: "Search product",
+            hintText: "Procurar produto",
             prefixIcon: Icon(Icons.search)),
       ),
     );
