@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/Telas/details/details_screen.dart';
+import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 
 import 'package:pharma_off/palheta/constants.dart';
 import 'package:pharma_off/palheta/size_config.dart';
@@ -11,7 +12,7 @@ import 'package:pharma_off/palheta/size_config.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({
     Key key,
-    this.width = 140,
+    this.width = 240,
     this.aspectRetio = 1.02,
     @required this.product,
   }) : super(key: key);
@@ -22,14 +23,17 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.only(left: getProportionateScreenWidth(30)),
+
       child: SizedBox(
         width: getProportionateScreenWidth(width),
         child: GestureDetector(
-          onTap: () => Navigator.pushNamed(
-            context,
-            DetailsScreen.routeName,
-            arguments: ProductDetailsArguments(product: product),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (_) => DetailPage(
+                product,
+              ),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +62,7 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\$${product.price}",
+                    "R\$${product.price}",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(18),
                       fontWeight: FontWeight.w600,

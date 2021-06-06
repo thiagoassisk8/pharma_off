@@ -12,6 +12,7 @@ import 'package:pharma_off/home/Telas/categorias/promo.dart';
 import 'package:pharma_off/home/Telas/GeoLocator/lista.dart';
 import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/home_screen.dart';
+import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:pharma_off/splash/splash_screen.dart';
 
 // All our routes will be available here
@@ -31,5 +32,6 @@ final Map<String, WidgetBuilder> navegacoes = {
   Promocoes.NomeNavegacao: (context) => Promocoes(),
   Higiene.NomeNavegacao: (context) => Higiene(),
   Esquecisenha.NomeNavegacao: (context) => Esquecisenha(),
+
   // CartScreen.NomeNavegacao: (context) => CartScreen(),
 };

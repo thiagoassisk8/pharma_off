@@ -68,7 +68,7 @@ class Produto {
       categoria: 3,
       estabelecimento: "Drogasil",
       name: "Mascaras",
-      desc: "Máscara cirúrgica descartável com clipe nasal ajustável totalmente revestido, atóxica, hipoalérgica, oferecendo filtragem de no mínimo 95% de eficácia, com elástico. INDICAÇÃO DE USO:A máscara cirúrgica deve ser utilizada por profis...",
+      desc: "Máscara cirúrgica descartável com clipe nasal ajustável totalmente revestido, atóxica, hipoalérgica, oferecendo filtragem de no mínimo 95% de eficácia, com elástico. INDICAÇÃO DE USO:A máscara cirúrgica deve ser utilizada por profissionais...",
       price: 40.50,
       color: AppColors.blueColor,
       imgPath: "mascaras.png",

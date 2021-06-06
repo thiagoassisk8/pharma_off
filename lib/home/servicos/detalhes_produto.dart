@@ -12,6 +12,7 @@ void AddnoCarrinho(product) {
 }
 
 class DetailPage extends StatefulWidget {
+  static String NomeNavegacao = "/detailpage";
   final Produto produto;
   DetailPage(this.produto);
 

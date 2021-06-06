@@ -61,26 +61,26 @@ class Promocoes extends StatelessWidget {
                                   ),
                                 ],
                               ),
+                            ), Container(
+                            height: 300,
+                            margin: EdgeInsets.symmetric(vertical: 16),
+                            child: ListView.builder(
+                            itemCount: ProdutoLista.length,
+                            scrollDirection: Axis.horizontal,
+                            physics: BouncingScrollPhysics(),
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            itemBuilder: (context, index) {
+                            return GestureDetector(
+                            onTap: () {
+                            Navigator.of(context).push(
+                            MaterialPageRoute(
+                            builder: (_) => DetailPage(
+                            ProdutoLista[index],
                             ),
-                            Container(
-                              height: 300,
-                              margin: EdgeInsets.symmetric(vertical: 16),
-                              child: ListView.builder(
-                                itemCount: ProdutoLista.length,
-                                scrollDirection: Axis.horizontal,
-                                physics: BouncingScrollPhysics(),
-                                padding: EdgeInsets.symmetric(horizontal: 16),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (_) => DetailPage(
-                                            ProdutoLista[index],
-                                          ),
-                                        ),
-                                      );
-                                    },
+                            ),
+                            );
+                            },
+
 
                                     child: Container(
                                       width: 240,

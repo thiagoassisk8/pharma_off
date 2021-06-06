@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:pharma_off/palheta/constants.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 
-class SearchField extends StatelessWidget {
-  const SearchField({
-    Key key,
-  }) : super(key: key);
+class Pesquisa extends StatefulWidget {
   @override
+  State<StatefulWidget> createState() {
+    return pesquisa();
+  }
+}
+
+class pesquisa extends State<Pesquisa>{
+  static String NomeNavegacao = "/pesquisa";
+  @override
+  String filterText = "";
   Widget build(BuildContext context) {
+
     return Container(
       width: SizeConfig.screenWidth * 0.6,
       decoration: BoxDecoration(
@@ -15,7 +22,11 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
-        onChanged: (value) => print(value),
+        onChanged: (text) {
+        setState(() {
+        filterText = text;
+      });
+        },
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(20),
@@ -28,4 +39,6 @@ class SearchField extends StatelessWidget {
       ),
     );
   }
+
+
 }
