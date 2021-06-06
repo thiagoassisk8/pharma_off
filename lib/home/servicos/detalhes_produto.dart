@@ -166,7 +166,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               Text(
-                "R\$ ${widget.produto.price.toInt()}",
+                "R\$ ${widget.produto.price.toDouble()}",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 23,

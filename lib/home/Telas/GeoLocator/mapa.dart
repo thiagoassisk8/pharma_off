@@ -89,7 +89,7 @@ class MapaState extends StatelessWidget {
 
                     zoomGesturesEnabled: true,
                     markers: Set<Marker>.of(markers),
-                    myLocationEnabled: true,
+                    //myLocationEnabled: true,
 
                     initialCameraPosition: CameraPosition(
                         target: LatLng(currentPosition.latitude,
