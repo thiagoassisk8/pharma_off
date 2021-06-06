@@ -66,8 +66,8 @@ class BuscaEstabeleciemento {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15)),
                 child: Image.network(
-                    'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&type=drugstore&rankby=distance&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0',
-                    height: 200.0,
+                    'https://i.ytimg.com/vi/w8eHBVL4xjE/maxresdefault.jpg',
+                    height: 180.0,
                     width: MediaQuery.of(context).size.width,
                     fit: BoxFit.cover),
               ),
@@ -87,9 +87,7 @@ class BuscaEstabeleciemento {
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                             )),
-
                       ])),
-
 
               SizedBox(
                   width: MediaQuery.of(context).size.width, // set this
