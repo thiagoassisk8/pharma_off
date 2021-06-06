@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
-import 'package:pharma_off/home/Telas/details/details_screen.dart';
+// import 'package:pharma_off/home/Telas/details/details_screen.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 
 import 'package:pharma_off/palheta/constants.dart';
 import 'package:pharma_off/palheta/size_config.dart';
-
-
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -24,7 +22,6 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(30)),
-
       child: SizedBox(
         width: getProportionateScreenWidth(width),
         child: GestureDetector(
