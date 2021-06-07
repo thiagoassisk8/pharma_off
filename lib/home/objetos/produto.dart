@@ -24,7 +24,7 @@ class Produto {
     data['status'] = this.status;
     data['results'] = this.results;
     data['data'] = this.data;
-    print(data);
+    print('chega até aqui? || Data >> ${data}');
     return data;
   }
 }
@@ -35,7 +35,7 @@ class Data {
   // List<dynamic> higienelist = [];
   int id;
   String name;
-  double price;
+  String price;
   String desc;
   String imgPath;
   bool isFavourite;
@@ -51,7 +51,7 @@ class Data {
     return Data(
       json['id_produto'] as int,
       json['nme_produto'] as String,
-      json['preco_produto'] as double,
+      json['preco_produto'] as String,
       json['desc_produto'] as String,
       json['cod_categoria'] as int,
       json['img_produto'] as String,

@@ -1,4 +1,5 @@
 import 'package:path/path.dart';
+import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 
 class Complemento {
   int id_usuario = 0;
@@ -30,6 +31,16 @@ class Complemento {
         return usuario;
       }
     }
+  }
+
+  Future getProdutos() async {
+    var listProdutos = await APIGetProdutos().getAllProdutos();
+    // produtosData = [];
+    for (var produto in listProdutos.data) {
+      // produtosData.add(produto);
+
+    }
+    // return alunosData;
   }
 
   void saveDataUser(Map userLogged) {

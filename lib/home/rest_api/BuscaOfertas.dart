@@ -13,11 +13,11 @@ class APIGetOfertas {
     if (response.statusCode == 200) {
       print("Status code: ${response.statusCode}");
       print("Ofertas da API: ${response.body}");
-      return Produto.fromJson(json.decode(response.body));
+      return Produto.fromJson(json.decode(response.body.toString()));
     } else if (response.statusCode == 401) {
       print("${response.statusCode}");
       print("${response.body}");
-      return Produto.fromJson(json.decode(response.body));
+      return Produto.fromJson(json.decode(response.body.toString()));
     }
     return null;
   }
