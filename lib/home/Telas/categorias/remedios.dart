@@ -12,7 +12,7 @@ import 'dart:math' as math;
 
 class Remedios extends StatelessWidget {
   static String NomeNavegacao = "/remedios";
-  List<Produto> remedioLista = Produto.remediolist;
+  List<LocalHost> remedioLista = LocalHost.remediolist;
   @override
   Widget build(BuildContext context) {
     final currentPosition = Provider.of<Position>(context);

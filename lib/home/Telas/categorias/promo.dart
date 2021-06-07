@@ -12,7 +12,7 @@ import 'dart:math' as math;
 
 class Promocoes extends StatelessWidget {
   static String NomeNavegacao = "/promocoes";
-  List<Produto> ProdutoLista = Produto.Produtolist;
+  List<LocalHost> ProdutoLista = LocalHost.LocalHostlist;
   @override
   Widget build(BuildContext context) {
     final currentPosition = Provider.of<Position>(context);

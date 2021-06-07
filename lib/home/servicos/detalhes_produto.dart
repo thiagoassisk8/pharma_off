@@ -3,17 +3,16 @@ import 'package:pharma_off/home/servicos/app_clipper.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:pharma_off/home/objetos/Cart.dart';
+import 'package:pharma_off/palheta/theme.dart';
 
 void AddnoCarrinho(product) {
-  listaCarrinho.add(Cart(produto: product,numDeItem: 1));
+  listaCarrinho.add(Cart(produto: product, numDeItem: 1));
   print(listaCarrinho);
-
-
 }
 
 class DetailPage extends StatefulWidget {
   static String NomeNavegacao = "/detailpage";
-  final Produto produto;
+  final LocalHost produto;
   DetailPage(this.produto);
 
   @override
@@ -23,14 +22,15 @@ class DetailPage extends StatefulWidget {
 class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor: widget.produto.color,
+      backgroundColor: AzulPrimario,
       appBar: AppBar(
-        backgroundColor: widget.produto.color,
+        backgroundColor: AzulPrimario,
         elevation: 0,
         centerTitle: true,
-        title: Text("Produto",textScaleFactor: 1.1, style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
+        title: Text("Produto",
+            textScaleFactor: 1.1,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -89,20 +89,20 @@ class _DetailPageState extends State<DetailPage> {
                         ),
                         // SizedBox(height: 24),
                         // Text(
-                          // "COLOR OPTIONS",
-                          // style: TextStyle(
-                          //   fontWeight: FontWeight.bold,
-                          //   fontSize: 18,
-                          // ),
+                        // "COLOR OPTIONS",
+                        // style: TextStyle(
+                        //   fontWeight: FontWeight.bold,
+                        //   fontSize: 18,
+                        // ),
                         // ),
                         // SizedBox(height: 16),
                         // Row(
-                          // children: <Widget>[
-                          //   _buildColorOption(AppColors.blueColor),
-                          //   _buildColorOption(AppColors.greenColor),
-                          //   _buildColorOption(AppColors.orangeColor),
-                          //   _buildColorOption(AppColors.redColor),
-                          // ],
+                        // children: <Widget>[
+                        //   _buildColorOption(AppColors.blueColor),
+                        //   _buildColorOption(AppColors.greenColor),
+                        //   _buildColorOption(AppColors.orangeColor),
+                        //   _buildColorOption(AppColors.redColor),
+                        // ],
                         // )
                       ],
                     ),
@@ -115,15 +115,15 @@ class _DetailPageState extends State<DetailPage> {
               child: _buildBottom(),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 70 , top: 30),
+              padding: const EdgeInsets.only(left: 70, top: 30),
               child: Hero(
                 tag: "hero${widget.produto.imgPath}",
                 child: Transform.rotate(
                   angle: -math.pi / 20,
                   child: Image(
                     width: MediaQuery.of(context).size.width * .60,
-
-                    image: AssetImage("assets/images/${widget.produto.imgPath}"),
+                    image:
+                        AssetImage("assets/images/${widget.produto.imgPath}"),
                   ),
                 ),
               ),
@@ -175,19 +175,17 @@ class _DetailPageState extends State<DetailPage> {
             ],
           ),
           Container(
-
             child: FlatButton(
               padding: EdgeInsets.symmetric(
                 vertical: 16,
                 horizontal: 50,
               ),
               child: Text('Adicionar ao carrinho'),
-              onPressed: () {AddnoCarrinho(widget.produto);},
-
+              onPressed: () {
+                AddnoCarrinho(widget.produto);
+              },
             ),
-
           ),
-
         ],
       ),
     );
@@ -218,13 +216,13 @@ class _DetailPageState extends State<DetailPage> {
         //   itemCount: 5,
         //   itemSize: 20,
         //   itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-          // itemBuilder: (context, _) => Icon(
-          //   Icons.star,
-          //   color: Colors.amber,
-          // ),
-          // onRatingUpdate: (rating) {
-          //   print(rating);
-          // },
+        // itemBuilder: (context, _) => Icon(
+        //   Icons.star,
+        //   color: Colors.amber,
+        // ),
+        // onRatingUpdate: (rating) {
+        //   print(rating);
+        // },
         // ),
         SizedBox(width: 16),
         Text(

@@ -15,7 +15,7 @@ class pesquisa extends State<Pesquisa> {
   static String NomeNavegacao = "/pesquisa";
   @override
   String filterText = "";
-  List<Produto> ProdutoLista = Produto.Produtolist;
+  List<LocalHost> ProdutoLista = LocalHost.LocalHostlist;
 
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +47,7 @@ class pesquisa extends State<Pesquisa> {
   }
 }
 
-class ProdutoSearch extends SearchDelegate<Produto> {
+class ProdutoSearch extends SearchDelegate<LocalHost> {
   @override
   List<Widget> buildActions(BuildContext context) {
     // TODO: implement buildActions
@@ -82,8 +82,9 @@ class ProdutoSearch extends SearchDelegate<Produto> {
   @override
   Widget buildSuggestions(BuildContext context) {
     final mylist = query.isEmpty
-        ? Produto.Produtolist
-        : Produto.Produtolist.where((p) => p.name.startsWith(query)).toList();
+        ? LocalHost.LocalHostlist
+        : LocalHost.LocalHostlist.where((p) => p.name.startsWith(query))
+            .toList();
     return mylist.isEmpty
         ? Text(
             'Resultado não encontrado',
@@ -92,7 +93,7 @@ class ProdutoSearch extends SearchDelegate<Produto> {
         : ListView.builder(
             itemCount: mylist.length,
             itemBuilder: (context, index) {
-              final Produto listitem = mylist[index];
+              final LocalHost listitem = mylist[index];
               return ListTile(
                   onTap: () {
                     Navigator.of(context).push(

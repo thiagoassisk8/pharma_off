@@ -1,4 +1,5 @@
 import "dart:async";
+import 'dart:convert';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,11 +13,11 @@ class APIGetOfertas {
     if (response.statusCode == 200) {
       print("Status code: ${response.statusCode}");
       print("Ofertas da API: ${response.body}");
-      // return Produto.fromJson(json.decode(response.body));
+      return Produto.fromJson(json.decode(response.body));
     } else if (response.statusCode == 401) {
       print("${response.statusCode}");
       print("${response.body}");
-      // return Produto.fromJson(json.decode(response.body));
+      return Produto.fromJson(json.decode(response.body));
     }
     return null;
   }
