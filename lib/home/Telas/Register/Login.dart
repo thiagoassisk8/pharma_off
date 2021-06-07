@@ -251,7 +251,7 @@ class Login extends State<LoginUser> {
     Map userLogged = Complemento().getUsersfromEmail(usuarios, emailUsuario);
     var response = await APILogin().login(emailUsuario, senhaUsuario);
     // print(response.token);
-    print(userLogged);
+    // print('informacoes do usuario logado ${userLogged}');
     print("OLHAA AQUII O RESPONSE DATA >>${response}");
     // var responsee = await APILogin().login(email, senha);
     print("RESPONSE:${response}");
@@ -272,7 +272,7 @@ class Login extends State<LoginUser> {
       //salvando dados do user
       Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
       Complemento().saveDataUser(userLogged);
-      print(userLogged);
+      print('Informacoes do usuario logado ${userLogged}');
     } else {
       isUserLogged = false;
       SnackBar snackbar = new SnackBar(
