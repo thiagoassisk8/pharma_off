@@ -26,9 +26,7 @@ class pesquisa extends State<Pesquisa> {
         ),
         child: TextField(
           onChanged: (text) {
-            setState(() {
-              filterText = text;
-            });
+            showSearch(context: context, delegate: ProdutoSearch());
           },
           decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
