@@ -36,8 +36,8 @@ class Pele extends StatelessWidget {
                 builder: (_, estabelecimentos, __) {
                   // var markers = (estabelecimentos != null) ? markerService.getMarkers(estabelecimentos) : List<Marker>();
                   return (estabelecimentos != null)
-                      ?  SingleChildScrollView(
-                  child: Column(
+                      ? SingleChildScrollView(
+                          child: Column(
                           children: <Widget>[
                             // sizeconfig.ContainerFoto('https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=ATtYBwIeAemsqnunA1sHcPl92yN5e0KDRk2xG7UdJqqelf8mWRMxk_88IPDfmGP34OYHix3sM4OSY3XBAdvVFbsADel1MD5zx9qVLMf1HuqYYt6kKJf-ETWYYOEP5CUbbgDGBR185Kpr6tnjLNatzkNSRyNFmeVciUNyFjdge3UGHHLxqf1Z&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0'),
                             Padding(
@@ -81,7 +81,6 @@ class Pele extends StatelessWidget {
                                         ),
                                       );
                                     },
-
                                     child: Container(
                                       width: 240,
                                       margin: EdgeInsets.only(right: 16),
@@ -144,7 +143,6 @@ class Pele extends StatelessWidget {
                                     ),
                                   );
                                 },
-
                                 child: Container(
                                   margin: EdgeInsets.only(
                                       left: 16, right: 16, bottom: 10),
@@ -163,7 +161,6 @@ class Pele extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-
                                   child: Row(
                                     children: <Widget>[
                                       Image(
@@ -192,13 +189,13 @@ class Pele extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            Text(
-                                              "${data.estabelecimento}",
-                                              style: TextStyle(
-                                                color: Colors.black26,
-                                                height: 1.5,
-                                              ),
-                                            ),
+                                            // Text(
+                                            // "${data.estabelecimento}",
+                                            // style: TextStyle(
+                                            // color: Colors.black26,
+                                            // height: 1.5,
+                                            // ),
+                                            // ),
                                           ],
                                         ),
                                       ),
@@ -216,7 +213,7 @@ class Pele extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                );
+                              );
                             }),
                           ],
                         ))

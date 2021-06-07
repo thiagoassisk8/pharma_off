@@ -5,7 +5,6 @@ class Produto {
   final int categoria;
   final int id;
   final int cod_estabelecimento;
-  final String estabelecimento;
   final String name;
   final double price;
   final String desc;
@@ -17,7 +16,6 @@ class Produto {
     this.categoria,
     this.id,
     this.cod_estabelecimento,
-    this.estabelecimento,
     this.name,
     this.price,
     this.desc,
@@ -30,7 +28,6 @@ class Produto {
   static List<Produto> Produtolist = [
     Produto(
       categoria: 3,
-      estabelecimento: "Drogaria Onofre",
       cod_estabelecimento: 1,
       name: "Paracetamol 750mg",
       desc:
@@ -41,7 +38,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "NEOSORO",
       desc:
@@ -52,7 +48,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Drogaria Onofre",
       cod_estabelecimento: 1,
       name: "Benegrip Multi Sabor ",
       desc:
@@ -63,7 +58,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Rosário",
       cod_estabelecimento: 1,
       name: "FUROSEMIDA 40mg ",
       desc:
@@ -74,7 +68,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Drogasil",
       cod_estabelecimento: 1,
       name: "Mascaras",
       desc:
@@ -85,7 +78,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Ultrafarma",
       cod_estabelecimento: 1,
       name: "Sabonete em Barra Phebo ",
       desc:
@@ -96,7 +88,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Drogasil",
       cod_estabelecimento: 1,
       name: "FRALDA PAMPERS",
       desc:
@@ -107,7 +98,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "COLGATE SENSITIVE PRO-ALÍVIO ",
       desc:
@@ -118,7 +108,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Ultrafarma",
       cod_estabelecimento: 1,
       name: "CREME FACIAL NIVEA NUTRITIVO 100G",
       desc:
@@ -129,7 +118,6 @@ class Produto {
     ),
     Produto(
       categoria: 3,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "LOÇÃO HIDRATANTE NEUTROGENA ",
       desc:
@@ -142,7 +130,6 @@ class Produto {
   static List<Produto> pelelist = [
     Produto(
       categoria: 2,
-      estabelecimento: "Ultrafarma",
       cod_estabelecimento: 1,
       name: "CREME FACIAL NIVEA NUTRITIVO 100G",
       desc:
@@ -153,7 +140,6 @@ class Produto {
     ),
     Produto(
       categoria: 2,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "LOÇÃO HIDRATANTE NEUTROGENA ",
       desc:
@@ -166,7 +152,6 @@ class Produto {
   static List<Produto> higienelist = [
     Produto(
       categoria: 1,
-      estabelecimento: "Drogasil",
       cod_estabelecimento: 1,
       name: "Mascaras",
       desc:
@@ -177,7 +162,6 @@ class Produto {
     ),
     Produto(
       categoria: 1,
-      // estabelecimento: "Ultrafarma",
       cod_estabelecimento: 1,
       name: "Sabonete em Barra Phebo ",
       desc:
@@ -188,7 +172,6 @@ class Produto {
     ),
     Produto(
       categoria: 1,
-      estabelecimento: "Drogasil",
       cod_estabelecimento: 1,
       name: "FRALDA PAMPERS",
       desc:
@@ -199,7 +182,6 @@ class Produto {
     ),
     Produto(
       categoria: 1,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "COLGATE SENSITIVE PRO-ALÍVIO ",
       desc:
@@ -212,7 +194,6 @@ class Produto {
   static List<Produto> remediolist = [
     Produto(
       categoria: 0,
-      estabelecimento: "Drogaria Onofre",
       cod_estabelecimento: 1,
       name: "Paracetamol 750mg",
       desc:
@@ -223,7 +204,6 @@ class Produto {
     ),
     Produto(
       categoria: 0,
-      estabelecimento: "Droga Raia",
       cod_estabelecimento: 1,
       name: "NEOSORO",
       desc:
@@ -234,7 +214,6 @@ class Produto {
     ),
     Produto(
       categoria: 0,
-      estabelecimento: "Drogaria Onofre",
       cod_estabelecimento: 1,
       name: "Benegrip Multi Sabor ",
       desc:
@@ -245,7 +224,6 @@ class Produto {
     ),
     Produto(
       categoria: 0,
-      estabelecimento: "Rosário",
       cod_estabelecimento: 1,
       name: "FUROSEMIDA 40mg ",
       desc:

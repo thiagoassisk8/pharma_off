@@ -10,7 +10,7 @@ import 'package:pharma_off/palheta/size_config.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({
     Key key,
-    this.width = 240,
+    this.width = 200,
     this.aspectRetio = 1.02,
     @required this.product,
   }) : super(key: key);

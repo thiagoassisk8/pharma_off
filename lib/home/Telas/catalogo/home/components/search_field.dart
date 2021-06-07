@@ -113,7 +113,7 @@ class ProdutoSearch extends SearchDelegate<Produto> {
                           style: TextStyle(fontSize: 20),
                         ),
                         Text(
-                          listitem.estabelecimento,
+                          "R\$ ${listitem.price.toString()}",
                           style: TextStyle(color: Colors.grey),
                         ),
                         Divider()
