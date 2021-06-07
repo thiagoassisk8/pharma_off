@@ -94,10 +94,11 @@ class CheckoutCard extends StatelessWidget {
                   child: DefaultButton(
                     text: "Aplicar Cupom",
                     press: () {
+                      APIGetProdutos().getAllProdutos();
                       // CalcularCartFinal(Produto.Produtolist[0].price);
-                      var lista = APIGetProdutos().getAllProdutos();
+                      // var lista = APIGetProdutos().getAllProdutos();
 
-                      print(lista);
+                      // print(lista);
                       // APIGetOfertas().getAllOfertas();
                     },
                     // CalcularCartFinal(Cart);

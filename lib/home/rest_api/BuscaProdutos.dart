@@ -12,11 +12,13 @@ class APIGetProdutos {
     if (response.statusCode == 200) {
       print("Status code: ${response.statusCode}");
       print("Produtos da API: ${response.body}");
-      return Produto.fromJson(json.decode(response.body.toString()));
+
+      // print(Produto.fromJson(json.decode(response.body);
+      return Produto.fromJson(json.decode(response.body));
     } else if (response.statusCode == 401) {
       print("${response.statusCode}");
       print("${response.body}");
-      return Produto.fromJson(json.decode(response.body.toString()));
+      return Produto.fromJson(json.decode(response.body));
     }
     return null;
   }
