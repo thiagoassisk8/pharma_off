@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pharma_off/home/objetos/Cart.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
-
+import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
+import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 import '../../../objetos/produto.dart';
 
-
 class CheckoutCard extends StatelessWidget {
   void CalcularCartFinal(product) {
-    for (var i=0;i<3;i++){
+    for (var i = 0; i < 3; i++) {
       print(Cart(produto: Produto.pelelist[i], numDeItem: i));
-
     }
     // print(Cart(produto: Produto.list[0], numDeItem: 0));
     // Produto.list.forEach((element) {print(element.price);});
     // print(Produto.list[0].price);
     // cart.produto.;x
-
   }
 
   const CheckoutCard({
@@ -64,11 +62,9 @@ class CheckoutCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: SvgPicture.asset("assets/icons/receipt.svg"),
-
                 ),
-                 Spacer(),
-                 Text("Cupons disponíveis"),
-
+                Spacer(),
+                Text("Cupons disponíveis"),
                 const SizedBox(width: 10),
                 Icon(
                   Icons.arrow_forward_ios,
@@ -96,7 +92,11 @@ class CheckoutCard extends StatelessWidget {
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
                     text: "Aplicar Cupom",
-                    press: (){CalcularCartFinal(Produto.Produtolist[0].price);},
+                    press: () {
+                      // CalcularCartFinal(Produto.Produtolist[0].price);
+                      // APIGetProdutos().getAllProdutos();
+                      APIGetOfertas().getAllOfertas();
+                    },
                     // CalcularCartFinal(Cart);
                   ),
                 ),
@@ -108,10 +108,6 @@ class CheckoutCard extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
