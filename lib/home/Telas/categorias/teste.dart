@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
+import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
+import 'package:pharma_off/home/servicos/detalhes_produto.dart';
+import 'dart:math' as math;
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -11,6 +14,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List produtosData;
+  List ofertasData;
 
   @override
   void initState() {
@@ -20,11 +24,21 @@ class _HomeState extends State<Home> {
 
   Future getProdutos() async {
     var listProdutos = await APIGetProdutos().getAllProdutos();
+
     produtosData = [];
     for (var produto in listProdutos.data) {
       produtosData.add(produto);
     }
     return produtosData;
+  }
+
+  Future getOfertas() async {
+    var listOfertas = await APIGetOfertas().getAllOfertas();
+    ofertasData = [];
+    for (var oferta in listOfertas.data) {
+      ofertasData.add(oferta);
+    }
+    return ofertasData;
   }
 
   Widget buildList() => FutureBuilder(
@@ -46,18 +60,204 @@ class _HomeState extends State<Home> {
             if (snapshot.hasError) {
               return Center(child: Text("Erro ao carregar..."));
             } else {
+              // Container(
+
               return ListView.builder(
-                padding: EdgeInsets.only(top: 30, bottom: 10),
-                shrinkWrap: true,
                 itemCount: produtosData.length,
+                // scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        Text(produtosData[index].name),
-                      ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => DetailPage(
+                            produtosData[index],
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 240,
+                      margin: EdgeInsets.only(right: 16),
+                      // SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                // Text(
+                                // "Categorias",
+                                // style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                // fontSize: 32,
+                                // ),
+                                // ),
+                                IconButton(
+                                  icon: Icon(FlutterIcons.search,
+                                      color: Colors.black26),
+                                  onPressed: null,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 300,
+                            margin: EdgeInsets.symmetric(vertical: 16),
+                            child: ListView.builder(
+                              itemCount: produtosData.length,
+                              scrollDirection: Axis.horizontal,
+                              physics: BouncingScrollPhysics(),
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (_) => DetailPage(
+                                          produtosData[index],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    width: 240,
+                                    margin: EdgeInsets.only(right: 16),
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.only(top: 25),
+                                          // child: _buildBackground(index, 230),
+                                        ),
+                                        Positioned(
+                                          bottom: 50,
+                                          right: 0,
+                                          child: Hero(
+                                            tag:
+                                                "hero${produtosData[index].imgPath}",
+                                            child: Transform.rotate(
+                                              angle: -math.pi / 27,
+                                              child: Image(
+                                                width: 220,
+                                                image: AssetImage(
+                                                    "assets/images/${produtosData[index].imgPath}"),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  "SÓ PARA VOCÊ",
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 24),
+                          ...produtosData.map((data) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (_) => DetailPage(
+                                      data,
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    left: 16, right: 16, bottom: 10),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 16, horizontal: 24),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(25),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black12,
+                                      spreadRadius: 1,
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                ),
+                                child: Row(
+                                  children: <Widget>[
+                                    Image(
+                                      image: AssetImage(
+                                          "assets/images/${data.imgPath}"),
+                                      width: 80,
+                                      height: 60,
+                                    ),
+                                    SizedBox(width: 16),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .4,
+                                            child: Text(
+                                              "${data.name}",
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                          // Text(
+                                          // "${data.estabelecimento}",
+                                          // style: TextStyle(
+                                          // color: Colors.black26,
+                                          // height: 1.5,
+                                          // ),
+                                          // ),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 12),
+                                      child: Text(
+                                        "R\$ ${data.price.toString()}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          }),
+                        ],
+                      ),
                     ),
-                    // ),
                   );
                 },
               );
@@ -68,12 +268,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text("Teste api"),
+        centerTitle: true,
+        title: Text("Teste",
+            textScaleFactor: 1.1,
+            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
       ),
-      body: Center(
-        child: buildList(),
-      ),
+      body: buildList(),
     );
   }
 }
