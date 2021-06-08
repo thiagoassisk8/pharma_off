@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:provider/provider.dart';
@@ -12,8 +13,18 @@ import 'dart:math' as math;
 
 class Higiene extends StatelessWidget {
   static String NomeNavegacao = "/higiene";
+  List produtosData;
   List<LocalHost> higieneLista = LocalHost.higienelist;
   @override
+  Future getProdutos() async {
+    var listProdutos = await APIGetProdutos().getAllProdutos();
+    produtosData = [];
+    for (var produto in listProdutos.data) {
+      produtosData.add(produto);
+    }
+    return produtosData;
+  }
+
   Widget build(BuildContext context) {
     final currentPosition = Provider.of<Position>(context);
     final placesProvider = Provider.of<Future<List<Estabecimento>>>(context);
