@@ -7,6 +7,8 @@ import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:pharma_off/home/objetos/Cart.dart';
 import 'dart:math' as math;
 
+import 'package:pharma_off/palheta/theme.dart';
+
 void AddnoCarrinho(product) {
   listaCarrinho.add(Cart(produto: product, numDeItem: 1));
   print(listaCarrinho);
@@ -27,12 +29,15 @@ class _detailState extends State<DetailPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AzulPrimario,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        backgroundColor: AzulPrimario,
+        elevation: 0,
         centerTitle: true,
-        title: Text("Detalhes Produto",
+        title: Text("Produto",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         child: buildList(),
