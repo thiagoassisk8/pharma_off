@@ -12,7 +12,7 @@ class CartCard extends StatelessWidget {
     @required this.cart,
   }) : super(key: key);
 
-  final Cart cart;
+  final CartOFF cart;
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +27,12 @@ class CartCard extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(0xFFF5F6F9),
                 borderRadius: BorderRadius.circular(15),
-
               ),
-              child:Image.asset(
-
-                  "assets/images/${cart.produto.imgPath}",
-                  fit:BoxFit.cover),
-            ),
-
+              child: Image.asset("assets/images/${cart.produto.imgPath}",
+                  fit: BoxFit.cover),
             ),
           ),
+        ),
         // ),
         SizedBox(width: 20),
         Column(
@@ -51,8 +47,8 @@ class CartCard extends StatelessWidget {
             Text.rich(
               TextSpan(
                 text: "R\$${cart.produto.price}",
-                style: TextStyle(
-                    fontWeight: FontWeight.w600, color: AzulPrimario),
+                style:
+                    TextStyle(fontWeight: FontWeight.w600, color: AzulPrimario),
                 children: [
                   TextSpan(
                       text: " x${cart.numDeItem}",

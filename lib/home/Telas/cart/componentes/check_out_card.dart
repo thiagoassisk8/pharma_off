@@ -13,7 +13,7 @@ import '../../../objetos/produto.dart';
 class CheckoutCard extends StatelessWidget {
   void CalcularCartFinal(product) {
     for (var i = 0; i < 3; i++) {
-      print(Cart(produto: LocalHost.pelelist[i], numDeItem: i));
+      print(CartOFF(produto: LocalHost.pelelist[i], numDeItem: i));
     }
     // print(Cart(produto: Produto.list[0], numDeItem: 0));
     // Produto.list.forEach((element) {print(element.price);});

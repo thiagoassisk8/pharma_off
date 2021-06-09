@@ -6,8 +6,8 @@ import 'package:pharma_off/home/objetos/Cart.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 void AddnoCarrinho(product) {
-  listaCarrinho.add(Cart(produto: product, numDeItem: 1));
-  print(listaCarrinho);
+  listaCarrinhoOff.add(CartOFF(produto: product, numDeItem: 1));
+  print(listaCarrinhoOff);
 }
 
 class DetailPage extends StatefulWidget {

@@ -21,7 +21,6 @@ class Desejos extends StatelessWidget {
       centerTitle: true,
       title: Row(
         children: [
-
           Text(
             "Lista de Desejos",
             textScaleFactor: 1,
@@ -29,7 +28,7 @@ class Desejos extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.fromLTRB(80, 0, 0, 0)),
           Text(
-            "${listaCarrinho.length} itens",
+            "${listaCarrinhoOff.length} itens",
             style: Theme.of(context).textTheme.caption,
           ),
         ],
