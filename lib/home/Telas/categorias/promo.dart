@@ -205,7 +205,7 @@ class Promocoes extends StatelessWidget {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 12),
                                         child: Text(
-                                          "R\$ ${data.price.toInt()}",
+                                          "R\$ ${data.price.toDouble()}",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 18,

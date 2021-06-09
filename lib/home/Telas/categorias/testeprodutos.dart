@@ -151,7 +151,6 @@ class _HomeState extends State<HomeProdutos> {
                         ],
                       ),
                     ),
-                    SingleChildScrollView(),
                     SizedBox(height: 24),
                     ...produtosData.map((data) {
                       return GestureDetector(
@@ -253,7 +252,9 @@ class _HomeState extends State<HomeProdutos> {
             textScaleFactor: 1.1,
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
       ),
-      body: buildList(),
+      body: SingleChildScrollView(
+        child: buildList(),
+      ),
     );
   }
 }

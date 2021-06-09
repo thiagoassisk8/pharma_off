@@ -125,7 +125,8 @@ class _HomeState extends State<Home> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                            "assets/images/${ofertasData[index].imgPath}"),
+                                            // "assets/images/${ofertasData[index].imgPath}"),
+                                            "assets/images/benegrip.png"),
                                       ),
                                     ),
                                   ),
@@ -187,7 +188,8 @@ class _HomeState extends State<Home> {
                             children: <Widget>[
                               Image(
                                 image:
-                                    AssetImage("assets/images/${data.imgPath}"),
+                                    // AssetImage("assets/images/${data.imgPath}"),
+                                    AssetImage("assets/images/benegrip.png"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -254,7 +256,9 @@ class _HomeState extends State<Home> {
             textScaleFactor: 1.1,
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
       ),
-      body: buildList(),
+      body: SingleChildScrollView(
+        child: buildList(),
+      ),
     );
   }
 }

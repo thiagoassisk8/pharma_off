@@ -3,6 +3,7 @@ import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
+import 'package:pharma_off/home/Telas/categorias/testeprodutos.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
 import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
 import 'package:pharma_off/home/Telas/categorias/pele.dart';
@@ -34,5 +35,6 @@ final Map<String, WidgetBuilder> navegacoes = {
   Higiene.NomeNavegacao: (context) => Higiene(),
   Esquecisenha.NomeNavegacao: (context) => Esquecisenha(),
   Home.NomeNavegacao: (context) => Home(),
+  HomeProdutos.NomeNavegacao: (context) => HomeProdutos(),
   // CartScreen.NomeNavegacao: (context) => CartScreen(),
 };
