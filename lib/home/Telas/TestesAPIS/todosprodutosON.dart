@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/Telas/TestesAPIS/Detalhes_produtosON.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
@@ -98,7 +99,7 @@ class _HomeState extends State<HomeProdutos> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (_) => DetailPage(
+                                  builder: (_) => DetailPage2(
                                     produtosData[index],
                                   ),
                                 ),
@@ -157,7 +158,7 @@ class _HomeState extends State<HomeProdutos> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => DetailPage(
+                              builder: (_) => DetailPage2(
                                 data,
                               ),
                             ),
