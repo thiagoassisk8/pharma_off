@@ -12,8 +12,8 @@ class CartOFF {
 // Demo data for our cart
 
 List<CartOFF> listaCarrinhoOff = [
-  CartOFF(produto: LocalHost.higienelist[0], numDeItem: 2),
-  CartOFF(produto: LocalHost.pelelist[1], numDeItem: 1),
+  // CartOFF(produto: LocalHost.higienelist[0], numDeItem: 2),
+  // CartOFF(produto: LocalHost.pelelist[1], numDeItem: 1),
 ];
 
 class Cart {
