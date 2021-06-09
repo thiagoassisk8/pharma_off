@@ -93,19 +93,20 @@ class Pele extends StatelessWidget {
                                           Positioned(
                                             bottom: 50,
                                             right: 0,
-                                            child: Hero(
-                                              tag:
-                                                  "hero${peleLista[index].imgPath}",
-                                              child: Transform.rotate(
-                                                angle: -math.pi / 27,
-                                                child: Image(
-                                                  width: 220,
-                                                  image: AssetImage(
-                                                      "assets/images/${peleLista[index].imgPath}"),
-                                                ),
+                                            // child:
+                                            // Hero(
+                                            // tag:
+                                            // "hero${peleLista[index].imgPath}",
+                                            child: Transform.rotate(
+                                              angle: -math.pi / 27,
+                                              child: Image(
+                                                width: 220,
+                                                image: AssetImage(
+                                                    "assets/images/${peleLista[index].imgPath}"),
                                               ),
                                             ),
                                           ),
+                                          // ),
                                         ],
                                       ),
                                     ),

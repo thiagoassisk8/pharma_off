@@ -93,19 +93,21 @@ class Remedios extends StatelessWidget {
                                           Positioned(
                                             bottom: 50,
                                             right: 0,
-                                            child: Hero(
-                                              tag:
-                                                  "hero${remedioLista[index].imgPath}",
-                                              child: Transform.rotate(
-                                                angle: -math.pi / 27,
-                                                child: Image(
-                                                  width: 220,
-                                                  image: AssetImage(
-                                                      "assets/images/${remedioLista[index].imgPath}"),
-                                                ),
+                                            child:
+                                                // Hero(
+                                                // tag:
+                                                // "hero${remedioLista[index].imgPath}",
+                                                // child:
+                                                Transform.rotate(
+                                              angle: -math.pi / 27,
+                                              child: Image(
+                                                width: 220,
+                                                image: AssetImage(
+                                                    "assets/images/${remedioLista[index].imgPath}"),
                                               ),
                                             ),
                                           ),
+                                          // ),
                                         ],
                                       ),
                                     ),

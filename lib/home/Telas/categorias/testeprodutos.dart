@@ -5,14 +5,14 @@ import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
-class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+class HomeProdutos extends StatefulWidget {
+  const HomeProdutos({Key key}) : super(key: key);
   static String NomeNavegacao = "/teste";
   @override
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeState extends State<HomeProdutos> {
   List produtosData;
   List ofertasData;
 
@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
   }
 
   Widget buildList() => FutureBuilder(
-      future: getOfertas(),
+      future: getProdutos(),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                       height: 300,
                       margin: EdgeInsets.symmetric(vertical: 16),
                       child: ListView.builder(
-                        itemCount: ofertasData.length,
+                        itemCount: produtosData.length,
                         scrollDirection: Axis.horizontal,
                         physics: BouncingScrollPhysics(),
                         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (_) => DetailPage(
-                                    ofertasData[index],
+                                    produtosData[index],
                                   ),
                                 ),
                               );
@@ -116,20 +116,18 @@ class _HomeState extends State<Home> {
                                   Positioned(
                                     bottom: 50,
                                     right: 0,
-                                    // child:
-                                    //  Hero(
-
-                                    // tag: "hero${ofertasData[index].imgPath}",
-                                    child: Transform.rotate(
-                                      angle: -math.pi / 27,
-                                      child: Image(
-                                        width: 220,
-                                        image: AssetImage(
-                                            "assets/images/${ofertasData[index].imgPath}"),
+                                    child: Hero(
+                                      tag: "hero${produtosData[index].imgPath}",
+                                      child: Transform.rotate(
+                                        angle: -math.pi / 27,
+                                        child: Image(
+                                          width: 220,
+                                          image: AssetImage(
+                                              "assets/images/${produtosData[index].imgPath}"),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  // ),
                                 ],
                               ),
                             ),
@@ -153,8 +151,9 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ),
+                    SingleChildScrollView(),
                     SizedBox(height: 24),
-                    ...ofertasData.map((data) {
+                    ...produtosData.map((data) {
                       return GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(
@@ -250,7 +249,7 @@ class _HomeState extends State<Home> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Teste tela OFERTAS",
+        title: Text("Teste tela PRODUTOS",
             textScaleFactor: 1.1,
             style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
       ),

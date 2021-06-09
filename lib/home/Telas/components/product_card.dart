@@ -43,12 +43,14 @@ class ProductCard extends StatelessWidget {
                     color: kSecondaryColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Hero(
-                    tag: product.id.toString(),
-                    child: Image.asset('assets/images/${product.imgPath}'),
-                  ),
+                  child:
+                      //  Hero(
+                      // tag: product.id.toString(),
+                      // child:
+                      Image.asset('assets/images/${product.imgPath}'),
                 ),
               ),
+              // ),
               const SizedBox(height: 10),
               Text(
                 product.name,
