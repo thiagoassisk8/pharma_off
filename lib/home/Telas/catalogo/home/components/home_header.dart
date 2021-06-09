@@ -23,10 +23,8 @@ class HomeHeader extends StatelessWidget {
           Pesquisa(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
-
             press: () => Navigator.pushNamed(context, Desejos.NomeNavegacao),
           ),
-
         ],
       ),
     );

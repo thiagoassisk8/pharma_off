@@ -20,7 +20,7 @@ class Esquecisenha extends StatelessWidget {
         centerTitle: true,
         title: Text("Redefinir Senha",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -42,7 +42,7 @@ class Esquecisenha extends StatelessWidget {
               height: 80,
               child: Image.asset(
                 "assets/images/pharmaoff_logo_azul.png",
-                fit: BoxFit.fill,
+                fit: BoxFit.fitHeight,
                 height: 190.0,
               ),
             ),

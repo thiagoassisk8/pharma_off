@@ -244,7 +244,7 @@ class Cadastro extends State<CadastroUser> {
         centerTitle: true,
         title: Text("Sign Up",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
