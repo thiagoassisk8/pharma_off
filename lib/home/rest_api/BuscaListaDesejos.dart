@@ -5,7 +5,7 @@ import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
 
 // String url = "localhost:3000";
 class APIGetListaDesejos {
-  Future<LocalHost> getAllLocalHostsUser() async {
+  Future<LocalHost> getListfromUser() async {
     // var cod_user = Complemento().saveDataUser(userLogged);
     var cod_user;
     String url = "rest-pharmaoff.herokuapp.com";
