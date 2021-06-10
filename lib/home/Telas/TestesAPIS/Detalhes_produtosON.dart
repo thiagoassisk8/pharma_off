@@ -133,7 +133,7 @@ class _detailState extends State<DetailPage2> {
                 child: _buildBottom(),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 70, top: 150),
+                padding: const EdgeInsets.only(left: 70, top: 115),
 
                 child: Transform.rotate(
                   angle: -math.pi / 20,

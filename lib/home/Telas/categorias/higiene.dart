@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/Telas/TestesAPIS/Detalhes_produtosON.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/rest_api/BuscaHigiene.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
@@ -87,7 +88,7 @@ class _HigieneState extends State<Higiene> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (_) => DetailPage(
+                                  builder: (_) => DetailPage2(
                                     higieneData[index],
                                   ),
                                 ),
@@ -148,7 +149,7 @@ class _HigieneState extends State<Higiene> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) => DetailPage(
+                              builder: (_) => DetailPage2(
                                 data,
                               ),
                             ),
