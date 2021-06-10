@@ -12,7 +12,7 @@ class CartCard extends StatelessWidget {
     @required this.cart,
   }) : super(key: key);
 
-  final CartOFF cart;
+  final Cart cart;
 
   @override
   Widget build(BuildContext context) {

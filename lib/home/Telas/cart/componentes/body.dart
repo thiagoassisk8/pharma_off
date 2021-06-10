@@ -18,15 +18,15 @@ class _BodyState extends State<Body> {
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
       child: ListView.builder(
-        itemCount: listaCarrinhoOff.length,
+        itemCount: listaCarrinho.length,
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
           child: Dismissible(
-            key: Key(listaCarrinhoOff[index].produto.name.toString()),
+            key: Key(listaCarrinho[index].produto.name.toString()),
             direction: DismissDirection.endToStart,
             onDismissed: (direction) {
               setState(() {
-                listaCarrinhoOff.removeAt(index);
+                listaCarrinho.removeAt(index);
               });
             },
             background: Container(
@@ -42,7 +42,7 @@ class _BodyState extends State<Body> {
                 ],
               ),
             ),
-            child: CartCard(cart: listaCarrinhoOff[index]),
+            child: CartCard(cart: listaCarrinho[index]),
           ),
         ),
       ),

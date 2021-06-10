@@ -28,7 +28,7 @@ class Desejos extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.fromLTRB(80, 0, 0, 0)),
           Text(
-            "${listaCarrinhoOff.length} itens",
+            "${listaCarrinho.length} itens",
             style: Theme.of(context).textTheme.caption,
           ),
         ],

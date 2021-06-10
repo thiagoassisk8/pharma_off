@@ -15,7 +15,7 @@ class pesquisa extends State<Pesquisa> {
   static String NomeNavegacao = "/pesquisa";
   @override
   String filterText = "";
-  List<LocalHost> ProdutoLista = LocalHost.LocalHostlist;
+  List produtosData;
 
   Widget build(BuildContext context) {
     return Container(
