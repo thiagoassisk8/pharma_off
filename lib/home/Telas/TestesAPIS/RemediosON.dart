@@ -4,14 +4,14 @@ import 'package:pharma_off/home/rest_api/BuscaRemedios.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
-class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
-  static String NomeNavegacao = "/teste";
+class Remedio extends StatefulWidget {
+  const Remedio({Key key}) : super(key: key);
+  static String NomeNavegacao = "/remedio";
   @override
-  _HomeState createState() => _HomeState();
+  _RemedioState createState() => _RemedioState();
 }
 
-class _HomeState extends State<Home> {
+class _RemedioState extends State<Remedio> {
   List remediosData;
 
   @override

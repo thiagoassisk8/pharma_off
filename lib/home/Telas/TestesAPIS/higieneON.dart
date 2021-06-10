@@ -4,14 +4,14 @@ import 'package:pharma_off/home/rest_api/BuscaHigiene.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
-class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
-  static String NomeNavegacao = "/teste";
+class Higiene extends StatefulWidget {
+  const Higiene({Key key}) : super(key: key);
+  static String NomeNavegacao = "/higiene";
   @override
-  _HomeState createState() => _HomeState();
+  _HigieneState createState() => _HigieneState();
 }
 
-class _HomeState extends State<Home> {
+class _HigieneState extends State<Higiene> {
   List higieneData;
 
   @override
@@ -114,7 +114,7 @@ class _HomeState extends State<Home> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                            // "assets/images/${higieneData[index].imgPath}"),
+                                          // "assets/images/${higieneData[index].imgPath}"),
                                             "assets/images/benegrip.png"),
                                       ),
                                     ),
@@ -157,7 +157,7 @@ class _HomeState extends State<Home> {
                         },
                         child: Container(
                           margin:
-                              EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                          EdgeInsets.only(left: 16, right: 16, bottom: 10),
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 24),
                           decoration: BoxDecoration(
@@ -177,8 +177,8 @@ class _HomeState extends State<Home> {
                             children: <Widget>[
                               Image(
                                 image:
-                                    // AssetImage("assets/images/${data.imgPath}"),
-                                    AssetImage("assets/images/benegrip.png"),
+                                // AssetImage("assets/images/${data.imgPath}"),
+                                AssetImage("assets/images/benegrip.png"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -211,7 +211,7 @@ class _HomeState extends State<Home> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 12),
+                                const EdgeInsets.symmetric(horizontal: 12),
                                 child: Text(
                                   "R\$ ${data.price.toString()}",
                                   style: TextStyle(

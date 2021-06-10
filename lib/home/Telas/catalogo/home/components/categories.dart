@@ -27,7 +27,7 @@ class Categories extends StatelessWidget {
             text: categories[index]["text"],
             press: () {
               if (index == 0) {
-                Navigator.pushNamed(context, Remedios.NomeNavegacao);
+                Navigator.pushNamed(context, Remedio.NomeNavegacao);
               }
               else if (index == 1) {
                 Navigator.pushNamed(context, Higiene.NomeNavegacao);
