@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/home/Telas/components/product_card.dart';
+import 'package:pharma_off/home/Telas/catalogo/home/components/product_card.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 

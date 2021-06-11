@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/home/Telas/cart/cart_screen.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import '../../../../../palheta/theme.dart';
 import '../../../GeoLocator/lista.dart';
