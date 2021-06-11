@@ -126,8 +126,7 @@ class _PromocoesState extends State<Promocoes> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                          "assets/images/${ofertasData[index].imgPath}"),
-
+                                            "assets/images/${ofertasData[index].imgPath}"),
                                       ),
                                     ),
                                   ),
@@ -169,7 +168,7 @@ class _PromocoesState extends State<Promocoes> {
                         },
                         child: Container(
                           margin:
-                          EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                              EdgeInsets.only(left: 16, right: 16, bottom: 10),
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 24),
                           decoration: BoxDecoration(
@@ -189,7 +188,7 @@ class _PromocoesState extends State<Promocoes> {
                             children: <Widget>[
                               Image(
                                 image:
-                                AssetImage("assets/images/${data.imgPath}"),
+                                    AssetImage("assets/images/${data.imgPath}"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -220,17 +219,24 @@ class _PromocoesState extends State<Promocoes> {
                                   ],
                                 ),
                               ),
-                              Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 12),
-                                child: Text(
+                              Column(children: <Widget>[
+                                Text(
+                                  "R\$ ${data.price.toString()}",
+                                  style: TextStyle(
+                                    color: Colors.red,
+                                    fontWeight: FontWeight.bold,
+                                    decoration: TextDecoration.lineThrough,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                Text(
                                   "R\$ ${data.price.toString()}",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
                                   ),
                                 ),
-                              ),
+                              ]),
                             ],
                           ),
                         ),
