@@ -230,7 +230,7 @@ class _PromocoesState extends State<Promocoes> {
                                   ),
                                 ),
                                 Text(
-                                  "R\$ ${data.price.toString()}",
+                                  "R\$ ${data.newprice.toString()}",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18,
