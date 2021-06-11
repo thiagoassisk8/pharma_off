@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 import 'profile_menu.dart';
@@ -25,7 +26,7 @@ class BodyProfile extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () => Navigator.pushNamed(context, Login.NomeNavegacao),
           ),
         ],
       ),
