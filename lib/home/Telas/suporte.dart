@@ -101,7 +101,7 @@ class formulario extends StatelessWidget {
                       if (response != null) {
                         SnackBar snackbar = new SnackBar(
                           content: Text(
-                            "Formulário enviado com sucesso",
+                            "FeedBack enviado com sucesso",
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
