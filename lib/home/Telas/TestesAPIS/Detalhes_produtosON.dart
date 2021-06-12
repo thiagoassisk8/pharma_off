@@ -6,7 +6,7 @@ import 'package:pharma_off/home/servicos/app_clipper.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:pharma_off/home/objetos/Cart.dart';
 import 'dart:math' as math;
-
+import 'package:flutter/src/material/snack_bar.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 void AddnoCarrinho(product) {
@@ -25,6 +25,7 @@ class DetailPage2 extends StatefulWidget {
 class _detailState extends State<DetailPage2> {
   List produtosData;
   List ofertasData;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -198,6 +199,21 @@ class _detailState extends State<DetailPage2> {
               child: Text('Adicionar ao carrinho'),
               onPressed: () {
                 AddnoCarrinho(widget.produto);
+                ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Adicionado ao Carrinho!",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  backgroundColor: Colors.green[600],
+                  action: SnackBarAction(
+                    label: "Action",
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
+              );
+
               },
             ),
           ),
