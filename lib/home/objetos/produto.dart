@@ -43,23 +43,34 @@ class Data {
   int categoria;
   int estabelecimento;
   bool onsale;
+  String newprice;
 
-  Data(this.id, this.name, this.price, this.desc, this.categoria, this.imgPath,
-      this.isFavourite, this.estabelecimento, this.isPopular, this.onsale);
+  Data(
+      this.id,
+      this.name,
+      this.price,
+      this.desc,
+      this.categoria,
+      this.imgPath,
+      this.isFavourite,
+      this.estabelecimento,
+      this.isPopular,
+      this.onsale,
+      this.newprice);
 
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
-      json['id_produto'] as int,
-      json['nme_produto'] as String,
-      json['preco_produto'] as String,
-      json['desc_produto'] as String,
-      json['cod_categoria'] as int,
-      json['img_produto'] as String,
-      json['isfavourite'] as bool,
-      json['cod_estabelecimentoparceiro'] as int,
-      json['ispopular'] as bool,
-      json['onsale'] as bool,
-    );
+        json['id_produto'] as int,
+        json['nme_produto'] as String,
+        json['preco_produto'] as String,
+        json['desc_produto'] as String,
+        json['cod_categoria'] as int,
+        json['img_produto'] as String,
+        json['isfavourite'] as bool,
+        json['cod_estabelecimentoparceiro'] as int,
+        json['ispopular'] as bool,
+        json['onsale'] as bool,
+        json['preco_novoproduto'] as String);
   }
 }
 
