@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
-import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
@@ -33,7 +32,7 @@ class _HomeState extends State<Home> {
   }
 
   Future getOfertas() async {
-    var listOfertas = await APIGetOfertas().getAllOfertas();
+    var listOfertas = await APIGetProdutos().getAllOfertas();
     ofertasData = [];
     for (var oferta in listOfertas.data) {
       ofertasData.add(oferta);

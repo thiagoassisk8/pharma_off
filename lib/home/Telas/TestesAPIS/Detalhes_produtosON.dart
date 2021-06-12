@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
-import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 import 'package:pharma_off/home/servicos/app_clipper.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
@@ -63,7 +62,7 @@ class _detailState extends State<DetailPage2> {
   }
 
   Future getOfertas() async {
-    var listOfertas = await APIGetOfertas().getAllOfertas();
+    var listOfertas = await APIGetProdutos().getAllOfertas();
     ofertasData = [];
     for (var oferta in listOfertas.data) {
       ofertasData.add(oferta);
@@ -200,20 +199,19 @@ class _detailState extends State<DetailPage2> {
               onPressed: () {
                 AddnoCarrinho(widget.produto);
                 ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("Adicionado ao Carrinho!",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  SnackBar(
+                    content: Text(
+                      "Adicionado ao Carrinho!",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    backgroundColor: Colors.green[600],
+                    action: SnackBarAction(
+                      label: "Action",
+                      onPressed: () {},
+                    ),
                   ),
-                  backgroundColor: Colors.green[600],
-                  action: SnackBarAction(
-                    label: "Action",
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-              );
-
+                );
               },
             ),
           ),

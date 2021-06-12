@@ -4,7 +4,6 @@ import 'package:pharma_off/home/objetos/Cart.dart';
 import 'package:pharma_off/home/objetos/User.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
 import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
-import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
 

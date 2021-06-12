@@ -23,6 +23,23 @@ class APIGetProdutos {
     return null;
   }
 
+  Future<Produto> getAllOfertas() async {
+    String url = "rest-pharmaoff.herokuapp.com";
+
+    final http.Response response =
+        await http.get(Uri.http(url, "/produtos/ofertas"));
+    if (response.statusCode == 200) {
+      print("Status code: ${response.statusCode}");
+      print("Ofertas da API: ${response.body}");
+      return Produto.fromJson(json.decode(response.body));
+    } else if (response.statusCode == 401) {
+      print("${response.statusCode}");
+      print("${response.body}");
+      return Produto.fromJson(json.decode(response.body));
+    }
+    return null;
+  }
+
   Future<Produto> getAllPopularProdutos() async {
     String url = "rest-pharmaoff.herokuapp.com";
 

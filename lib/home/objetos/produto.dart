@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 class Produto {
