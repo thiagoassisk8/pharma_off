@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:pharma_off/home/Navigation_bar/coustom_bottom_nav_bar.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
+import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
@@ -270,7 +271,7 @@ class Login extends State<LoginUser> {
 
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
       //salvando dados do user
-      Navigator.pushReplacementNamed(context, ProfileScreen.NomeNavegacao);
+      Navigator.pushReplacementNamed(context, HomeScreen.NomeNavegacao);
       Complemento().saveDataUser(userLogged);
       print('Informacoes do usuario logado ${userLogged}');
     } else {

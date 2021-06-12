@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/palheta/size_config.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import '../componentes/splash_content.dart';
 import 'package:pharma_off/splash/componentes/default_button.dart';
 
-
-
 class Body extends StatefulWidget {
   @override
   _BodyState createState() => _BodyState();
 }
 
-
 class _BodyState extends State<Body> {
-
-
   int currentPage = 0;
   List<Map<String, String>> splashData = [
-    
     {
       "text": "Seja Bem Vindo ao ",
       "image": "assets/images/pharmaoff_logo_azul.png"
     },
     {
-      "text":
-          "Encontre as Farmácias mais próximas de você!\nEm qualquer lugar",
+      "text": "Encontre as Farmácias mais próximas de você!\nEm qualquer lugar",
       "image": "assets/images/splash_2.png"
     },
     {
@@ -34,11 +28,8 @@ class _BodyState extends State<Body> {
     },
   ];
 
-
   @override
   Widget build(BuildContext context) {
-
-
     return SafeArea(
       child: SizedBox(
         width: double.infinity,
@@ -78,7 +69,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Continue",
                       press: () {
-                        Navigator.pushNamed(context, HomeScreen.NomeNavegacao);
+                        Navigator.pushNamed(context, Login.NomeNavegacao);
                       },
                     ),
                     Spacer(),

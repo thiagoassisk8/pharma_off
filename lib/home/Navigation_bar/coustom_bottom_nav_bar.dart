@@ -93,13 +93,13 @@ class CustomBottomNavBar extends StatelessWidget {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    print(isUserlogged);
-                    if (isUserlogged == false) {
-                      Navigator.pushNamed(context, Login.NomeNavegacao);
-                    } else if (isUserlogged == true) {
-                      Navigator.pushReplacementNamed(
-                          context, ProfileScreen.NomeNavegacao);
-                    }
+                    // print(isUserlogged);
+                    // if (isUserlogged == false) {
+                    // Navigator.pushNamed(context, Login.NomeNavegacao);
+                    // } else if (isUserlogged == true) {
+                    Navigator.pushReplacementNamed(
+                        context, ProfileScreen.NomeNavegacao);
+                    // }
                   }),
             ],
           )),
