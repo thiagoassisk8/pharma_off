@@ -4,8 +4,10 @@ import 'package:pharma_off/home/rest_api/EsqueciSenha.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 class Esquecisenha extends StatelessWidget {
+  var _userObject = {};
   static String NomeNavegacao = "/esquecisenha";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> _key = new GlobalKey();
   String email;
   bool _rememberMe = false;
   @override
@@ -99,7 +101,7 @@ class Esquecisenha extends StatelessWidget {
                 return null;
               },
               onSaved: (String value) {
-                email = value;
+                _userObject['email_usuario'] = value;
               },
             ),
             SingleChildScrollView(
@@ -107,7 +109,7 @@ class Esquecisenha extends StatelessWidget {
               child: new Container(
                 margin: new EdgeInsets.all(15.0),
                 child: new Form(
-                  // autovalidate: _validate,
+                  // autovalidate: validate(),
                   child: RaisedButton(
                     elevation: 5.0,
                     padding: EdgeInsets.all(15.0),
@@ -126,14 +128,17 @@ class Esquecisenha extends StatelessWidget {
                       ),
                     ),
                     onPressed: () async {
-                      print('fORM KEY>>> ${_formKey.currentState}');
-                      if (!_formKey.currentState.validate()) {
+                      print('OLÁ MUNDO');
+                      if (!_key.currentState.validate()) {
+                        print('a condição  está chegando no if');
                         return null;
-                      } else {
-                        _formKey.currentState.save();
-                        var response =
-                            await APIForgottenPwd().forgotPassword(email);
-                        print(response.status);
+                      } else if (_key.currentState.validate()) {
+                        _key.currentState.save();
+                        var response = await APIForgottenPwd().forgotPassword(
+                          _userObject['email_usuario'],
+                        );
+                        print(
+                            "OLHA AQUI PORRA  O RESPONSE STATUS>>${response.status}");
 
                         if (response.status != "success") {
                           SnackBar snackbar = new SnackBar(
