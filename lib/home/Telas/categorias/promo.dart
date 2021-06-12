@@ -6,6 +6,8 @@ import 'package:pharma_off/home/rest_api/BuscaProdutos.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
+import 'package:pharma_off/palheta/theme.dart';
+
 class Promocoes extends StatefulWidget {
   const Promocoes({Key key}) : super(key: key);
   static String NomeNavegacao = "/promocoes";
@@ -259,8 +261,8 @@ class _PromocoesState extends State<Promocoes> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Ofertas",
-            textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            textScaleFactor: 1.2,
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         child: buildList(),

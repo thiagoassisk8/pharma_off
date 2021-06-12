@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/Telas/GeoLocator/mapa.dart';
+import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
+import 'package:pharma_off/palheta/theme.dart';
+import 'package:pharma_off/home/rest_api/SuporteFormulario.dart';
 
 class formulario extends StatelessWidget {
+  var _userObject = {};
   static String NomeNavegacao = "/formulario";
   @override
   formulario createState() => formulario();
@@ -15,11 +20,13 @@ class formulario extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: AzulPrimario,
         title: Text("Suporte",
-            textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            textScaleFactor: 1.2,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: Colors.white,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -44,18 +51,18 @@ class formulario extends StatelessWidget {
       children: <Widget>[
         Image.asset(
           'assets/images/pharmaoff_logo_azul.png',
-          height: 75,
+          height: 90,
 
           // fit: BoxFit.fill,
           // height: 1000.0,
         ),
-        Padding(padding: EdgeInsets.only(top: 30)),
+        Padding(padding: EdgeInsets.only(top: 50)),
         new TextFormField(
           decoration: new InputDecoration(hintText: 'Nome Completo'),
           maxLength: 40,
           validator: _validarNome,
-          onSaved: (String val) {
-            nome = val;
+          onSaved: (String value) {
+            _userObject['nme_formulario'] = value;
           },
         ),
         new TextFormField(
@@ -63,38 +70,39 @@ class formulario extends StatelessWidget {
             keyboardType: TextInputType.phone,
             maxLength: 11,
             validator: _validarCelular,
-            onSaved: (String val) {
-              celular = val;
+            onSaved: (String value) {
+              _userObject['cel_formulario'] = value;
             }),
         new TextFormField(
             decoration: new InputDecoration(hintText: 'Email'),
             keyboardType: TextInputType.emailAddress,
             maxLength: 40,
             validator: _validarEmail,
-            onSaved: (String val) {
-              email = val;
+            onSaved: (String value) {
+              _userObject['email_formulario'] = value;
             }),
         new TextFormField(
             decoration: new InputDecoration(hintText: 'Mensagem'),
             keyboardType: TextInputType.emailAddress,
             maxLength: 500,
-            validator: _validarEmail,
-            onSaved: (String val) {
-              mensagem = val;
+            onSaved: (String value) {
+              _userObject['msg_formulario'] = value;
             }),
         new SizedBox(height: 15.0),
         new RaisedButton(
-          padding: EdgeInsets.only(left: 50, top: 20, right: 50, bottom: 15),
+          padding: EdgeInsets.only(left: 70, top: 20, right: 70, bottom: 20),
           shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(12.5),
+            borderRadius: new BorderRadius.circular(20.5),
           ),
           textColor: Colors.white,
-          onPressed: _sendForm,
+          onPressed: () {
+            _sendForm;
+          },
           child: new Text(
             'Enviar',
             style: new TextStyle(fontSize: 23.0),
           ),
-          color: Colors.blue,
+          color: AzulPrimario,
         )
       ],
     );
@@ -137,10 +145,38 @@ class formulario extends StatelessWidget {
     }
   }
 
-  _sendForm() {
+  _sendForm(context) async {
     if (_key.currentState.validate()) {
       // Sem erros na validação
       _key.currentState.save();
+      var response = APISuporte().suporte(
+          _userObject['nme_formulario'],
+          _userObject['cel_formulario'],
+          _userObject['email_formulario'],
+          _userObject['msg_formulario']);
+      print(response);
+
+      if (response != null) {
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "Formulário enviado com sucesso",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.green[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      } else if (response == null) {
+        print('chegou ate aqui');
+        SnackBar snackbar = new SnackBar(
+          content: Text(
+            "E-mail já cadastrado",
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.red[600],
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+      }
+
       print("Nome $nome");
       print("Celular $celular");
       print("Email $email");

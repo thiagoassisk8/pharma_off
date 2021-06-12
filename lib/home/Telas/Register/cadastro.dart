@@ -222,11 +222,11 @@ class Cadastro extends State<CadastroUser> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: Colors.white,
+        color: AzulPrimario,
         child: Text(
           'Sign Up',
           style: TextStyle(
-            color: AzulPrimario,
+            color: Colors.white,
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -242,11 +242,13 @@ class Cadastro extends State<CadastroUser> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: AzulPrimario,
         title: Text("Sign Up",
             textScaleFactor: 1.1,
-            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: Colors.white,
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -265,7 +267,7 @@ class Cadastro extends State<CadastroUser> {
                     Image.asset(
                       "assets/images/pharmaoff_logo_azul.png",
                       fit: BoxFit.fill,
-                      height: 60.0,
+                      height: 80.0,
                     ),
                     SizedBox(height: 40.0),
                     _buildNome(),
