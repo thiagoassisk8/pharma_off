@@ -20,6 +20,15 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  Map checkpriceonsale(isonsale) {
+    return isonsale;
+    // var ofertas = APIGetOfertas.getAllOfertas();
+    // if (isonsale == true) {
+    // preco = [newprice];
+    // return preco;
+    // } else if (isonsale == false) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

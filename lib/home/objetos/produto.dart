@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharma_off/home/rest_api/BuscaOfertas.dart';
 import 'package:pharma_off/palheta/theme.dart';
 
 class Produto {
@@ -31,8 +32,7 @@ class Produto {
 
 class Data {
   // List<dynamic> Produtolist = [];
-  // List<dynamic> pelelist = [];
-  // List<dynamic> higienelist = [];
+
   int id;
   String name;
   String price;
