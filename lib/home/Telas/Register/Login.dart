@@ -218,7 +218,7 @@ class Login extends State<LoginUser> {
                     Image.asset(
                       "assets/images/pharmaoff_logo_azul.png",
                       fit: BoxFit.fill,
-                      height: 60.0,
+                      height: 80.0,
                     ),
                     SizedBox(height: 50.0),
                     _buildEmailTF(),

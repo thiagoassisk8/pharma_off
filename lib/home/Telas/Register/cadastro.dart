@@ -222,11 +222,11 @@ class Cadastro extends State<CadastroUser> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
-        color: AzulPrimario,
+        color: Colors.white,
         child: Text(
           'Sign Up',
           style: TextStyle(
-            color: Colors.white,
+            color: AzulPrimario,
             letterSpacing: 1.5,
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
@@ -242,13 +242,13 @@ class Cadastro extends State<CadastroUser> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: AzulPrimario,
+        backgroundColor: Colors.white,
         title: Text("Sign Up",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
-          color: Colors.white,
+          color: Colors.black,
           onPressed: () {
             Navigator.of(context).pop();
           },

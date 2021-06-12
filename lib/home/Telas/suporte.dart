@@ -19,10 +19,10 @@ class formulario extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: AzulPrimario,
+        backgroundColor: Colors.white,
         title: Text("Suporte",
             textScaleFactor: 1.2,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
