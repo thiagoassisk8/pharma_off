@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pharma_off/home/Telas/TestesAPIS/TesteCatalogo.dart';
 import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
 import 'package:pharma_off/home/Telas/TestesAPIS/promoOn.dart';
 import 'package:pharma_off/home/Telas/TestesAPIS/todosprodutosON.dart';
@@ -83,8 +84,8 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                    Navigator.pushNamed(context, formulario.NomeNavegacao),
-                // Navigator.pushNamed(context, Home.NomeNavegacao),
+                    // Navigator.pushNamed(context, formulario.NomeNavegacao),
+                    Navigator.pushNamed(context, HomeCatalogo.NomeNavegacao),
                 // Navigator.pushNamed(context, HomeProdutos.NomeNavegacao),
               ),
               IconButton(

@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:pharma_off/home/Telas/Register/cadastro.dart';
 import 'package:pharma_off/home/Telas/Register/Login.dart';
 import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
+import 'package:pharma_off/home/Telas/TestesAPIS/TesteCatalogo.dart';
 import 'package:pharma_off/home/Telas/catalogo/home/home_screen.dart';
 import 'package:pharma_off/home/Telas/TestesAPIS/todosprodutosON.dart';
 import 'package:pharma_off/home/Telas/desejos.dart';
@@ -16,6 +17,7 @@ import 'package:pharma_off/home/Telas/suporte.dart';
 import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'package:pharma_off/splash/splash_screen.dart';
+import 'package:pharma_off/home/Telas/TestesAPIS/TesteCatalogo.dart';
 
 // All our routes will be available here
 final Map<String, WidgetBuilder> navegacoes = {
@@ -36,5 +38,5 @@ final Map<String, WidgetBuilder> navegacoes = {
   Esquecisenha.NomeNavegacao: (context) => Esquecisenha(),
   Home.NomeNavegacao: (context) => Home(),
   HomeProdutos.NomeNavegacao: (context) => HomeProdutos(),
-  // CartScreen.NomeNavegacao: (context) => CartScreen(),
+  HomeCatalogo.NomeNavegacao: (context) => HomeCatalogo(),
 };
