@@ -1,12 +1,24 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const AppError = require('./utils/AppError');
+const globalErrorHandler = require('./controllers/errorController');
 
+app.use(express.json({ limit: '10kb' }));
+app.use(cookieParser());
+app.use(express.static(__dirname));
 
-const rotaProdutos = require('./routes/produtos');
-const rotaUsuarios = require('./routes/usuarios');
-const rotaDesejos = require('./routes/listadesejos');
-const rotaCupons = require('./routes/cupons');
+//app.get('/', (req, res) => {
+//    res.sendFile(path.join(__dirname, '../frontend/app_front/lib/main.dart'));
+//  });
+
+// ROTAS
+const userRouter = require('./routes/userRouter');
+const productRouter= require('./routes/productRouter');
+const listaDesejoRouter= require('./routes/listaDesejoRouter');
+const formRouter= require('./routes/formRouter');
 const bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
@@ -28,27 +40,23 @@ app.use((req,res,next)=>{
     next();
 });
 
+// const csp = require('express-csp-header');
+// app.use(csp({
+//     policies: {
+//         'default-src': [csp.NONE],
+//         'img-src': [csp.SELF],
+//     }
+// }));
 
-app.use('/produtos',rotaProdutos);
-app.use('/listadesejos',rotaDesejos);
-app.use('/usuarios',rotaUsuarios);
-app.use('/cupons',rotaCupons);
+app.use('/usuarios',userRouter);
+app.use('/produtos',productRouter);
+app.use('/listaDesejos',listaDesejoRouter);
+app.use('/formulario',formRouter);
 
-//Se a rota não for encontrada
-app.use((req,res,next) =>{
-    const erro = new Error('Não Encontrado');
-    erro.status= 404;
-    next(erro);
-});
+app.all('*', (req, res, next) =>
+  next(new AppError(`A rota ${req.originalUrl} não existe!`))
+);
 
-app.use((error,req,res,next) =>{
-    res.status(error.status || 500);
-    return res.send({
-        erro:{
-            mensagem: error.message
-        }
-    });
-});
-
+app.use(globalErrorHandler);
 
 module.exports = app;

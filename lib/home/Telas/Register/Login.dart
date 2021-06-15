@@ -275,7 +275,6 @@ class Login extends State<LoginUser> {
       Complemento().saveDataUser(userLogged);
       print('Informacoes do usuario logado ${userLogged}');
     } else {
-      isUserLogged = false;
       SnackBar snackbar = new SnackBar(
         content: Text(
           "E-mail ou Senha Inválidos!!",

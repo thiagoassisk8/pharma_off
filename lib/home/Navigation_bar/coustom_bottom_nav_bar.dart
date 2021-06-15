@@ -84,8 +84,8 @@ class CustomBottomNavBar extends StatelessWidget {
                   color: Colors.black,
                 ),
                 onPressed: () =>
-                    // Navigator.pushNamed(context, formulario.NomeNavegacao),
-                    Navigator.pushNamed(context, HomeCatalogo.NomeNavegacao),
+                    Navigator.pushNamed(context, formulario.NomeNavegacao),
+                // Navigator.pushNamed(context, HomeCatalogo.NomeNavegacao),
                 // Navigator.pushNamed(context, HomeProdutos.NomeNavegacao),
               ),
               IconButton(
