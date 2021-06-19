@@ -72,6 +72,7 @@ class Login extends State<LoginUser> {
         return null;
       },
       onSaved: (String value) {
+        _userObject['email_usuario'] = value;
         emailUsuario = value;
       },
     );
@@ -112,6 +113,7 @@ class Login extends State<LoginUser> {
         return null;
       },
       onSaved: (String value) {
+        _userObject['pwd_usuario'] = value;
         senhaUsuario = value;
       },
     );
@@ -250,16 +252,17 @@ class Login extends State<LoginUser> {
     // Map userLogged = Complemento().getnameuser(usuarios, email);
 
     Map userLogged = Complemento().getUsersfromEmail(usuarios, emailUsuario);
-    var response = await APILogin().login(emailUsuario, senhaUsuario);
+    var response = await APILogin()
+        .login(_userObject['email_usuario'], _userObject['pwd_usuario']);
     // print(response.token);
     // print('informacoes do usuario logado ${userLogged}');
     print("OLHAA AQUII O RESPONSE DATA >>${response}");
     // var responsee = await APILogin().login(email, senha);
-    print("RESPONSE:${response}");
-    if (userLogged != null) {
+    print("UserObject:${_userObject}");
+    // print("RESPONSE:${response.data}");
+    if (response.token != null) {
       print('deu tudo certo');
-      isUserLogged = true;
-      print(isUserLogged);
+
       // CustomBottomNavBar.islogged = true;
       SnackBar snackbar = new SnackBar(
         content: Text(

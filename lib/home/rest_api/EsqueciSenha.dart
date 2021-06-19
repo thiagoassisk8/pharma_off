@@ -11,7 +11,7 @@ class APIForgottenPwd {
     final http.Response response = await http.post(
         Uri.http(url, "/usuarios/esqueceuSenha"),
         body: jsonEncode(<String, String>{
-          "email": email,
+          "email_usuario": email,
         }),
         headers: <String, String>{
           "content-type": "application/json; charset=UTF-8"

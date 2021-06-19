@@ -82,6 +82,7 @@ class Cadastro extends State<CadastroUser> {
         if (value.isEmpty) {
           return "Nome Obrigatório";
         }
+
         return null;
       },
       onSaved: (String value) {

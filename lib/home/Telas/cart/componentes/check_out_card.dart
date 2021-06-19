@@ -12,7 +12,7 @@ import '../../../objetos/produto.dart';
 class CheckoutCard extends StatelessWidget {
   void CalcularCartFinal(product) {
     for (var i = 0; i < 3; i++) {
-      //print(CartOFF(produto: LocalHost.pelelist[i], numDeItem: i));
+      // print(CartOFF(produto: LocalHost.pelelist[i], numDeItem: i));
     }
     // print(Cart(produto: Produto.list[0], numDeItem: 0));
     // Produto.list.forEach((element) {print(element.price);});
@@ -96,11 +96,11 @@ class CheckoutCard extends StatelessWidget {
                       APIGetProdutos().getAllProdutos();
                       // CalcularCartFinal(Produto.Produtolist[0].price);
                       // var lista = APIGetProdutos().getAllProdutos();
+                      // CalcularCartFinal();
 
                       // print(lista);
                       // APIGetOfertas().getAllOfertas();
                     },
-                    // CalcularCartFinal(Cart);
                   ),
                 ),
               ],

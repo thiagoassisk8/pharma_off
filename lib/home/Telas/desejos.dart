@@ -22,7 +22,7 @@ class Desejos extends StatelessWidget {
       title: Row(
         children: [
           Text(
-            "Lista de Desejos",
+            "Carrinho",
             textScaleFactor: 1,
             style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold),
           ),

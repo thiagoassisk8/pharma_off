@@ -11,8 +11,8 @@ class APILogin {
     final http.Response response = await http.post(
         Uri.http(url, "/usuarios/login"),
         body: jsonEncode(<String, String>{
-          "email_pessoa": emailUsuario,
-          "pwd_pessoa": pwdUsuario,
+          "email_usuario": emailUsuario,
+          "pwd_usuario": pwdUsuario,
         }),
         headers: <String, String>{
           "content-type": "application/json; charset=UTF-8"
@@ -26,6 +26,7 @@ class APILogin {
       print("${response.body}");
       return JsonDefault.fromJson(json.decode(response.body));
     }
+    return null;
     // throw Exception("Erro no carregamento dos dados");
   }
 }
