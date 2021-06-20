@@ -225,7 +225,7 @@ class Cadastro extends State<CadastroUser> {
         ),
         color: Colors.white,
         child: Text(
-          'Sign Up',
+          'Cadastro',
           style: TextStyle(
             color: AzulPrimario,
             letterSpacing: 1.5,
