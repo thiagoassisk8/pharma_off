@@ -7,10 +7,13 @@ class Esquecisenha extends StatelessWidget {
   var _userObject = {};
   static String NomeNavegacao = "/esquecisenha";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  GlobalKey<FormState> _key = new GlobalKey();
-  String email;
-  bool _rememberMe = false;
+
   @override
+  Esquecisenha createState() => Esquecisenha();
+  String email;
+  bool _validate = false;
+  bool _rememberMe = false;
+  GlobalKey<FormState> _key = new GlobalKey();
   // String senha;
   // bool _showPassword = false;
 
@@ -75,7 +78,7 @@ class Esquecisenha extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
-              key: _formKey,
+              key: _key,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -109,8 +112,8 @@ class Esquecisenha extends StatelessWidget {
               child: new Container(
                 margin: new EdgeInsets.all(15.0),
                 child: new Form(
-                  // autovalidate: validate(),
-                  child: RaisedButton(
+                  autovalidate: _validate,
+                  child: new RaisedButton(
                     elevation: 5.0,
                     padding: EdgeInsets.all(15.0),
                     shape: RoundedRectangleBorder(

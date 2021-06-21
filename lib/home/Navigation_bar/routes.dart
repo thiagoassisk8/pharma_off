@@ -22,7 +22,7 @@ import 'package:pharma_off/home/Telas/TestesAPIS/TesteCatalogo.dart';
 // All our routes will be available here
 final Map<String, WidgetBuilder> navegacoes = {
   SplashScreen.NomeNavegacao: (context) => SplashScreen(),
-  formulario.NomeNavegacao: (context) => formulario(),
+  Formulario.NomeNavegacao: (context) => Formulario(),
   //Mapa.NomeNavegacao: (context) => Mapa(),
   HomeScreen.NomeNavegacao: (context) => HomeScreen(),
   Lista.NomeNavegacao: (context) => Lista(),

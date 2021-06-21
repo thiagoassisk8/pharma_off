@@ -5,15 +5,15 @@ import 'package:http/http.dart' as http;
 
 class APISingUp {
   Future<JsonDefault> singUp(
-      String nme_usuario, String email_usuario, String pwd_usuario) async {
+      String nmeUsuario, String emailUsuario, String pwdUsuario) async {
     // String url = "10.0.2.2:3000";
     String url = "rest-pharmaoff.herokuapp.com";
     final http.Response response = await http.post(
         Uri.http(url, "/usuarios/cadastro"),
         body: jsonEncode(<String, dynamic>{
-          "nme_usuario": nme_usuario,
-          "email_usuario": email_usuario,
-          "pwd_usuario": pwd_usuario
+          "nme_usuario": nmeUsuario,
+          "email_usuario": emailUsuario,
+          "pwd_usuario": pwdUsuario
         }),
         headers: <String, String>{
           "content-type": "application/json; charset=UTF-8"

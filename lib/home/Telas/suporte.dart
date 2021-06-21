@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:pharma_off/palheta/theme.dart';
 import 'package:pharma_off/home/rest_api/SuporteFormulario.dart';
 
-class formulario extends StatelessWidget {
+class Formulario extends StatelessWidget {
   var _userObject = {};
   static String NomeNavegacao = "/formulario";
 
   @override
-  formulario createState() => formulario();
+  Formulario createState() => Formulario();
 
   GlobalKey<FormState> _key = new GlobalKey();
   bool _validate = false;
