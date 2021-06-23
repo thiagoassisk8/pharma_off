@@ -91,7 +91,7 @@ class CheckoutCard extends StatelessWidget {
                 SizedBox(
                   width: getProportionateScreenWidth(190),
                   child: DefaultButton(
-                    text: "Aplicar Cupom",
+                    text: "Finalizar Compra",
                     press: () {
                       APIGetProdutos().getAllProdutos();
                       // CalcularCartFinal(Produto.Produtolist[0].price);
