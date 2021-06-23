@@ -225,7 +225,7 @@ class Cadastro extends State<CadastroUser> {
         ),
         color: Colors.white,
         child: Text(
-          'Cadastro',
+          'Sign Up',
           style: TextStyle(
             color: AzulPrimario,
             letterSpacing: 1.5,
@@ -244,7 +244,7 @@ class Cadastro extends State<CadastroUser> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
-        title: Text("Sign Up",
+        title: Text("Cadastro",
             textScaleFactor: 1.1,
             style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
         leading: IconButton(
