@@ -18,12 +18,12 @@ class Desejos extends StatelessWidget {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      centerTitle: true,
       title: Row(
         children: [
+          Padding(padding: EdgeInsets.fromLTRB(0, 0, 85, 0)),
           Text(
             "Carrinho",
-            textScaleFactor: 1,
+            textScaleFactor: 1.2,
             style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold),
           ),
           Padding(padding: EdgeInsets.fromLTRB(80, 0, 0, 0)),
