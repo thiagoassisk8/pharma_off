@@ -13,8 +13,7 @@ class BuscaEstabeleciemento {
 
   Future<List<Estabecimento>> getPlaces(
       double lat, double lng, BitmapDescriptor icon) async {
-    // var response = await http.get(
-    // 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location= -15.7736 ,  -47.8861 &type=drugstore&radius=1500&key=AIzaSyDfDu40RB7jGz3EJX2XR-T7q4GHhOge6i0');
+    // var response = await http.get(''); << SEM GASTAR A API
     var response = await http.get(
         'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=$tipodebusca&rankby=distance&key=$key');
     var json = convert.jsonDecode(response.body);

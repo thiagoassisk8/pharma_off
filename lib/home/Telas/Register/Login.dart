@@ -7,9 +7,10 @@ import 'package:pharma_off/home/Telas/Register/profile/profile_screen.dart';
 import 'package:pharma_off/home/home_screen.dart';
 import 'package:pharma_off/home/rest_api/BuscaUsers.dart';
 import 'package:pharma_off/palheta/theme.dart';
-import 'package:pharma_off/home/Telas/Register/esquecisenha.dart';
 import 'package:pharma_off/home/rest_api/LoginUser.dart';
 import 'package:pharma_off/home/servicos/ComplementosServicos.dart';
+
+import 'ForgotPwd/EsqueciSenha.dart';
 
 var _userObject = {};
 
