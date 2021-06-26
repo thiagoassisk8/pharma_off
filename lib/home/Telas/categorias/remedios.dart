@@ -5,6 +5,8 @@ import 'package:pharma_off/home/rest_api/BuscaRemedios.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
+import 'package:pharma_off/palheta/theme.dart';
+
 class Remedio extends StatefulWidget {
   const Remedio({Key key}) : super(key: key);
   static String NomeNavegacao = "/remedio";
@@ -115,8 +117,7 @@ class _RemedioState extends State<Remedio> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                          "assets/images/${remediosData[index].imgPath}"),
-
+                                            "assets/images/${remediosData[index].imgPath}"),
                                       ),
                                     ),
                                   ),
@@ -158,7 +159,7 @@ class _RemedioState extends State<Remedio> {
                         },
                         child: Container(
                           margin:
-                          EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                              EdgeInsets.only(left: 16, right: 16, bottom: 10),
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 24),
                           decoration: BoxDecoration(
@@ -178,7 +179,7 @@ class _RemedioState extends State<Remedio> {
                             children: <Widget>[
                               Image(
                                 image:
-                                AssetImage("assets/images/${data.imgPath}"),
+                                    AssetImage("assets/images/${data.imgPath}"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -211,7 +212,7 @@ class _RemedioState extends State<Remedio> {
                               ),
                               Padding(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 12),
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: Text(
                                   "R\$ ${data.price.toString()}",
                                   style: TextStyle(
@@ -243,7 +244,7 @@ class _RemedioState extends State<Remedio> {
         centerTitle: true,
         title: Text("Remedios",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         child: buildList(),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:pharma_off/home/objetos/Cart.dart';
 import 'package:pharma_off/palheta/theme.dart';
+import 'package:pharma_off/palheta/size_config.dart';
 
 void AddnoCarrinho(product) {
   listaCarrinho.add(Cart(produto: product, numDeItem: 1));
@@ -185,14 +186,20 @@ class _DetailPageState extends State<DetailPage> {
           ),
           Container(
             child: FlatButton(
-              padding: EdgeInsets.symmetric(
-                vertical: 16,
-                horizontal: 50,
-              ),
-              child: Text('Adicionar ao carrinho'),
+              padding: EdgeInsets.all(10),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              color: AzulPrimario,
               onPressed: () {
                 AddnoCarrinho(widget.produto);
               },
+              child: Text(
+                "Adicionar ao carrinho",
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.white,
+                ),
+              ),
             ),
           ),
         ],

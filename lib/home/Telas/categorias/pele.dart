@@ -5,6 +5,8 @@ import 'package:pharma_off/home/rest_api/BuscaCuidados.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
+import 'package:pharma_off/palheta/theme.dart';
+
 class Pele extends StatefulWidget {
   const Pele({Key key}) : super(key: key);
   static String NomeNavegacao = "/pele";
@@ -115,7 +117,7 @@ class _PeleState extends State<Pele> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                         "assets/images/${cuidadoData[index].imgPath}"),
+                                            "assets/images/${cuidadoData[index].imgPath}"),
                                       ),
                                     ),
                                   ),
@@ -157,7 +159,7 @@ class _PeleState extends State<Pele> {
                         },
                         child: Container(
                           margin:
-                          EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                              EdgeInsets.only(left: 16, right: 16, bottom: 10),
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 24),
                           decoration: BoxDecoration(
@@ -177,7 +179,7 @@ class _PeleState extends State<Pele> {
                             children: <Widget>[
                               Image(
                                 image:
-                                AssetImage("assets/images/${data.imgPath}"),
+                                    AssetImage("assets/images/${data.imgPath}"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -210,7 +212,7 @@ class _PeleState extends State<Pele> {
                               ),
                               Padding(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 12),
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: Text(
                                   "R\$ ${data.price.toString()}",
                                   style: TextStyle(
@@ -242,7 +244,7 @@ class _PeleState extends State<Pele> {
         centerTitle: true,
         title: Text("Cuidados Pele e Cabelo",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         child: buildList(),

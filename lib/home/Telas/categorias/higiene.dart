@@ -5,6 +5,8 @@ import 'package:pharma_off/home/rest_api/BuscaHigiene.dart';
 import 'package:pharma_off/home/servicos/detalhes_produto.dart';
 import 'dart:math' as math;
 
+import 'package:pharma_off/palheta/theme.dart';
+
 class Higiene extends StatefulWidget {
   const Higiene({Key key}) : super(key: key);
   static String NomeNavegacao = "/higiene";
@@ -115,7 +117,7 @@ class _HigieneState extends State<Higiene> {
                                       child: Image(
                                         width: 220,
                                         image: AssetImage(
-                                           "assets/images/${higieneData[index].imgPath}"),
+                                            "assets/images/${higieneData[index].imgPath}"),
                                       ),
                                     ),
                                   ),
@@ -157,7 +159,7 @@ class _HigieneState extends State<Higiene> {
                         },
                         child: Container(
                           margin:
-                          EdgeInsets.only(left: 16, right: 16, bottom: 10),
+                              EdgeInsets.only(left: 16, right: 16, bottom: 10),
                           padding: EdgeInsets.symmetric(
                               vertical: 16, horizontal: 24),
                           decoration: BoxDecoration(
@@ -177,7 +179,7 @@ class _HigieneState extends State<Higiene> {
                             children: <Widget>[
                               Image(
                                 image:
-                                AssetImage("assets/images/${data.imgPath}"),
+                                    AssetImage("assets/images/${data.imgPath}"),
                                 width: 80,
                                 height: 60,
                               ),
@@ -210,7 +212,7 @@ class _HigieneState extends State<Higiene> {
                               ),
                               Padding(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 12),
+                                    const EdgeInsets.symmetric(horizontal: 12),
                                 child: Text(
                                   "R\$ ${data.price.toString()}",
                                   style: TextStyle(
@@ -242,7 +244,7 @@ class _HigieneState extends State<Higiene> {
         centerTitle: true,
         title: Text("Higiene",
             textScaleFactor: 1.1,
-            style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
+            style: TextStyle(color: AzulPrimario, fontWeight: FontWeight.bold)),
       ),
       body: SingleChildScrollView(
         child: buildList(),
