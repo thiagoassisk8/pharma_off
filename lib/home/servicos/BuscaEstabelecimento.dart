@@ -13,9 +13,9 @@ class BuscaEstabeleciemento {
 
   Future<List<Estabecimento>> getPlaces(
       double lat, double lng, BitmapDescriptor icon) async {
-    // var response = await http.get(''); << SEM GASTAR A API
+    // var response = await http.get('');
     var response = await http.get(
-        'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=$tipodebusca&rankby=distance&key=$key');
+    'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=$lat,$lng&type=$tipodebusca&rankby=distance&key=$key');
     var json = convert.jsonDecode(response.body);
     var jsonResults = json['results'] as List;
 

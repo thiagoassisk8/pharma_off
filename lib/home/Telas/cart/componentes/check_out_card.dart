@@ -10,6 +10,15 @@ import 'package:pharma_off/palheta/theme.dart';
 import '../../../objetos/produto.dart';
 
 class CheckoutCard extends StatelessWidget {
+  calculateTotal() {
+    double total = 0;
+    total = 0;
+    listaCarrinho.forEach((x) {
+      // total += (x.produto.price + x.produto.price);
+      print(x.produto.price);
+    });
+  }
+
   void CalcularCartFinal(product) {
     for (var i = 0; i < 3; i++) {
       // print(CartOFF(produto: LocalHost.pelelist[i], numDeItem: i));
@@ -93,7 +102,8 @@ class CheckoutCard extends StatelessWidget {
                   child: DefaultButton(
                     text: "Finalizar Compra",
                     press: () {
-                      APIGetProdutos().getAllProdutos();
+                      calculateTotal();
+                      // APIGetProdutos().getAllProdutos();
                       // CalcularCartFinal(Produto.Produtolist[0].price);
                       // var lista = APIGetProdutos().getAllProdutos();
                       // CalcularCartFinal();

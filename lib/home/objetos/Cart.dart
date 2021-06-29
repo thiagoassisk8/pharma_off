@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharma_off/home/objetos/produto.dart';
+import 'package:flutter/widgets.dart';
 // import 'package:mercadopago_sdk/mercadopago_sdk.dart';
 
 // //class CartOFF {
@@ -21,9 +22,14 @@ class Cart {
   final int numDeItem;
 
   Cart({@required this.produto, @required this.numDeItem});
-}
+
+  // get() {
+  // return listaCarrinho;
+  // }
 
 // Demo data for our cart
+
+}
 
 List<Cart> listaCarrinho = [
   // Cart(produto: Produto.list[0], numDeItem: 2),
