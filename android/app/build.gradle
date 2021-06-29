@@ -49,15 +49,15 @@ android {
         applicationId "uniceub.com.pharma_off"
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 21
-        versionName 'PharmaOFF (1.1.6)'
+        versionCode 24
+        versionName 'PharmaOFF (1.1.7)'
     }
 
     signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']
            keyPassword keystoreProperties['keyPassword']
-            // storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
            storePassword keystoreProperties['storePassword']
        }
    }
