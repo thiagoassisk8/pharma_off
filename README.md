@@ -46,7 +46,7 @@ Esse projeto no momento só está funcionando para android, porém estamos traba
 
 ### Running the project
 
-Clone this repository :
+Clone esse repositório :
 
 ```
 git clone https://github.com/thiagoassisk8/pharma_off
