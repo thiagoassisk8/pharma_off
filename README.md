@@ -10,7 +10,7 @@
 
 
 <p align="center">
-	<img src="" width="300">
+	<img src="https://github.com/thiagoassisk8/pharma_off/blob/master/assets/imagens_demonstracao/Farmacias%20Pr%C3%B3ximas%20mapa.png" width="300">
 </p>
 
 
@@ -32,7 +32,7 @@
 <img
 		width="210"
 		alt="Capture 3"
-		src="https://github.com/thiagoassisk8/pharma_off/blob/master/assets/imagens_demonstracao/Farmacias%20Pr%C3%B3ximas%20mapa.png">
+		src="https://github.com/thiagoassisk8/pharma_off/blob/master/assets/imagens_demonstracao/ofertas.png">
 <img
 		width="210"
 		alt="Capture 4"
